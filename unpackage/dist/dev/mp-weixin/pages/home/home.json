@@ -1,0 +1,12 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "首页",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar",
+    "u-swiper": "/uni_modules/uview-ui/components/u-swiper/u-swiper",
+    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon",
+    "order-list": "/components/orderList/orderList",
+    "tabbar": "/components/tabbar/tabbar"
+  }
+}

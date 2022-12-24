@@ -1,0 +1,264 @@
+{
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/storyboard/storyboard",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/message/message",
+			"style": {
+				"navigationBarTitleText": "消息通知",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/user/user",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/order/order",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "接单大厅",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "新用户注册",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/findPwd/findPwd",
+			"style": {
+				"navigationBarTitleText": "找回密码",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/message/msgDetail",
+			"style": {
+				"navigationBarTitleText": "消息详情",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	],
+	"subPackages": [{
+			"root": "pagesA",
+			"pages": [{
+				"path": "search/search",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "搜索",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "searchResult/searchResult",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTitleText": "",
+					"navigationBarTextStyle": "white"
+				}
+			}, {
+				"path": "driveDetail/driveDetail",
+				"style": {
+					"navigationStyle": "custom",
+					"navigationBarTextStyle": "white"
+				}
+			}, {
+				"path": "carType/carType",
+				"style": {
+					"navigationBarTitleText": "准驾车型分类",
+					"enablePullDownRefresh": false
+				}
+
+			}, {
+				"path": "updateCar/updateCar",
+				"style": {
+					"navigationBarTitleText": "上传驾驶分类",
+					"enablePullDownRefresh": false
+				}
+
+			}]
+		},
+		{
+			"root": "pagesB",
+			"pages": [{
+					"path": "orderDetail/orderDetail",
+					"style": {
+						"navigationBarTitleText": "订单详情",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "releaseOrder/releaseOrder",
+					"style": {
+						"navigationBarTitleText": "发布订单",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "chooseAddress/index",
+					"style": {
+						"navigationBarTitleText": "地址选择",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "chooseAddress/search",
+					"style": {
+						"navigationBarTitleText": "地址选择",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "chooseAddress/cityList",
+					"style": {
+						"navigationBarTitleText": "地址选择",
+						"enablePullDownRefresh": false
+					}
+				}, {
+					"path": "orderDetail/confirmOrder",
+					"style": {
+						"navigationBarTitleText": "确认订单",
+						"enablePullDownRefresh": false
+					}
+				}, {
+					"path": "driverEnter/driverEnter",
+					"style": {
+						"navigationBarTitleText": "申请入驻",
+						"enablePullDownRefresh": false
+					}
+
+				}
+			]
+		},
+		{
+			"root": "pagesC",
+			"pages": [
+				{
+					"path": "orderDetail/orderDetail",
+					"style": {
+						"navigationBarTitleText": "订单详情",
+						"enablePullDownRefresh": false
+					}
+				}
+			    ,{
+                    "path" : "contactUs/contactUs",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "联系我们",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "examine/examine",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "入驻审核",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "feedback/feedback",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "反馈",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "withdrawal/withdrawal",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "提现",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "bill/bill",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "账单",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+		}
+	],
+	"preloadRule": {
+		"pages/home/home": {
+			"network": "all",
+			"packages": ["pagesA", "pagesB","pagesC"]
+		}
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"custom": true,
+		"borderStyle": "black",
+		"backgroundColor": "#fff",
+		"color": "#CBCBCB",
+		"selectedColor": "#FA842B",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/tabbar/home-a.png",
+				"selectedIconPath": "static/tabbar/home-a.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"iconPath": "static/tabbar/home-a.png",
+				"selectedIconPath": "static/tabbar/home-a.png",
+				"text": "消息通知"
+			},
+			{
+				"pagePath": "pages/order/order",
+				"iconPath": "static/tabbar/home-a.png",
+				"selectedIconPath": "static/tabbar/home-a.png",
+				"text": "接单大厅"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/tabbar/home-a.png",
+				"selectedIconPath": "static/tabbar/home-a.png",
+				"text": "我的"
+			}
+		]
+	}
+}

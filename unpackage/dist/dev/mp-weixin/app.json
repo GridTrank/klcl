@@ -1,0 +1,106 @@
+{
+  "pages": [
+    "pages/storyboard/storyboard",
+    "pages/home/home",
+    "pages/message/message",
+    "pages/user/user",
+    "pages/order/order",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/findPwd/findPwd",
+    "pages/message/msgDetail"
+  ],
+  "subPackages": [
+    {
+      "root": "pagesA",
+      "pages": [
+        "search/search",
+        "searchResult/searchResult",
+        "driveDetail/driveDetail",
+        "carType/carType",
+        "updateCar/updateCar"
+      ]
+    },
+    {
+      "root": "pagesB",
+      "pages": [
+        "orderDetail/orderDetail",
+        "releaseOrder/releaseOrder",
+        "chooseAddress/index",
+        "chooseAddress/search",
+        "chooseAddress/cityList",
+        "orderDetail/confirmOrder",
+        "driverEnter/driverEnter"
+      ]
+    },
+    {
+      "root": "pagesC",
+      "pages": [
+        "orderDetail/orderDetail",
+        "contactUs/contactUs",
+        "examine/examine",
+        "feedback/feedback",
+        "withdrawal/withdrawal",
+        "bill/bill"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "custom": true,
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "color": "#CBCBCB",
+    "selectedColor": "#FA842B",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/tabbar/home-a.png",
+        "selectedIconPath": "static/tabbar/home-a.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "iconPath": "static/tabbar/home-a.png",
+        "selectedIconPath": "static/tabbar/home-a.png",
+        "text": "消息通知"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "static/tabbar/home-a.png",
+        "selectedIconPath": "static/tabbar/home-a.png",
+        "text": "接单大厅"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "static/tabbar/home-a.png",
+        "selectedIconPath": "static/tabbar/home-a.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "preloadRule": {
+    "pages/home/home": {
+      "network": "all",
+      "packages": [
+        "pagesA",
+        "pagesB",
+        "pagesC"
+      ]
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "测试"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "usingComponents": {}
+}

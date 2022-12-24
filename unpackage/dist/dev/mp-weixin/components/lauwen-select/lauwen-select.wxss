@@ -1,0 +1,58 @@
+
+.lauwen-select.data-v-72be3b50{
+	position: relative;
+}
+.lauwen-select-box.data-v-72be3b50 {
+	width: 100%;
+}
+.lauwen-select-input.data-v-72be3b50 {
+	width: 100%;
+	border: 1px solid #515a6e;
+	border-radius: 10rpx;
+	box-sizing: border-box;
+	display: flex;
+}
+.lauwen-select-input-text.data-v-72be3b50 {
+	width: 80%;
+	flex-grow: 1;
+}
+.lauwen-select-input-icon.data-v-72be3b50 {
+	width: 50rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.lauwen-icon.data-v-72be3b50 {
+	content: " ";
+	display: inline-block;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	height: 13rpx;
+	width: 13rpx;
+	border-width: 3rpx 3rpx 0 0;
+	border-color: #333;
+	border-style: solid;
+}
+.lauwen-selecting-icon.data-v-72be3b50 {
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+.lauwen-options.data-v-72be3b50 {
+	width: 100%;
+	position: absolute;
+	top: 77rpx;
+	border: 1px solid #c5c8ce;
+	box-sizing: border-box;
+	background-color: #fff;
+}
+.lauwen-option.data-v-72be3b50 {
+	width: 100%;
+	box-sizing: border-box;
+}
+.lauwen-option-active.data-v-72be3b50 {
+	font-weight: 600;
+	background-color:#FB852F;
+	color: #fff;
+}
+

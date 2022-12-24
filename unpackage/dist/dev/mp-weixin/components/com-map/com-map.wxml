@@ -1,0 +1,1 @@
+<view style="{{'width:'+('100%')+';'+('height:'+(height+'rpx')+';')}}"><map class="map" id="map" scale="{{scale}}" show-location="{{true}}" longitude="{{info.location.lng}}" latitude="{{info.location.lat}}" markers="{{markers}}" polyline="{{polyline}}" enable-rotate="{{true}}"></map></view>
