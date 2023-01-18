@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/storyboard/storyboard",
     "pages/home/home",
+    "pages/storyboard/storyboard",
     "pages/message/message",
     "pages/user/user",
     "pages/order/order",
@@ -30,6 +30,7 @@
         "chooseAddress/search",
         "chooseAddress/cityList",
         "orderDetail/confirmOrder",
+        "orderDetail/confirmPay",
         "driverEnter/driverEnter"
       ]
     },
@@ -41,7 +42,9 @@
         "examine/examine",
         "feedback/feedback",
         "withdrawal/withdrawal",
-        "bill/bill"
+        "bill/bill",
+        "collection/collection",
+        "recharge/recharge"
       ]
     }
   ],

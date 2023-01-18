@@ -22,9 +22,9 @@
 					</view>
 				</view>
 				<view class="m-card row jc-sb">
-					<view class="c-t1">余额： <text class="b">￥1234</text> </view>
-					<view class="c-t1">充值</view>
-					<view class="c-t1">提现</view>
+					<view class="c-t1" @click="navTo('/pagesC/bill/bill')">余额： <text class="b">￥1234</text> </view>
+					<view class="c-t1" @click="navTo('/pagesC/recharge/recharge')">充值</view>
+					<view class="c-t1" @click="navTo('/pagesC/withdrawal/withdrawal')">提现</view>
 				</view>
 			</view>
 			
@@ -67,7 +67,7 @@
 			</view>
 			
 			<view class="model-wrap c-list mt20">
-				<view class="row c-item">
+				<view class="row c-item" @click="navTo('/pagesC/collection/collection')">
 					<image src="@/static/images/user-sc.png" class="i-img"></image>
 					<text class="f32-c333">我的收藏</text>
 				</view>

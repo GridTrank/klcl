@@ -109,7 +109,7 @@
 .title_container.data-v-3f9c1e44 {
   display: flex;
   position: absolute;
-  left: 375rpx;
+  left: 275rpx;
   bottom: 0;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);

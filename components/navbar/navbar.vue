@@ -74,13 +74,12 @@
 				</view>
 			</view>
 			<!-- 标题 -->
-			<view class="title_container" v-if="!mysNavConfig.searchConfig"
-				:style="{ top: navBarTop, height: btnHeight }">
+			<view class="title_container" v-if="!mysNavConfig.searchConfig" :style="{ top: navBarTop, height: btnHeight }">
 				<text class="title_text" v-if="!!mysNavConfig.navTitle" :style="{
-            color: mysNavConfig.navTitle.color,
-            fontSize: mysNavConfig.navTitle.fontSize,
-            fontWeight: mysNavConfig.navTitle.fontWeight,
-          }">{{ mysNavConfig.navTitle.text }}</text>
+					color: mysNavConfig.navTitle.color,
+					fontSize: mysNavConfig.navTitle.fontSize,
+					fontWeight: mysNavConfig.navTitle.fontWeight,
+				  }">{{ mysNavConfig.navTitle.text }}</text>
 				<slot name="center2"></slot>
 			</view>
 			<!-- 右边slot -->
@@ -445,7 +444,7 @@
 		display: flex;
 		/* #endif */
 		position: absolute;
-		left: 375upx;
+		left: 275upx;
 		bottom: 0;
 		transform: translateX(-50%);
 		flex-direction: row;

@@ -43,7 +43,7 @@
 			<u--textarea  v-model="info.content" placeholder="请输入任务要求" ></u--textarea>
 		</view>
 		<view class="btn-wrap mt30">
-			<view class="btn" >
+			<view class="btn" @click="toPay">
 				支付确认
 			</view>
 		</view>
@@ -57,6 +57,13 @@
 				info:{},
 				
 			};
+		},
+		methods:{
+			toPay(){
+				uni.navigateTo({
+					url:'./confirmPay'
+				})
+			}
 		}
 	}
 </script>
