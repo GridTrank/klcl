@@ -7,7 +7,6 @@ export default {
 		console.log('App Launch');
 		uni.getSystemInfo({
 			success: (res) => {
-				console.log(123123,res)
 				this.globalData.sysSize=res
 			}
 		})

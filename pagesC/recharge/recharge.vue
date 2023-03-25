@@ -59,7 +59,9 @@
 		},
 		methods:{
 			onRightClick(){
-				
+				uni.navigateTo({
+					url:'../bill/bill'
+				})
 			},
 			selectPay(index){
 				this.payMethod=index==1?'支付宝':'微信'

@@ -128,7 +128,6 @@ var _default = {
     console.log('App Launch');
     uni.getSystemInfo({
       success: function success(res) {
-        console.log(123123, res);
         _this.globalData.sysSize = res;
       }
     });

@@ -44,7 +44,8 @@
         "withdrawal/withdrawal",
         "bill/bill",
         "collection/collection",
-        "recharge/recharge"
+        "recharge/recharge",
+        "info/info"
       ]
     }
   ],

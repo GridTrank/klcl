@@ -11,7 +11,7 @@
 						<view class="t3">手机号：1231231231</view>
 					</view>
 				</view>
-				<u-icon name="arrow-right" color="#fff" size="24"></u-icon>
+				<u-icon @click="navTo('/pagesC/info/info')" name="arrow-right" color="#fff" size="24"></u-icon>
 			</view>
 			
 			<view class="model-wrap assets">

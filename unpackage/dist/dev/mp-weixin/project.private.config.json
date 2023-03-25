@@ -119,6 +119,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "我的信息",
+          "pathName": "pagesC/info/info",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
