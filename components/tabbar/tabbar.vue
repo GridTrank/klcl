@@ -2,20 +2,8 @@
 	<view class="tab-bar">
 		<view class="tab-list row jc-sa">
 			<view class="tab-item column" :class="'tab'+index" v-for="(item,index) in list" :key="index" @click="tabHandle(item,index)">
-				<template v-if="index!==2">
-					<image :src="activeIndexProp===index?item.selectIcon:item.icon" class="t-img"></image>
-					<view :class="['t-txt',{'active':activeIndexProp===index}]">{{item.label}}</view>
-				</template>
-				<template v-else>
-					<view class="item3 row">
-						<view class="btn left" @click.stop="orderHandle(1)">
-							<text>订单发布</text>
-						</view>
-						<view class="btn right" @click.stop="orderHandle(2)">
-							<text>司机入驻</text>
-						</view>
-					</view>
-				</template>
+				<image :src="activeIndexProp===index?item.selectIcon:item.icon" class="t-img"></image>
+				<view :class="['t-txt',{'active':activeIndexProp===index}]">{{item.label}}</view>
 			</view>
 		</view>
 		<u-popup :show="showAdd" @close="closePopup" >
@@ -41,15 +29,20 @@
 						icon:require('@/static/tabbar/home.png'),
 						selectIcon:require('@/static/tabbar/home-a.png')
 					},
+					// {
+					// 	label:'客服',
+					// 	path:'/pages/message/message',
+					// 	icon:require('@/static/tabbar/msg.png'),
+					// 	selectIcon:require('@/static/tabbar/msg-a.png')
+					// },
+					// {
+					// 	label:'直播',
+					// 	path:'/pages/message/message',
+					// 	icon:require('@/static/tabbar/msg.png'),
+					// 	selectIcon:require('@/static/tabbar/msg-a.png')
+					// },
 					{
-						label:'消息通知',
-						path:'/pages/message/message',
-						icon:require('@/static/tabbar/msg.png'),
-						selectIcon:require('@/static/tabbar/msg-a.png')
-					},
-					{},
-					{
-						label:'接单大厅',
+						label:'分享',
 						path:'/pages/order/order',
 						icon:require('@/static/tabbar/order.png'),
 						selectIcon:require('@/static/tabbar/order-a.png')
@@ -68,9 +61,11 @@
 				default:0
 			}
 		},
+		onLoad() {
+			uni.hideTabBar()
+		},
 		methods:{
 			tabHandle(item,index){
-				if(index==2)return
 				uni.switchTab({
 					url:item.path
 				})
@@ -107,9 +102,6 @@
 		.tab-list{
 			padding: 20upx;
 			.tab-item{
-				&.tab2{
-					width: 30%;
-				}
 				.t-img{
 					width: 40upx;
 					height: 40upx;
@@ -118,41 +110,6 @@
 					font-size: 24upx;
 					&.active{
 						color: #FA842B;
-					}
-				}
-				.item3{
-					position: absolute;
-					width: 240upx;
-					border-radius: 70px 70px 0 0;
-					background-color: #fff;
-					top: -30upx;
-					padding: 10upx 10upx 0 10upx;
-					.btn{
-						border-radius: 70px 0 0 0;
-						width: 120upx;
-						height: 120upx;
-						background-color: #FCCD4D;
-						color: #fff;
-						font-size: 26upx;
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						text{
-							display: inline-block;
-							width: 35px;
-							height: 35px;
-							text-align: center;
-							margin-top: 30upx;
-							padding: 15upx;
-						}
-						&.left{
-							justify-content: flex-end;
-						}
-						&.right{
-							border-radius: 0  70px 0 0;
-							justify-content: flex-start;
-							background-color: #FA842B;
-						}
 					}
 				}
 			}

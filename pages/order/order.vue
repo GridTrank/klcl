@@ -19,15 +19,7 @@
 			</u-swiper>
 		</view>
 		<view class="filter-wrap">
-			<view class="row">
-				<view :class="['f-item' ,'row',{'active':filterActive===index}]" v-for="(item,index) in needList" @click="selectFilter(index)">
-					{{item.label}}
-					<image 
-					:src="filterActive===index?require('@/static/images/icon1-a.png'):require('@/static/images/icon1.png')" 
-					class="s-img ml10" >
-					</image>
-				</view>
-			</view>
+			
 		</view>
 		<view class="cate-wrap  ">
 			<view class="order-list ">

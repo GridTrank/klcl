@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view >
 		<navbar  @onRightClick="onRightClick" :mysNavConfig="mysNavConfig">
 			<view class="s-wrap row" slot="center1" @click="toSearch">
 				<image src="@/static/images/search.png" class="icon-img"></image>
@@ -20,6 +20,7 @@
 				>
 				</u-swiper>
 			</view>
+			
 		</view>
 		<view class="cate-wrap ">
 			<view class="title row jc-sb">
@@ -51,9 +52,7 @@
 				</view>
 			</view>
 			<view class="order-list mt20">
-				<view class="order-item" v-for="(item,index) in 5" :key="index">
-					<orderList :info="item"></orderList>
-				</view>
+				
 			</view>
 		</view>
 		
@@ -91,6 +90,7 @@
 			 uni.setNavigationBarColor({
 			    fontColor: "#ffffff", 
 			})
+			uni.hideTabBar()
 		},
 		onPullDownRefresh(res){
 			setTimeout(()=>{

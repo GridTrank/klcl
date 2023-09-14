@@ -5,6 +5,7 @@ export default {
 	},
 	onLaunch: function() {
 		console.log('App Launch');
+		uni.hideTabBar()
 		uni.getSystemInfo({
 			success: (res) => {
 				this.globalData.sysSize=res
