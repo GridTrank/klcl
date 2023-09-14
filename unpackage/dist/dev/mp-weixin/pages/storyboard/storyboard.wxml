@@ -1,1 +1,0 @@
-<view class="start data-v-3a63daa6"><image class="s-img data-v-3a63daa6" src="/static/images/storyboard.png" mode></image><view data-event-opts="{{[['tap',[['navTo',['/pages/home/home','switch']]]]]}}" class="btn data-v-3a63daa6" bindtap="__e">立即进入</view></view>

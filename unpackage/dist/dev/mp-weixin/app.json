@@ -1,24 +1,18 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/storyboard/storyboard",
-    "pages/message/message",
+    "pages/share/share",
     "pages/user/user",
-    "pages/order/order",
     "pages/login/login",
     "pages/register/register",
-    "pages/findPwd/findPwd",
-    "pages/message/msgDetail"
+    "pages/findPwd/findPwd"
   ],
   "subPackages": [
     {
       "root": "pagesA",
       "pages": [
         "search/search",
-        "searchResult/searchResult",
-        "driveDetail/driveDetail",
-        "carType/carType",
-        "updateCar/updateCar"
+        "searchResult/searchResult"
       ]
     },
     {
@@ -38,13 +32,8 @@
       "root": "pagesC",
       "pages": [
         "orderDetail/orderDetail",
-        "contactUs/contactUs",
-        "examine/examine",
-        "feedback/feedback",
-        "withdrawal/withdrawal",
         "bill/bill",
         "collection/collection",
-        "recharge/recharge",
         "info/info"
       ]
     }
@@ -69,16 +58,10 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/message/message",
+        "pagePath": "pages/share/share",
         "iconPath": "static/tabbar/home-a.png",
         "selectedIconPath": "static/tabbar/home-a.png",
-        "text": "消息通知"
-      },
-      {
-        "pagePath": "pages/order/order",
-        "iconPath": "static/tabbar/home-a.png",
-        "selectedIconPath": "static/tabbar/home-a.png",
-        "text": "接单大厅"
+        "text": "分享"
       },
       {
         "pagePath": "pages/user/user",

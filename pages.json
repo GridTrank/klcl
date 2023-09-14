@@ -45,13 +45,6 @@
 				"enablePullDownRefresh": false
 			}
 
-		}, {
-			"path": "pages/message/msgDetail",
-			"style": {
-				"navigationBarTitleText": "消息详情",
-				"enablePullDownRefresh": false
-			}
-
 		}
 	],
 	"subPackages": [{
