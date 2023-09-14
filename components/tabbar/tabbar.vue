@@ -43,7 +43,7 @@
 					// },
 					{
 						label:'分享',
-						path:'/pages/order/order',
+						path:'/pages/share/share',
 						icon:require('@/static/tabbar/order.png'),
 						selectIcon:require('@/static/tabbar/order-a.png')
 					},

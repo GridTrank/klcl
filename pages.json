@@ -1,7 +1,7 @@
 {
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		
+
 		{
 			"path": "pages/home/home",
 			"style": {
@@ -9,18 +9,12 @@
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": true
 			}
-		},{
-			"path": "pages/storyboard/storyboard",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
 		}, {
-			"path": "pages/message/message",
+			"path": "pages/share/share",
 			"style": {
-				"navigationBarTitleText": "消息通知",
-				"enablePullDownRefresh": false
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "分享",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/user/user",
@@ -29,15 +23,6 @@
 				"navigationBarTitleText": "我的",
 				"enablePullDownRefresh": false
 			}
-
-		}, {
-			"path": "pages/order/order",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "接单大厅",
-				"enablePullDownRefresh": false
-			}
-
 		}, {
 			"path": "pages/login/login",
 			"style": {
@@ -85,26 +70,6 @@
 					"navigationBarTitleText": "",
 					"navigationBarTextStyle": "white"
 				}
-			}, {
-				"path": "driveDetail/driveDetail",
-				"style": {
-					"navigationStyle": "custom",
-					"navigationBarTextStyle": "white"
-				}
-			}, {
-				"path": "carType/carType",
-				"style": {
-					"navigationBarTitleText": "准驾车型分类",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
-				"path": "updateCar/updateCar",
-				"style": {
-					"navigationBarTitleText": "上传驾驶分类",
-					"enablePullDownRefresh": false
-				}
-
 			}]
 		},
 		{
@@ -173,36 +138,7 @@
 					"navigationBarTitleText": "订单详情",
 					"enablePullDownRefresh": false
 				}
-			}, {
-				"path": "contactUs/contactUs",
-				"style": {
-					"navigationBarTitleText": "联系我们",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
-				"path": "examine/examine",
-				"style": {
-					"navigationBarTitleText": "入驻审核",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
-				"path": "feedback/feedback",
-				"style": {
-					"navigationBarTitleText": "反馈",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
-				"path": "withdrawal/withdrawal",
-				"style": {
-					"navigationBarTitleText": "提现",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-
-			}, {
+			},{
 				"path": "bill/bill",
 				"style": {
 					"navigationBarTitleText": "账单",
@@ -216,27 +152,13 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
-
-			}    ,{
-                    "path" : "recharge/recharge",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "充值",
-					"navigationStyle": "custom",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "info/info",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "我的信息",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
+			}, {
+				"path": "info/info",
+				"style": {
+					"navigationBarTitleText": "我的信息",
+					"enablePullDownRefresh": false
+				}
+			}]
 		}
 	],
 	"preloadRule": {
@@ -264,16 +186,10 @@
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/message/message",
+				"pagePath": "pages/share/share",
 				"iconPath": "static/tabbar/home-a.png",
 				"selectedIconPath": "static/tabbar/home-a.png",
-				"text": "消息通知"
-			},
-			{
-				"pagePath": "pages/order/order",
-				"iconPath": "static/tabbar/home-a.png",
-				"selectedIconPath": "static/tabbar/home-a.png",
-				"text": "接单大厅"
+				"text": "分享"
 			},
 			{
 				"pagePath": "pages/user/user",
