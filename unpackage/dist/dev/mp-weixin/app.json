@@ -12,7 +12,8 @@
       "root": "pagesA",
       "pages": [
         "search/search",
-        "searchResult/searchResult"
+        "searchResult/searchResult",
+        "detail/detail"
       ]
     },
     {

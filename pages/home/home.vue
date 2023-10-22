@@ -52,21 +52,24 @@
 			<view class="title">
 				限时抢购
 			</view>
-			<scroll-view class="" scroll-x="true" >
+			<scroll-view class="mt20" scroll-x="true" >
 				<view class="buying-list">
 					<view class="buying-item" v-for="(item,index) in 6" :key="index">
 						<image src="@/static/home1.png" class="b-img"></image>
 						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
-						<view class="price-wrap">
-							<text class="p1">￥12</text>
-							<text class="p2">￥12</text>
+						<view class="buy_info">
+							<view class="price-wrap">
+								<text class="p1">￥12</text>
+								<text class="p2">￥12</text>
+							</view>
+							<view class="time">
+								
+							</view>
+							<view class="buy">
+								立即抢购
+							</view>
 						</view>
-						<view class="time">
-							
-						</view>
-						<view class="buy">
-							立即抢购
-						</view>
+						
 					</view>
 				</view>
 			</scroll-view>
@@ -105,6 +108,29 @@
 			</view>
 			<view class="list">
 				<view class="item row jc-sb" v-for="(item,index) in 6" :key="index">
+					<image src="../../static/home1.png" class="c-img"></image>
+					<view class="info column jc-sb">
+						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
+						<view class="price">
+							<text class="p1"> ￥123 </text>
+							<text class="p1"> ￥123 </text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<view class="con-box box2">
+			<view class="con-top row jc-sb">
+				<view class="title">
+					标题 
+				</view>
+				<view class="more">
+					查看更多
+				</view>
+			</view>
+			<view class="list">
+				<view class="item col" v-for="(item,index) in 6" :key="index">
 					<image src="../../static/home1.png" class="c-img"></image>
 					<view class="info column jc-sb">
 						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
@@ -210,7 +236,7 @@
 	}
 }
 .cate-wrap{
-	padding: 20upx;
+	padding: 30upx;
 	background-color: #fff;
 	border-radius: 30upx;
 	margin-top: -30upx;
@@ -231,9 +257,9 @@
 	
 }
 .buying-wrap{
-	padding: 20upx;
+	padding: 30upx;
 	// background-image: url('@/static/bg2.png');
-	background-color:rgba(225, 22, 22, 0.5);
+	background-color:rgba(225, 22, 22, 0.8);
 	border-radius: 30upx;
 	.title{
 		color: #fff;
@@ -256,19 +282,23 @@
 		display: flex;
 		flex-wrap: nowrap;
 		width: 100%;
-		margin-top: 20upx;
 		.buying-item{
 			width: 260upx;
 			display: inline-block;
 			margin-right: 20upx;
 			background-color: #fff;
 			border-radius: 20upx;
+			overflow: hidden;
+			flex-shrink: 0;
 			&:last-child{
 				margin-right: 0;
 			}
 			.b-img{
 				width: 260upx;
 				height: 260upx;
+			}
+			.buy_info{
+				padding: 20upx;
 			}
 		}
 	}
@@ -295,8 +325,29 @@
 				height: 100%;
 			}
 			.info{
-				height: 100%;
+				height: 160upx;
 				background-color: #fff;
+				padding: 20upx;
+				align-items: flex-start;
+				
+			}
+		}
+	}
+	&.box2{
+		.list{
+			display: flex;
+			align-items:center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			.item{
+				width: 48%;
+				height: auto;
+				flex-shrink: 0;
+				.c-img{
+					height: 200upx;
+					width: 100%;
+					display: block;
+				}
 			}
 		}
 	}

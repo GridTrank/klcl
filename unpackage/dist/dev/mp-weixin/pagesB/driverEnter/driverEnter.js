@@ -101,13 +101,13 @@ var components
 try {
   components = {
     "u-Form": function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--form/u--form */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--form/u--form")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--form/u--form.vue */ 369))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--form/u--form */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--form/u--form")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--form/u--form.vue */ 362))
     },
     uFormItem: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-form-item/u-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-form-item/u-form-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-form-item/u-form-item.vue */ 375))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-form-item/u-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-form-item/u-form-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-form-item/u-form-item.vue */ 368))
     },
     uInput: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-input/u-input.vue */ 383))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-input/u-input.vue */ 376))
     },
     uUpload: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-upload/u-upload.vue */ 440))
@@ -134,10 +134,10 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var m0 = _vm.sexType == 1 ? __webpack_require__(/*! @/static/images/xzs.png */ 199) : null
-  var m1 = !(_vm.sexType == 1) ? __webpack_require__(/*! @/static/images/wxz.png */ 200) : null
-  var m2 = _vm.sexType == 2 ? __webpack_require__(/*! @/static/images/xzs.png */ 199) : null
-  var m3 = !(_vm.sexType == 2) ? __webpack_require__(/*! @/static/images/wxz.png */ 200) : null
+  var m0 = _vm.sexType == 1 ? __webpack_require__(/*! @/static/images/xzs.png */ 200) : null
+  var m1 = !(_vm.sexType == 1) ? __webpack_require__(/*! @/static/images/wxz.png */ 201) : null
+  var m2 = _vm.sexType == 2 ? __webpack_require__(/*! @/static/images/xzs.png */ 200) : null
+  var m3 = !(_vm.sexType == 2) ? __webpack_require__(/*! @/static/images/wxz.png */ 201) : null
   if (!_vm._isMounted) {
     _vm.e0 = function ($event) {
       _vm.sexType = 1

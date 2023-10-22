@@ -5,7 +5,6 @@
 		{
 			"path": "pages/home/home",
 			"style": {
-				"navigationStyle": "custom",
 				"navigationBarTitleText": "首页",
 				"enablePullDownRefresh": true
 			}
@@ -63,6 +62,13 @@
 					"navigationBarTitleText": "",
 					"navigationBarTextStyle": "white"
 				}
+			}, {
+				"path": "detail/detail",
+				"style": {
+					"navigationBarTitleText": "详情",
+					"enablePullDownRefresh": false
+				}
+
 			}]
 		},
 		{
@@ -131,7 +137,7 @@
 					"navigationBarTitleText": "订单详情",
 					"enablePullDownRefresh": false
 				}
-			},{
+			}, {
 				"path": "bill/bill",
 				"style": {
 					"navigationBarTitleText": "账单",
