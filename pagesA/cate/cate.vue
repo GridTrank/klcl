@@ -19,11 +19,11 @@
 		</view>
 		<view class="cate_list">
 			<view class="cate_title">
-				分类名称
+				{{cateInfo.name}}
 			</view>
 			<view class="list row jc-sb">
-				<view class="item" v-for="(item,index) in 20" :key="index">
-					<productInfo></productInfo>
+				<view class="item" v-for="(item,index) in productList" :key="index">
+					<productInfo :info="item"></productInfo>
 				</view>
 			</view>
 		</view>
@@ -70,14 +70,27 @@
 				cateLabel:'分类',
 				areaLabel:'地区',
 				searchKey:'',
-				showPop:true,
+				showPop:false,
 				topCateActive:0,
-				filterPop:false
+				filterPop:false,
+				cateInfo:{},
+				productList:[]
 			};
+		},
+		onLoad(options) {
+			this.getData(options.id)
 		},
 		methods:{
 			selectTopCate(item,index){
 				this.topCateActive=index
+			},
+			getData(id){
+				this.$http(`/my-system/wechatMenu/info/${id}`).then(res=>{
+					this.cateInfo = res.result
+				})
+				this.$http(`/my-merchandise/commodity/list`,{wxMenuId:id},'post').then(res=>{
+					this.productList = res.rows
+				})
 			}
 		}
 	}

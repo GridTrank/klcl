@@ -98,10 +98,10 @@ var components
 try {
   components = {
     uSwiper: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 318))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 255))
     },
     tabbar: function() {
-      return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 326))
+      return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 270))
     }
   }
 } catch (e) {
@@ -125,6 +125,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.limiMenu = 99
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -296,13 +301,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
+      menuList: [],
+      limiMenu: 7,
       mysNavConfig: {
         isHome: false,
         navPadding: false,
@@ -329,6 +333,7 @@ var _default =
       fontColor: "#ffffff" });
 
     uni.hideTabBar();
+    this.init();
   },
   onPullDownRefresh: function onPullDownRefresh(res) {
     setTimeout(function () {
@@ -336,6 +341,19 @@ var _default =
     }, 3000);
   },
   methods: {
+    init: function init() {var _this = this;
+      this.$http("/my-system/wechatMenu/list", {
+        size: 99 },
+      'post').then(function (res) {
+        _this.menuList = res.rows;
+      });
+    },
+    toCate: function toCate(item) {
+      uni.navigateTo({
+        url: "/pagesA/cate/cate?id=".concat(item.id) });
+
+
+    },
     toSearch: function toSearch() {
       uni.navigateTo({
         url: '/pagesA/search/search' });
@@ -344,14 +362,6 @@ var _default =
     onRightClick: function onRightClick() {
       this.toSearch();
       console.log('search');
-    },
-    changeCate: function changeCate() {
-
-    },
-    toInfo: function toInfo() {
-      uni.navigateTo({
-        url: '/pagesA/detail/detail' });
-
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -66,9 +66,19 @@
 		},
 		methods:{
 			tabHandle(item,index){
-				uni.switchTab({
-					url:item.path
-				})
+				if(index){
+					if(this.$util.isLogin()){
+						uni.switchTab({
+							url:item.path
+						})
+					}
+					
+				}else{
+					uni.switchTab({
+						url:item.path
+					})
+				}
+			
 			},
 			orderHandle(e){
 				if(e===1){

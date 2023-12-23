@@ -4,25 +4,26 @@ import {
 	msg
 } from './util'
 
-let baseUrl = 'http://125.124.0.124:8000';
+let baseUrl = 'http://www.my-klcl.cn/api';
 
 export default baseUrl;
-export const request = (url,data,method,cacheName,time)=>{
+export const request = (url, data, method, cacheName, time) => {
 	return new Promise((resolve, reject) => {
-		if(time > 0){
+		if (time > 0) {
 			const cacheResult = cache.get(cacheName);
-			if(cacheResult){
+			if (cacheResult) {
 				resolve(cacheResult);
 				return;
 			}
 		}
-		
+		console.log('token', uni.getStorageSync('token') || '')
 		uni.request({
-			url:baseUrl+url,
-			data:data,
-			header:{
-				'token':uni.getStorageSync('token') || '',
-                // 'content-type':'application/x-www-form-urlencoded'
+			url: baseUrl + url,
+			data: data,
+			header: {
+				Authorization: uni.getStorageSync('token') || ''
+
+				// 'content-type':'application/x-www-form-urlencoded'
 			},
 			method: method || 'GET',
 			success: (res) => {
@@ -43,7 +44,7 @@ export const request = (url,data,method,cacheName,time)=>{
 					})
 					reject(res.data)
 				}
-				if(time > 0){
+				if (time > 0) {
 					cache.put(cacheName, res.data.data, time);
 				}
 			},

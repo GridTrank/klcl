@@ -25,54 +25,35 @@
 /* 透明度 */
 /* 文章场景相关 */
 .login.data-v-b237504c {
-  height: 100vh;
-  background-color: #fff;
-}
-.login .l-bg.data-v-b237504c {
-  width: 750rpx;
-  height: 610rpx;
-}
-.login .form-wrap.data-v-b237504c {
-  padding: 10rpx 45rpx;
-}
-.login .form-wrap .code-wrap.data-v-b237504c {
-  width: 156rpx;
-  height: 70rpx;
-  text-align: center;
-  line-height: 70rpx;
-  border-width: 2rpx;
-  border-color: #dadbde;
-  border-style: solid;
-  border-radius: 14rpx;
-  font-size: 26rpx;
-  color: #999;
-}
-.login .form-wrap .code-wrap .code-text.data-v-b237504c {
-  justify-content: center;
-}
-.login .form-wrap .code-wrap .code-text.data-v-b237504c .u-count-down__text {
-  color: #999;
-}
-.login .btn-wrap.data-v-b237504c {
-  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  margin-top: 30%;
 }
-.login .btn-wrap .btn.data-v-b237504c {
-  width: 520rpx;
+.login .wx.data-v-b237504c {
+  width: 150rpx;
+}
+.login .btn.data-v-b237504c {
+  width: 80%;
+  margin: 20rpx auto 0;
+  display: flex;
+  justify-content: center;
   height: 80rpx;
-  border-radius: 40rpx;
   color: #fff;
-  font-size: 36rpx;
-  font-weight: bold;
-  background: linear-gradient(180deg, #FA842B, #FF896E);
-  margin-top: 130rpx;
-  text-align: center;
+  font-size: 32rpx;
+  background-color: #05c160;
   line-height: 80rpx;
 }
-.login .btn-wrap .other .o-btn.data-v-b237504c {
-  color: #FB852F;
-  font-size: 32rpx;
+.login .btn .icon.data-v-b237504c {
+  height: 80rpx;
+}
+.login .back.data-v-b237504c {
+  position: fixed;
+  bottom: 100rpx;
+  font-size: 40rpx;
+}
+.login .back .icon.data-v-b237504c {
+  width: 60rpx;
 }
 

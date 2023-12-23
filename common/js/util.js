@@ -57,13 +57,13 @@ export const isLogin = (options={}) => {
 	if(token){
 		return true;
 	}else{
-        uni.showToast({
-            title:'请先登录',
-            icon:'none'
-        })
+        // uni.showToast({
+        //     title:'请先登录',
+        //     icon:'none'
+        // })
         setTimeout(()=>{
             uni.navigateTo({
-            	url: '/pages/Login/Login'
+            	url: '/pages/login/login'
             })
         },1500)
         return false

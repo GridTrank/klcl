@@ -1,61 +1,12 @@
 <template>
 	<view class="login">
-		<image src="@/static/images/login-bg.png" mode="" class="l-bg"></image>
-		<view class="form-wrap">
-			<u--form 
-			labelPosition="left"
-			:model="userInfo"
-			:rules="rules"
-			ref="uForm">
-				<u-form-item label="账号:" prop="name" labelWidth="80" :required="true">
-					<u-input v-model="userInfo.name" placeholder="请输入您的账户" border="surround"></u-input>
-				</u-form-item>
-				<u-form-item label="密码:" prop="password" :required="true" labelWidth="80">
-					<u-input 
-					v-model="userInfo.password" 
-					placeholder="请输入您的密码" 
-					border="surround" 
-					:type="eyeName=='eye-fill'?'text':'password'"
-					>
-						<template slot="suffix">
-							<u-icon @click="showPwd" :name="eyeName" size="24"></u-icon>
-						</template>
-					</u-input>
-				</u-form-item>
-				<u-form-item label="验证码:" :required="true" prop="code" labelWidth="80">
-					<u-input  v-model="userInfo.code" placeholder="请输入您的验证码" border="surround"></u-input>
-					<template slot="right">
-						<view  class="code-wrap ml20">
-							<view class="code"  v-if="buttonStatus" @click="sendSms">
-								获取验证码
-							</view>
-							<view class="code-text row " v-else>
-								<u-count-down 
-								:autoStart="false"
-								:time="59* 1000" 
-								format="ss" 
-								@finish="showButton"
-								ref="countdown" >
-								</u-count-down>
-								S后重发
-							</view>
-						</view>
-					</template>
-					
-				</u-form-item>
-			</u--form>
-		</view>
-		<view class="btn-wrap">
-			<button class="btn" @click="submit" >
-				登录
-			</button>
-			 <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">唤起授权手机号</button>
-
-			
-			<view class="other row mt20">
-				<view class="o-btn mr30" @click="navTo('/pages/register/register')">注册账号</view>
-				<view class="o-btn" @click="navTo('/pages/findPwd/findPwd')">忘记密码</view>
-			</view>
+		<image src="../../static/login_icon.png" class="wx" mode="widthFix"></image>
+		<button class="btn" @click="submit">
+			<image src="../../static/login_icon.png" class="icon" mode="heightFix"></image>
+			微信授权登录
+		</button>
+		<view class="back" @click="$util.backPage()">
+			<image src="../../static/login_icon.png" class="icon" mode="widthFix"></image>返回
 		</view>
 	</view>
 </template>
@@ -64,90 +15,52 @@
 	export default {
 		data() {
 			return {
-				userInfo:{
-					name:'',
-					password:'',
-					code:''
-				},
-				eyeName:'eye-off',
-				buttonStatus:true,
-				rules:{
-					name:[{
-						type:'string',
-						required: true,
-						message: '请输入账号',
-						trigger: ['blur', 'change']
-					}],
-					password:[{
-						type:'string',
-						required: true,
-						message: '请输入密码',
-						trigger: ['blur', 'change']
-					}],
-					code:[{
-						type:'string',
-						required: true,
-						message: '请输入验证码',
-						trigger: ['blur', 'change']
-					}],
-				}
+				
 			};
 		},
 		onReady() {
-			this.$refs.uForm.setRules(this.rules)
+			
 		},
 		onLoad() {
-			if(!uni.getStorageSync('token')){
+			if (!uni.getStorageSync('token')) {
 				uni.login({
-					provider:'weixin',
+					provider: 'weixin',
 					success: (res) => {
-						console.log(12121,res)
-						
+						console.log(12121, res)
+
 					},
 					fail: (err) => {
-						console.log(222,err)
+						console.log(222, err)
 					}
 				})
 			}
+
+		},
+		watch: {
 			
 		},
-		watch:{
-			buttonStatus(val){
-				if(!val){
-					setTimeout(()=>{
-						this.$refs.countdown.start()
-					},500)
-				}
+		methods: {
+
+			getuserinfo(token) {
+				this.$http('/my-system/user/info').then(r => {
+					uni.setStorageSync('userInfo', r.result)
+				})
 			},
-		},
-		methods:{
-			showPwd(){
-				this.eyeName=this.eyeName=='eye-off'?'eye-fill':'eye-off'
-			},
-			sendSms(){
-				this.showButton()
-			},
-			showButton() {
-				this.buttonStatus = !this.buttonStatus
-			},
-			getuserinfo(e){
-				console.log(12121,e)
-			},
-			getPhoneNumber(e){
-				console.log(3131313,e)
-			},
-			submit(){
+
+			submit() {
 				uni.getUserProfile({
-					desc:'登录',
+					desc: '登录',
 					success: (e) => {
 						uni.login({
 							provider: 'weixin',
 							success: (res) => {
-								this.$http('/my-auth/auth/wechatLogin',{
-									wechatCode:res.code,
-								}).then(r=>{
-									console.log(222,r)
-									uni.getStorageSync('token',r.result)
+								this.$http('/my-auth/auth/wechatLogin', {
+									wechatCode: res.code,
+								}).then(r => {
+									console.log(222, r)
+									uni.setStorageSync('token', r.result)
+									this.getuserinfo()
+									this.$util.backPage()
 								})
 							}
 						})
@@ -165,57 +78,41 @@
 </script>
 
 <style lang="scss" scoped>
-.login{
-	height: 100vh;
-	background-color: #fff;
-	.l-bg{
-		width: 750upx;
-		height: 610upx;
-	}
-	.form-wrap{
-		padding: 10upx 45upx;
-		.code-wrap{
-			width: 156upx;
-			height: 70upx;
-			text-align: center;
-			line-height: 70upx;
-			border-width: 2upx ;
-			border-color: #dadbde ;
-			border-style: solid;
-			border-radius: 14upx;
-			font-size: 26upx;
-			color: #999;
-			.code-text{
-				/deep/ .u-count-down__text{
-					color: #999;
-				}
-				justify-content: center;
-			}
-		}
-	}
-	.btn-wrap{
-		width: 100%;
+	.login {
 		display: flex;
-		flex-direction: column;
+		justify-content: center;
 		align-items: center;
-		.btn{
-			width:520upx;
-			height: 80upx;
-			border-radius: 40upx;
-			color: #fff;
-			font-size: 36upx;
-			font-weight: bold;
-			background: linear-gradient(180deg, #FA842B, #FF896E);
-			margin-top:130upx;
-			text-align: center;
-			line-height: 80upx;
+		flex-direction: column;
+		margin-top: 30%;
+
+		.wx {
+			width: 150upx;
 		}
-		.other{
-			.o-btn{
-				color: $base-color;
-				font-size: 32upx;
+
+		.btn {
+			width: 80%;
+			margin: 20upx auto 0;
+			display: flex;
+			justify-content: center;
+			height: 80upx;
+			color: #fff;
+			font-size: 32upx;
+			background-color: rgb(5, 193, 96);
+			line-height: 80upx;
+
+			.icon {
+				height: 80upx;
+			}
+		}
+
+		.back {
+			position: fixed;
+			bottom: 100upx;
+			font-size: 40upx;
+
+			.icon {
+				width: 60upx;
 			}
 		}
 	}
-}
 </style>
