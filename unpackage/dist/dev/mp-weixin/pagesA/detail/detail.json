@@ -2,6 +2,7 @@
   "navigationBarTitleText": "详情",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "u-swiper": "/uni_modules/uview-ui/components/u-swiper/u-swiper"
+    "u-swiper": "/uni_modules/uview-ui/components/u-swiper/u-swiper",
+    "u-sticky": "/uni_modules/uview-ui/components/u-sticky/u-sticky"
   }
 }

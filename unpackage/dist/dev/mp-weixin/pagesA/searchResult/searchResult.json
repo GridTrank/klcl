@@ -3,7 +3,6 @@
   "navigationBarTitleText": "",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "navbar": "/components/navbar/navbar",
-    "lauwen-select": "/components/lauwen-select/lauwen-select"
+    "navbar": "/components/navbar/navbar"
   }
 }
