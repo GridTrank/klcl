@@ -13,23 +13,19 @@
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "wx8aaa7733adaf6b38",
+  "appid": "wx80b9f6aacbeb5853",
   "projectname": "快来长乐",
   "condition": {
     "search": {
-      "current": -1,
       "list": []
     },
     "conversation": {
-      "current": -1,
       "list": []
     },
     "game": {
-      "current": -1,
       "list": []
     },
     "miniprogram": {
-      "current": -1,
       "list": []
     }
   }
