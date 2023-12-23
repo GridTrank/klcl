@@ -20,10 +20,6 @@
 						<view class="left row mr20">
 							<image src="@/static/images/xingb.png" class="x-img mr10 ml20" ></image>
 							<text class="f28-c999 mr20">性别:</text>
-							<view class="sex row">
-								<view @click="sexType=1">男 <image :src="sexType==1?require('@/static/images/xzs.png'):require('@/static/images/wxz.png')" class="m-img ml10"></image> </view>
-								<view @click="sexType=2" class="ml20">女 <image :src="sexType==2?require('@/static/images/xzs.png'):require('@/static/images/wxz.png')" class="m-img ml10"></image> </view>
-							</view>
 						</view>
 						<u-input v-model="userInfo.age" placeholder="请输入您的年龄" border="surround" customStyle="border-radius:14upx">
 						</u-input>

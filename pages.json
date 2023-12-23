@@ -69,6 +69,13 @@
 					"enablePullDownRefresh": false
 				}
 
+			},
+			{
+				"path" : "cate/cate",
+				"style" :  {
+					"navigationBarTitleText" : "分类",
+					"enablePullDownRefresh" : false
+				}
 			}]
 		},
 		{
@@ -79,54 +86,8 @@
 						"navigationBarTitleText": "订单详情",
 						"enablePullDownRefresh": false
 					}
-				},
-				{
-					"path": "releaseOrder/releaseOrder",
-					"style": {
-						"navigationBarTitleText": "发布订单",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "chooseAddress/index",
-					"style": {
-						"navigationBarTitleText": "地址选择",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "chooseAddress/search",
-					"style": {
-						"navigationBarTitleText": "地址选择",
-						"enablePullDownRefresh": false
-					}
-				},
-				{
-					"path": "chooseAddress/cityList",
-					"style": {
-						"navigationBarTitleText": "地址选择",
-						"enablePullDownRefresh": false
-					}
-				}, {
-					"path": "orderDetail/confirmOrder",
-					"style": {
-						"navigationBarTitleText": "确认订单",
-						"enablePullDownRefresh": false
-					}
-				}, {
-					"path": "orderDetail/confirmPay",
-					"style": {
-						"navigationBarTitleText": "支付订单",
-						"enablePullDownRefresh": false
-					}
-				}, {
-					"path": "driverEnter/driverEnter",
-					"style": {
-						"navigationBarTitleText": "申请入驻",
-						"enablePullDownRefresh": false
-					}
-
 				}
+				
 			]
 		},
 		{

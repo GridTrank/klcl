@@ -4,7 +4,7 @@ import {
 	msg
 } from './util'
 
-let baseUrl = 'https://sxb2bmallapi.loveinway.com/customer-api/';
+let baseUrl = 'http://125.124.0.124:8000';
 
 export default baseUrl;
 export const request = (url,data,method,cacheName,time)=>{
@@ -27,19 +27,14 @@ export const request = (url,data,method,cacheName,time)=>{
 			method: method || 'GET',
 			success: (res) => {
 				uni.hideLoading()
-				if (Number(res.data.code) === 0) {
-					resolve(res.data.data)
+				if (res.data.success) {
+					resolve(res.data)
 				} else if (Number(res.data.code) === 10021 || Number(res.data.code) === 10020) {
 					uni.showToast({
 						title: '登录过期，请重新登录',
 						icon: 'none'
 					})
 					uni.clearStorageSync()
-					// setTimeout(() => {
-					// 	uni.navigateTo({
-					// 		url: '/pages/Login/Login'
-					// 	})
-					// }, 1500)
 					reject(res.data)
 				} else {
 					uni.showToast({

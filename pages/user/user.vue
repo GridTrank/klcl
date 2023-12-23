@@ -41,7 +41,6 @@
 				</view>
 				<view class="m-list row jc-sb">
 					<view class="m-item column" v-for="(item,index) in userList" :key="index">
-						<image :src="item.img" class="icon"></image>
 						<text class="label">{{item.label}}</text>
 					</view>
 				</view>
@@ -60,7 +59,6 @@
 				</view>
 				<view class="m-list row jc-sb">
 					<view class="m-item column" v-for="(item,index) in userList" :key="index">
-						<image :src="item.img" class="icon"></image>
 						<text class="label">{{item.label}}</text>
 					</view>
 				</view>
@@ -101,27 +99,21 @@
 				userList:[
 					{
 						label:'未接单',
-						img:require('@/static/images/u-icon1.png'),
 					},
 					{
 						label:'已接单',
-						img:require('@/static/images/u-icon1.png'),
 					},
 					{
 						label:'已完成',
-						img:require('@/static/images/u-icon1.png'),
 					},
 					{
 						label:'退款',
-						img:require('@/static/images/u-icon1.png'),
 					},
 					{
 						label:'待评价',
-						img:require('@/static/images/u-icon1.png'),
 					},
 					{
 						label:'已评价',
-						img:require('@/static/images/u-icon1.png'),
 					},
 				]
 			};

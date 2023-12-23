@@ -30,7 +30,7 @@
 		</view>
 		<view class="cate-wrap ">
 			<view class="row cate-list">
-				<view class="cate-item column" v-for="(item,index) in 8" :key="index">
+				<view class="cate-item column" v-for="(item,index) in 8" :key="index" @click="changeCate">
 					<image src="@/static/img1.png" class="c-img"></image>
 					<text class="c-label">123</text>
 				</view>
@@ -54,7 +54,7 @@
 			</view>
 			<scroll-view class="mt20" scroll-x="true" >
 				<view class="buying-list">
-					<view class="buying-item" v-for="(item,index) in 6" :key="index">
+					<view class="buying-item" v-for="(item,index) in 6" :key="index" @click="toInfo">
 						<image src="@/static/home1.png" class="b-img"></image>
 						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
 						<view class="buy_info">
@@ -131,14 +131,7 @@
 			</view>
 			<view class="list">
 				<view class="item col" v-for="(item,index) in 6" :key="index">
-					<image src="../../static/home1.png" class="c-img"></image>
-					<view class="info column jc-sb">
-						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
-						<view class="price">
-							<text class="p1"> ￥123 </text>
-							<text class="p1"> ￥123 </text>
-						</view>
-					</view>
+					<productInfo></productInfo>
 				</view>
 			</view>
 		</view>
@@ -191,6 +184,14 @@
 			onRightClick(){
 				this.toSearch()
 				console.log('search')
+			},
+			changeCate(){
+				
+			},
+			toInfo(){
+				uni.navigateTo({
+					url:'/pagesA/detail/detail'
+				})
 			}
 		}
 	}
@@ -206,7 +207,7 @@
 	width: 100%;
 	height: 530upx;
 	background-color: red;
-	background-image: url('@/static/bg2.png');
+	// background-image: url('@/static/bg2.png');
 	// padding-top: 100upx;
 	.nav-wrap{
 		padding: 20upx;

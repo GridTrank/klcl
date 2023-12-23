@@ -14,8 +14,7 @@
 					</u-input>
 					<template slot="right">
 						<view class="sex row">
-							<view @click="sexType=1">男 <image :src="sexType==1?require('@/static/images/xzs.png'):require('@/static/images/wxz.png')" class="m-img ml10"></image> </view>
-							<view @click="sexType=2" class="ml20">女 <image :src="sexType==2?require('@/static/images/xzs.png'):require('@/static/images/wxz.png')" class="m-img ml10"></image> </view>
+							
 						</view>
 					</template>
 				</u-form-item>

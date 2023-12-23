@@ -46,9 +46,12 @@
 			</u--form>
 		</view>
 		<view class="btn-wrap">
-			<view class="btn" @click="submit">
+			<button class="btn" @click="submit" >
 				登录
-			</view>
+			</button>
+			 <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">唤起授权手机号</button>
+
+			
 			<view class="other row mt20">
 				<view class="o-btn mr30" @click="navTo('/pages/register/register')">注册账号</view>
 				<view class="o-btn" @click="navTo('/pages/findPwd/findPwd')">忘记密码</view>
@@ -93,6 +96,21 @@
 		onReady() {
 			this.$refs.uForm.setRules(this.rules)
 		},
+		onLoad() {
+			if(!uni.getStorageSync('token')){
+				uni.login({
+					provider:'weixin',
+					success: (res) => {
+						console.log(12121,res)
+						
+					},
+					fail: (err) => {
+						console.log(222,err)
+					}
+				})
+			}
+			
+		},
 		watch:{
 			buttonStatus(val){
 				if(!val){
@@ -112,13 +130,35 @@
 			showButton() {
 				this.buttonStatus = !this.buttonStatus
 			},
+			getuserinfo(e){
+				console.log(12121,e)
+			},
+			getPhoneNumber(e){
+				console.log(3131313,e)
+			},
 			submit(){
-				console.log(this.$refs.uForm)
-				this.$refs.uForm.validate().then(res => {
-					console.log(111)
-				}).catch(errors => {
-					console.log(2222,errors)
+				uni.getUserProfile({
+					desc:'登录',
+					success: (e) => {
+						uni.login({
+							provider: 'weixin',
+							success: (res) => {
+								this.$http('/my-auth/auth/wechatLogin',{
+									wechatCode:res.code,
+								}).then(r=>{
+									console.log(222,r)
+									uni.getStorageSync('token',r.result)
+								})
+							}
+						})
+					}
 				})
+				// console.log(this.$refs.uForm)
+				// this.$refs.uForm.validate().then(res => {
+				// 	console.log(111)
+				// }).catch(errors => {
+				// 	console.log(2222,errors)
+				// })
 			},
 		}
 	}

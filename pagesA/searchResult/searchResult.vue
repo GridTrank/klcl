@@ -18,7 +18,6 @@
 			</view>
 			<view class="right row">
 				<text class="l-txt mr10">驾照类型</text>
-				<lauwen-select :options="options" defaultIndex="A1" :padding="5" @getValue="getValue"></lauwen-select>
 			</view>
 		</view>
 		<view class="list">

@@ -13,20 +13,14 @@
       "pages": [
         "search/search",
         "searchResult/searchResult",
-        "detail/detail"
+        "detail/detail",
+        "cate/cate"
       ]
     },
     {
       "root": "pagesB",
       "pages": [
-        "orderDetail/orderDetail",
-        "releaseOrder/releaseOrder",
-        "chooseAddress/index",
-        "chooseAddress/search",
-        "chooseAddress/cityList",
-        "orderDetail/confirmOrder",
-        "orderDetail/confirmPay",
-        "driverEnter/driverEnter"
+        "orderDetail/orderDetail"
       ]
     },
     {
