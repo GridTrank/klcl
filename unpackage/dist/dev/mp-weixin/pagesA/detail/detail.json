@@ -3,6 +3,9 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "u-swiper": "/uni_modules/uview-ui/components/u-swiper/u-swiper",
-    "u-sticky": "/uni_modules/uview-ui/components/u-sticky/u-sticky"
+    "u-sticky": "/uni_modules/uview-ui/components/u-sticky/u-sticky",
+    "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup",
+    "u-radio-group": "/uni_modules/uview-ui/components/u-radio-group/u-radio-group",
+    "u-radio": "/uni_modules/uview-ui/components/u-radio/u-radio"
   }
 }

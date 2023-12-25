@@ -101,7 +101,7 @@ try {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 255))
     },
     tabbar: function() {
-      return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 270))
+      return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 263))
     }
   }
 } catch (e) {
@@ -306,6 +306,7 @@ var _default =
   data: function data() {
     return {
       menuList: [],
+      timeLimitList: [],
       limiMenu: 7,
       mysNavConfig: {
         isHome: false,
@@ -346,6 +347,11 @@ var _default =
         size: 99 },
       'post').then(function (res) {
         _this.menuList = res.rows;
+      });
+      this.$http("/my-merchandise/timeLimitCommodity/list", {
+        size: 99 },
+      'post').then(function (res) {
+        _this.timeLimitList = res.rows;
       });
     },
     toCate: function toCate(item) {

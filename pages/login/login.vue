@@ -1,12 +1,12 @@
 <template>
 	<view class="login">
-		<image src="../../static/login_icon.png" class="wx" mode="widthFix"></image>
+		<image src="@/static/login_icon.png" class="wx" mode="widthFix"></image>
 		<button class="btn" @click="submit">
-			<image src="../../static/login_icon.png" class="icon" mode="heightFix"></image>
+			<image src="@/static/login_icon.png" class="icon" mode="heightFix"></image>
 			微信授权登录
 		</button>
 		<view class="back" @click="$util.backPage()">
-			<image src="../../static/login_icon.png" class="icon" mode="widthFix"></image>返回
+			<image src="@/static/back.png" class="icon" mode="widthFix"></image>返回
 		</view>
 	</view>
 </template>

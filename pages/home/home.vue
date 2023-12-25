@@ -28,11 +28,11 @@
 				<block v-for="(item,index) in menuList" :key="index">
 					<view class="cate-item column" v-if="menuList.length > 8 && index == limiMenu"
 						@click="limiMenu = 99">
-						<image src="@/static/img1.png" class="c-img"></image>
+						<image src="@/static/more.jpg" class="c-img more"></image>
 						<text class="c-label">查看更多</text>
 					</view>
 					<view class="cate-item column" v-else-if="index < limiMenu+1" @click="toCate(item)">
-						<image src="@/static/img1.png" class="c-img"></image>
+						<image :src="item.imgPreviewUrl" class="c-img"></image>
 						<text class="c-label">{{item.name}}</text>
 					</view>
 				</block>
@@ -50,16 +50,16 @@
 			</view>
 			<scroll-view class="mt20" scroll-x="true">
 				<view class="buying-list">
-					<view class="buying-item" v-for="(item,index) in 6" :key="index">
+					<view class="buying-item" v-for="(item,index) in timeLimitList" :key="index">
 						<image src="@/static/home1.png" class="b-img"></image>
-						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
+						<view class="name twoHidden">{{item.title}}</view>
 						<view class="buy_info">
 							<view class="price-wrap">
-								<text class="p1">￥12</text>
-								<text class="p2">￥12</text>
+								<text class="p1">￥{{item.rushPurchasePrice}}</text>
+								<text class="p2">￥{{item.price}}</text>
 							</view>
 							<view class="time">
-
+								{{item.limitedEndTime}}
 							</view>
 							<view class="buy">
 								立即抢购
@@ -141,6 +141,7 @@
 		data() {
 			return {
 				menuList: [],
+				timeLimitList: [],
 				limiMenu: 7,
 				mysNavConfig: {
 					isHome: false,
@@ -181,6 +182,11 @@
 					size: 99
 				}, 'post').then(res => {
 					this.menuList = res.rows
+				})
+				this.$http(`/my-merchandise/timeLimitCommodity/list`, {
+					size: 99
+				}, 'post').then(res => {
+					this.timeLimitList = res.rows;
 				})
 			},
 			toCate(item) {
@@ -267,6 +273,11 @@
 			.c-img {
 				width: 150upx;
 				height: 150upx;
+			}
+
+			.more {
+				padding: 30upx;
+				box-sizing: border-box;
 			}
 		}
 

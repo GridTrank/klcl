@@ -1,8 +1,8 @@
 <template>
 	<view class="detail_wrap">
 		<view class="swiper_wrap">
-			<u-swiper :list="productInfo.commodityDetails.map(item=>'http://www.my-klcl.cn/'+item.fileName)" circular
-				indicator :autoplay="false" height="180">
+			<u-swiper :list="productInfo.commodityDetails.map(item=>item.imgPreviewUrl)" circular indicator
+				:autoplay="false" height="180">
 			</u-swiper>
 		</view>
 		<view class="buy row jc-sb" v-if="productInfo.flashSale == 1">
@@ -17,7 +17,9 @@
 			<view class="info">
 				<view class="row jc-sb top">
 					<view class="t-left">
-						<text class="p1">￥</text><text class="p2">{{productInfo.price || productInfo.rushPurchasePrice}}</text><text class="p1">起</text>
+						<text class="p1">￥</text><text
+							class="p2">{{productInfo.price || productInfo.rushPurchasePrice}}</text><text
+							class="p1">起</text>
 					</view>
 					<view class="t-right">
 						收藏
@@ -86,7 +88,40 @@
 				<rich-text :nodes="productInfo.details" v-else></rich-text>
 			</view>
 		</view>
+		<div class="tab-bar row">
+			<view class="icon">
+				<image src="@/static/home.png" mode="heightFix"></image>
+				<view>首页</view>
+			</view>
+			<view class="icon">
+				<image src="@/static/user.png" mode="heightFix"></image>
+				<view>我的</view>
+			</view>
+			<view class="icon">
+				<image src="@/static/share.png" mode="heightFix"></image>
+				<view>海报</view>
+			</view>
+			<button class="btn" @click="showPop=true">立即预定</button>
+		</div>
+		<u-popup :show="showPop">
+			<view class="sku-wrap">
+				<view class="sku-title">
+					<view class="btn close" @click="showPop = false">关闭</view>
+					<view class="title">选择购买的产品</view>
+					<view class="btn enter">确定</view>
+				</view>
+				<view class="sku-list">
+					<u-radio-group v-model="productSku" placement="column">
+						<u-radio :customStyle="{marginBottom: '8px'}"
+							v-for="(item, index) in productInfo.commodityComboList" :key="index" :label="item.comboName"
+							:name="item.commodityId">
+						</u-radio>
+					</u-radio-group>
+				</view>
+			</view>
+		</u-popup>
 	</view>
+
 
 
 </template>
@@ -95,6 +130,8 @@
 	export default {
 		data() {
 			return {
+				productSku: '',
+				showPop: false,
 				list1: [
 					require('@/static/home1.png'),
 					require('@/static/home1.png'),
@@ -122,7 +159,7 @@
 					this.productInfo = res.result
 				})
 			},
-			tabChange(item){
+			tabChange(item) {
 				this.activeIndex = item.value
 			}
 		}
@@ -133,6 +170,7 @@
 	.detail_wrap {
 		min-height: 100vh;
 		background-color: #efefef;
+		padding-bottom: 100upx;
 
 		.buy {
 			padding: 30upx;
@@ -302,6 +340,81 @@
 					color: $base-color;
 					border-bottom: 6upx solid $base-color;
 				}
+			}
+		}
+
+		.sku-wrap {
+
+			.sku-title {
+				height: 100upx;
+				display: flex;
+				width: 100%;
+
+				.title {
+					font-weight: 600;
+					font-size: 36upx;
+					flex: 2;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+
+				.btn {
+					font-size: 30upx;
+					padding: 0 20upx;
+					height: 100%;
+					line-height: 100upx;
+
+					&.enter {
+						color: #FB852F;
+					}
+
+					&.close {
+						color: #999;
+					}
+				}
+			}
+
+			.sku-list {
+				padding: 20upx;
+				height: 500upx;
+				overflow: auto;
+			}
+		}
+
+		.tab-bar {
+			z-index: 10;
+			height: 100upx;
+			background-color: #fff;
+			position: fixed;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			box-sizing: border-box;
+			padding: 0 20upx;
+
+			.icon {
+				display: flex;
+				flex-direction: column;
+				font-size: 28upx;
+				width: 90upx;
+				justify-content: center;
+				align-items: center;
+
+				image {
+					height: 40upx;
+				}
+			}
+
+			.btn {
+				flex: 2;
+				height: 80upx;
+				line-height: 80upx;
+				font-size: 28upx;
+				color: #fff;
+				border-radius: 100upx;
+				background-color: #FB852F;
+				margin-left: 20upx;
 			}
 		}
 

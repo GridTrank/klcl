@@ -1,6 +1,6 @@
 <template>
 	<view class="product_info" @click="toDetial">
-		<image :src="'http://www.my-klcl.cn/'+info.commodityFileInfo[0].fileName" class="c-img"></image>
+		<image :src="info.commodityFileInfo[0].imgPreviewUrl" class="c-img"></image>
 		<view class="info column jc-sb">
 			<view class="name twoHidden">{{info.title}}</view>
 			<view class="price">

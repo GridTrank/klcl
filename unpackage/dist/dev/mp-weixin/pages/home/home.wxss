@@ -78,6 +78,10 @@
   width: 150rpx;
   height: 150rpx;
 }
+.cate-wrap .cate-item .more.data-v-92bb8f34 {
+  padding: 30rpx;
+  box-sizing: border-box;
+}
 .buying-wrap.data-v-92bb8f34 {
   padding: 30rpx;
   background-color: rgba(225, 22, 22, 0.8);
