@@ -4,7 +4,7 @@ import {
 	msg
 } from './util'
 
-let baseUrl = 'http://www.my-klcl.cn/api';
+let baseUrl = 'https://www.my-klcl.cn/api';
 
 export default baseUrl;
 export const request = (url, data, method, cacheName, time) => {
