@@ -96,6 +96,7 @@
 					查看更多
 				</view>
 			</view>
+			<image src="@/static/home1.jpg" class="con-image"  mode="widthFix"></image>
 			<view class="list">
 				<view class="item row jc-sb" v-for="(item,index) in 6" :key="index">
 					<image src="../../static/home1.png" class="c-img"></image>
@@ -119,6 +120,55 @@
 					查看更多
 				</view>
 			</view>
+			<image src="@/static/home2.jpg" class="con-image" mode="widthFix"></image>
+			<view class="list">
+				<view class="item col" v-for="(item,index) in 6" :key="index">
+					<image src="../../static/home1.png" class="c-img"></image>
+					<view class="info column jc-sb">
+						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
+						<view class="price">
+							<text class="p1"> ￥123 </text>
+							<text class="p1"> ￥123 </text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<view class="con-box box2">
+			<view class="con-top row jc-sb">
+				<view class="title">
+					标题
+				</view>
+				<view class="more">
+					查看更多
+				</view>
+			</view>
+			<image src="@/static/home3.jpg" class="con-image" mode="widthFix"></image>
+			<view class="list">
+				<view class="item col" v-for="(item,index) in 6" :key="index">
+					<image src="../../static/home1.png" class="c-img"></image>
+					<view class="info column jc-sb">
+						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
+						<view class="price">
+							<text class="p1"> ￥123 </text>
+							<text class="p1"> ￥123 </text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<view class="con-box box2">
+			<view class="con-top row jc-sb">
+				<view class="title">
+					标题
+				</view>
+				<view class="more">
+					查看更多
+				</view>
+			</view>
+			<image src="@/static/home4.jpg" class="con-image" mode="widthFix"></image>
 			<view class="list">
 				<view class="item col" v-for="(item,index) in 6" :key="index">
 					<image src="../../static/home1.png" class="c-img"></image>
@@ -350,7 +400,9 @@
 		border-radius: 30upx;
 		padding: 30upx 20upx;
 		margin-top: 30upx;
-
+		.con-image {
+			width:100%;
+		}
 		.list {
 			margin-top: 30upx;
 

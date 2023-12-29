@@ -137,6 +137,9 @@
   padding: 30rpx 20rpx;
   margin-top: 30rpx;
 }
+.con-box .con-image.data-v-92bb8f34 {
+  width: 100%;
+}
 .con-box .list.data-v-92bb8f34 {
   margin-top: 30rpx;
 }

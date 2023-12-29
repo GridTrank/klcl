@@ -81,6 +81,9 @@ try {
   components = {
     uPopup: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 331))
+    },
+    uIcon: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 276))
     }
   }
 } catch (e) {
@@ -104,6 +107,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.customShow = false
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -153,6 +161,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   name: "tabbar",
@@ -161,19 +192,19 @@ var _default =
       value6: 0,
       activeIndex: 0,
       showAdd: false,
-      list: [
-      {
+      customShow: false,
+      list: [{
         label: '首页',
         path: '/pages/home/home',
-        icon: __webpack_require__(/*! @/static/tabbar/home.png */ 268),
-        selectIcon: __webpack_require__(/*! @/static/tabbar/home-a.png */ 269) },
+        icon: __webpack_require__(/*! @/static/tabbar/home.jpg */ 268),
+        selectIcon: __webpack_require__(/*! @/static/tabbar/home-a.jpg */ 269) },
 
-      // {
-      // 	label:'客服',
-      // 	path:'/pages/message/message',
-      // 	icon:require('@/static/tabbar/msg.png'),
-      // 	selectIcon:require('@/static/tabbar/msg-a.png')
-      // },
+      {
+        label: '客服',
+        path: '/pages/message/message',
+        icon: __webpack_require__(/*! @/static/tabbar/msg.jpg */ 518),
+        selectIcon: __webpack_require__(/*! @/static/tabbar/msg-a.jpg */ 519) },
+
       // {
       // 	label:'直播',
       // 	path:'/pages/message/message',
@@ -183,14 +214,14 @@ var _default =
       {
         label: '分享',
         path: '/pages/share/share',
-        icon: __webpack_require__(/*! @/static/tabbar/order.png */ 270),
-        selectIcon: __webpack_require__(/*! @/static/tabbar/order-a.png */ 271) },
+        icon: __webpack_require__(/*! @/static/tabbar/order.jpg */ 270),
+        selectIcon: __webpack_require__(/*! @/static/tabbar/order-a.jpg */ 271) },
 
       {
         label: '我的',
         path: '/pages/user/user',
-        icon: __webpack_require__(/*! @/static/tabbar/user.png */ 272),
-        selectIcon: __webpack_require__(/*! @/static/tabbar/user-a.png */ 273) }] };
+        icon: __webpack_require__(/*! @/static/tabbar/user.jpg */ 273),
+        selectIcon: __webpack_require__(/*! @/static/tabbar/user-a.jpg */ 272) }] };
 
 
 
@@ -205,6 +236,11 @@ var _default =
   },
   methods: {
     tabHandle: function tabHandle(item, index) {
+      if (item.label == '客服') {
+        this.customShow = true;
+        return;
+      }
+
       if (index) {
         if (this.$util.isLogin()) {
           uni.switchTab({
