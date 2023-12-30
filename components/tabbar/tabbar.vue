@@ -162,15 +162,17 @@
 		padding: 0;
 		width: 550upx;
 		position: relative;
+
 		.close {
 			position: absolute;
-			bottom:-80upx;
+			bottom: -80upx;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			width: 100%;
-			
+
 		}
+
 		.title {
 			overflow: hidden;
 			height: 160upx;
@@ -182,37 +184,42 @@
 			background: url('@/static/costom.jpg');
 			background-size: 100% 100%;
 		}
+
 		.tel {
 			padding: 20upx;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+
 			.tel-btn {
 				color: #FE5B07;
-				border:1px solid #FE5B07;
+				border: 1px solid #FE5B07;
 				display: inline-block;
 				padding: 10upx 20upx;
 				font-size: 30upx;
 				border-radius: 10upx;
 			}
 		}
+
 		.ewm-wrap {
 			display: flex;
 			align-items: center;
 			flex-direction: column;
+
 			.ewm {
 				width: 200upx;
 				margin: 40upx 0;
 			}
+
 			.text {
 				border-top: 1px solid #eee;
 				font-size: 28upx;
-				width:100%;
+				width: 100%;
 				line-height: 40upx;
 				text-align: center;
 			}
 		}
-		
+
 	}
 
 	.add {
