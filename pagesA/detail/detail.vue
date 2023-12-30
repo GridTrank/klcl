@@ -171,7 +171,9 @@
 		min-height: 100vh;
 		background-color: #efefef;
 		padding-bottom: 100upx;
-
+		[alt]{
+			max-width: 100%;
+		}
 		.buy {
 			padding: 30upx;
 			background-color: $base-color;

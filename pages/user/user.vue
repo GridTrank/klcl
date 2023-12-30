@@ -87,7 +87,7 @@
 				</view>
 			</view>
 		</view>
-		<tabbar :activeIndexProp="2"></tabbar>
+		<tabbar :activeIndexProp="3"></tabbar>
 	</view>
 </template>
 

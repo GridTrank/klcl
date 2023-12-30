@@ -195,6 +195,9 @@ page{
 .fwb{
 	font-weight: bold;
 }
+[alt]{
+			max-width: 100%;
+}
 .no-data{
 	padding: 200rpx 0;
 	text-align: center;

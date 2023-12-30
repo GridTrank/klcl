@@ -1,7 +1,7 @@
 <template>
 	<view>
 		123131
-		<tabbar :activeIndexProp="1"></tabbar>
+		<tabbar :activeIndexProp="2"></tabbar>
 	</view>
 </template>
 

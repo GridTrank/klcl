@@ -89,6 +89,7 @@
 		},
 		methods: {
 			tabHandle(item, index) {
+				
 				if (item.label == '客服') {
 					this.customShow = true;
 					return

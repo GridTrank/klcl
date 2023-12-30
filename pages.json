@@ -146,6 +146,12 @@
 				"text": "首页"
 			},
 			{
+				"pagePath": "pages/login/login",
+				"iconPath": "static/tabbar/msg-a.jpg",
+				"selectedIconPath": "static/tabbar/msg-a.jpg",
+				"text": "客服"
+			},
+			{
 				"pagePath": "pages/share/share",
 				"iconPath": "static/tabbar/home-a.jpg",
 				"selectedIconPath": "static/tabbar/home-a.jpg",

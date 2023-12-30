@@ -29,6 +29,9 @@
   background-color: #efefef;
   padding-bottom: 100rpx;
 }
+.detail_wrap [alt].data-v-971c0f6a {
+  max-width: 100%;
+}
 .detail_wrap .buy.data-v-971c0f6a {
   padding: 30rpx;
   background-color: #FB852F;
