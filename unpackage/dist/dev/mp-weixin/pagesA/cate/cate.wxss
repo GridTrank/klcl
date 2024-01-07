@@ -30,15 +30,9 @@
 }
 .cate_wrap .cate_search.data-v-c9f3beea {
   background-color: #fff;
-  position: fixed;
   padding: 20rpx;
   border-radius: 50rpx;
-  margin-top: 20rpx;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: 90%;
-  z-index: 99;
+  margin: 20rpx;
 }
 .cate_wrap .cate_search .search_left.data-v-c9f3beea {
   flex-shrink: 0;

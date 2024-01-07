@@ -10,8 +10,8 @@
 				<u--input placeholder="请输入内容" border="none" v-model="searchKey"></u--input>
 			</view>
 		</view>
-		<view class="cate_bg" v-if="cateInfo.imgPreviewUrl">
-			<image class="bg_img" :src="cateInfo.imgPreviewUrl" mode="widthFix"></image>
+		<view class="cate_bg" v-if="imgPreviewUrl">
+			<image class="bg_img" :src="imgPreviewUrl" mode="widthFix"></image>
 		</view>
 		<view class="cate_list">
 			<view class="cate_title">
@@ -74,12 +74,28 @@
 				productList: [],
 				status: 'loadmore',
 				page: 1,
-				id: ''
+				id: '',
+				imgPreviewUrl:''
 			};
 		},
 		onLoad(options) {
 			this.id = options.id
 			this.getData(options.id)
+			const obj = {
+				'aefea9af872c4788b60a1a37f9774bee':'da7b82e85797392d1e0f16104f51c1c5',
+				'031f595f174c486888a11523528a91c4':'dae69d23851cc1318723de754d4e94eb',
+				'8f665bc4e69d40d78883c12c3e24ca4f':'f2dcf80bda14622da81ebf78e388f218',
+				'58cfe42dbbc14acb9c85a5e5a76365f9':'def6ffd2c07233c5514af0cba3259603'
+			}
+			if(obj[options.id]){
+				uni.request({
+					url: `https://www.my-klcl.cn/api/my-file/file/base64/${obj[options.id]}`,
+					method: 'GET',
+					success: (res) => {
+						this.imgPreviewUrl = res.data
+					}
+				})
+			}
 
 		},
 		onReachBottom() {
@@ -151,15 +167,15 @@
 
 		.cate_search {
 			background-color: #fff;
-			position: fixed;
+			// position: fixed;
 			padding: 20upx;
 			border-radius: 50upx;
 			// top: 20upx;
-			margin-top: 20upx;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 90%;
-			z-index: 99;
+			margin: 20upx;
+			// left: 50%;
+			// transform: translateX(-50%);
+			// width: 90%;
+			// z-index: 99;
 
 			.search_left {
 				flex-shrink: 0;

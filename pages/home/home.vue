@@ -38,7 +38,7 @@
 				</block>
 			</view>
 			<view class="cate-swiper">
-				<u-swiper @click="toDetail" :list="newSwiper.map(item=>item.imageBase64)" circular indicator :autoplay="true" height="90">
+				<u-swiper @click="toDetail" :list="newSwiper.map(item=>item.imageBase64)" circular indicator :autoplay="true" height="150">
 				</u-swiper>
 			</view>
 
