@@ -135,7 +135,11 @@ var _default2 =
       type: Object,
       default: function _default() {
         return {};
-      } } },
+      } },
+
+    type: {
+      type: String,
+      default: '' } },
 
 
   data: function data() {

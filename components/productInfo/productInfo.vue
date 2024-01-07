@@ -1,6 +1,6 @@
 <template>
-	<view class="product_info" @click="toDetial">
-		<image :src="info.commodityFileInfo[0].imgPreviewUrl" class="c-img"></image>
+	<view :class="['product_info',type]" @click="toDetial">
+		<image :src="info.commodityFileInfo[0].imgPreviewUrl" class="c-img" mode="aspectFill"></image>
 		<view class="info column jc-sb">
 			<view class="name twoHidden">{{info.title}}</view>
 			<view class="price">
@@ -20,6 +20,10 @@
 				default: () => {
 					return {}
 				}
+			},
+			type:{
+				type:String,
+				default:''
 			}
 		},
 		data() {
@@ -70,6 +74,21 @@
 					color: #999;
 					text-decoration: line-through;
 				}
+			}
+		}
+		&.row {
+			.c-img {
+				flex-shrink: 0;
+				width: 350upx;
+				height: 200rpx;
+			}
+			
+			.info {
+				height: 160upx;
+				background-color: #fff;
+				padding: 20upx;
+				align-items: flex-start;
+			
 			}
 		}
 	}

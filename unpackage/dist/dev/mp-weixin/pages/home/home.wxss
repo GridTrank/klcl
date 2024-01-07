@@ -149,17 +149,6 @@
   overflow: hidden;
   height: 200rpx;
 }
-.con-box .list .item .c-img.data-v-92bb8f34 {
-  flex-shrink: 0;
-  width: 400rpx;
-  height: 100%;
-}
-.con-box .list .item .info.data-v-92bb8f34 {
-  height: 160rpx;
-  background-color: #fff;
-  padding: 20rpx;
-  align-items: flex-start;
-}
 .con-box.box2 .list.data-v-92bb8f34 {
   display: flex;
   align-items: center;

@@ -100,6 +100,9 @@ try {
     uSwiper: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 255))
     },
+    productInfo: function() {
+      return __webpack_require__.e(/*! import() | components/productInfo/productInfo */ "components/productInfo/productInfo").then(__webpack_require__.bind(null, /*! @/components/productInfo/productInfo.vue */ 362))
+    },
     tabbar: function() {
       return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 263))
     }
@@ -125,11 +128,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = _vm.newSwiper.map(function(item) {
+    return item.imgPreviewUrl
+  })
+
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
       _vm.limiMenu = 99
     }
   }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -341,22 +357,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
+      home0: '',
+      home1: '',
+      home2: '',
+      home3: '',
+
+      productList0: [],
+      productList1: [],
+      productList2: [],
+      productList3: [],
       menuList: [],
       timeLimitList: [],
+      newList: [],
+      newSwiper: [],
       limiMenu: 7,
       mysNavConfig: {
         isHome: false,
@@ -397,11 +414,79 @@ var _default =
         size: 99 },
       'post').then(function (res) {
         _this.menuList = res.rows;
+
       });
       this.$http("/my-merchandise/timeLimitCommodity/list", {
         size: 99 },
       'post').then(function (res) {
         _this.timeLimitList = res.rows;
+      });
+      this.$http("/my-merchandise/commodity/newList", {
+        size: 10 },
+      'post').then(function (res) {
+        _this.newList = res.rows;
+      });
+      this.$http("/my-merchandise/homeRecommend/list", {
+        size: 99 },
+      'post').then(function (res) {
+        _this.newSwiper = res.rows;
+
+      });
+      uni.request({
+        url: "https://www.my-klcl.cn/api/my-file/file/base64/da7b82e85797392d1e0f16104f51c1c5",
+        method: 'GET',
+        success: function success(res) {
+          _this.home0 = res.data;
+        } });
+
+      this.$http("/my-merchandise/commodity/list", {
+        page: 1,
+        size: 10,
+        wxMenuId: 'aefea9af872c4788b60a1a37f9774bee' },
+      'post').then(function (product) {
+        _this.productList0 = product.rows;
+      });
+      uni.request({
+        url: "https://www.my-klcl.cn/api/my-file/file/base64/dae69d23851cc1318723de754d4e94eb",
+        method: 'GET',
+        success: function success(res) {
+          _this.home1 = res.data;
+        } });
+
+      this.$http("/my-merchandise/commodity/list", {
+        page: 1,
+        size: 10,
+        wxMenuId: '031f595f174c486888a11523528a91c4' },
+      'post').then(function (product) {
+        _this.productList1 = product.rows;
+      });
+      uni.request({
+        url: "https://www.my-klcl.cn/api/my-file/file/base64/f2dcf80bda14622da81ebf78e388f218",
+        method: 'GET',
+        success: function success(res) {
+          _this.home2 = res.data;
+        } });
+
+      this.$http("/my-merchandise/commodity/list", {
+        page: 1,
+        size: 10,
+        wxMenuId: '8f665bc4e69d40d78883c12c3e24ca4f' },
+      'post').then(function (product) {
+        _this.productList2 = product.rows;
+      });
+      uni.request({
+        url: "https://www.my-klcl.cn/api/my-file/file/base64/def6ffd2c07233c5514af0cba3259603",
+        method: 'GET',
+        success: function success(res) {
+          _this.home3 = res.data;
+        } });
+
+      this.$http("/my-merchandise/commodity/list", {
+        page: 1,
+        size: 10,
+        wxMenuId: '58cfe42dbbc14acb9c85a5e5a76365f9' },
+      'post').then(function (product) {
+        _this.productList3 = product.rows;
       });
     },
     toCate: function toCate(item) {

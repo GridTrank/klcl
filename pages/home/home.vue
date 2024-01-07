@@ -82,31 +82,59 @@
 			</view>
 		</view>
 		<view class="pd20">
-			<u-swiper :list="list1" circular indicator :autoplay="false" height="90">
+			<u-swiper :list="newSwiper.map(item=>item.imgPreviewUrl)" circular indicator :autoplay="false" height="90">
 			</u-swiper>
 		</view>
+	
+		<view class="con-box">
+			<view class="con-top row jc-sb">
+				<view class="title">
+					近期上新
+				</view>
+				<view class="more" @click="toCate({id:'aefea9af872c4788b60a1a37f9774bee'})">
+					查看更多
+				</view>
+			</view>
+			<!-- <image :src="home0" class="con-image" mode="widthFix"></image> -->
+			<view class="list ">
+				<view class="item" v-for="(item,index) in newList" :key="index">
+					<productInfo :info="item" type="row"></productInfo>
+				</view>
 
+			</view>
+		</view>
 
 		<view class="con-box">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					标题
+					餐饮美食
 				</view>
-				<view class="more">
+				<view class="more" @click="toCate({id:'aefea9af872c4788b60a1a37f9774bee'})">
 					查看更多
 				</view>
 			</view>
-			<image src="@/static/home1.png" class="con-image"  mode="widthFix"></image>
+			<image :src="home0" class="con-image" mode="widthFix"></image>
 			<view class="list">
-				<view class="item row jc-sb" v-for="(item,index) in 6" :key="index">
-					<image src="../../static/home1.png" class="c-img"></image>
-					<view class="info column jc-sb">
-						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
-						<view class="price">
-							<text class="p1"> ￥123 </text>
-							<text class="p1"> ￥123 </text>
-						</view>
-					</view>
+				<view class="item" v-for="(item,index) in productList0" :key="index">
+					<productInfo :info="item"></productInfo>
+				</view>
+
+			</view>
+		</view>
+
+		<view class="con-box box2">
+			<view class="con-top row jc-sb">
+				<view class="title">
+					休闲娱乐
+				</view>
+				<view class="more" @click="toCate({id:'031f595f174c486888a11523528a91c4'})">
+					查看更多
+				</view>
+			</view>
+			<image :src="home1" class="con-image" mode="widthFix"></image>
+			<view class="list ">
+				<view class="item" v-for="(item,index) in productList1" :key="index">
+					<productInfo :info="item"></productInfo>
 				</view>
 			</view>
 		</view>
@@ -114,71 +142,33 @@
 		<view class="con-box box2">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					标题
+					研学旅游
 				</view>
-				<view class="more">
+				<view class="more" @click="toCate({id:'8f665bc4e69d40d78883c12c3e24ca4f'})">
 					查看更多
 				</view>
 			</view>
-			<image src="@/static/home1.png" class="con-image" mode="widthFix"></image>
+			<image :src="home2" class="con-image" mode="widthFix"></image>
 			<view class="list">
-				<view class="item col" v-for="(item,index) in 6" :key="index">
-					<image src="../../static/home1.png" class="c-img"></image>
-					<view class="info column jc-sb">
-						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
-						<view class="price">
-							<text class="p1"> ￥123 </text>
-							<text class="p1"> ￥123 </text>
-						</view>
-					</view>
+				<view class="item" v-for="(item,index) in productList2" :key="index">
+					<productInfo :info="item"></productInfo>
 				</view>
 			</view>
 		</view>
-		
+
 		<view class="con-box box2">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					标题
+					找好工作
 				</view>
-				<view class="more">
+				<view class="more" @click="toCate({id:'58cfe42dbbc14acb9c85a5e5a76365f9'})">
 					查看更多
 				</view>
 			</view>
-			<image src="@/static/home1.png" class="con-image" mode="widthFix"></image>
+			<image :src="home3" class="con-image" mode="widthFix"></image>
 			<view class="list">
-				<view class="item col" v-for="(item,index) in 6" :key="index">
-					<image src="../../static/home1.png" class="c-img"></image>
-					<view class="info column jc-sb">
-						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
-						<view class="price">
-							<text class="p1"> ￥123 </text>
-							<text class="p1"> ￥123 </text>
-						</view>
-					</view>
-				</view>
-			</view>
-		</view>
-		
-		<view class="con-box box2">
-			<view class="con-top row jc-sb">
-				<view class="title">
-					标题
-				</view>
-				<view class="more">
-					查看更多
-				</view>
-			</view>
-			<image src="@/static/home1.png" class="con-image" mode="widthFix"></image>
-			<view class="list">
-				<view class="item col" v-for="(item,index) in 6" :key="index">
-					<image src="../../static/home1.png" class="c-img"></image>
-					<view class="info column jc-sb">
-						<view class="name twoHidden">名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称名称</view>
-						<view class="price">
-							<text class="p1"> ￥123 </text>
-							<text class="p1"> ￥123 </text>
-						</view>
-					</view>
+				<view class="item" v-for="(item,index) in productList3" :key="index">
+					<productInfo :info="item"></productInfo>
 				</view>
 			</view>
 		</view>
@@ -190,8 +180,19 @@
 	export default {
 		data() {
 			return {
+				home0: '',
+				home1: '',
+				home2: '',
+				home3: '',
+
+				productList0: [],
+				productList1: [],
+				productList2: [],
+				productList3: [],
 				menuList: [],
 				timeLimitList: [],
+				newList:[],
+				newSwiper:[],
 				limiMenu: 7,
 				mysNavConfig: {
 					isHome: false,
@@ -232,11 +233,79 @@
 					size: 99
 				}, 'post').then(res => {
 					this.menuList = res.rows
+
 				})
 				this.$http(`/my-merchandise/timeLimitCommodity/list`, {
 					size: 99
 				}, 'post').then(res => {
 					this.timeLimitList = res.rows;
+				})
+				this.$http(`/my-merchandise/commodity/newList`, {
+					size: 10
+				}, 'post').then(res => {
+					this.newList = res.rows;
+				})
+				this.$http(`/my-merchandise/homeRecommend/list`, {
+					size: 99
+				}, 'post').then(res => {
+					this.newSwiper = res.rows
+				
+				})
+				uni.request({
+					url: "https://www.my-klcl.cn/api/my-file/file/base64/da7b82e85797392d1e0f16104f51c1c5",
+					method: 'GET',
+					success: (res) => {
+						this.home0 = res.data
+					}
+				})
+				this.$http(`/my-merchandise/commodity/list`, {
+					page: 1,
+					size: 10,
+					wxMenuId: 'aefea9af872c4788b60a1a37f9774bee'
+				}, 'post').then(product => {
+					this.productList0 = product.rows
+				})
+				uni.request({
+					url: "https://www.my-klcl.cn/api/my-file/file/base64/dae69d23851cc1318723de754d4e94eb",
+					method: 'GET',
+					success: (res) => {
+						this.home1 = res.data
+					}
+				})
+				this.$http(`/my-merchandise/commodity/list`, {
+					page: 1,
+					size: 10,
+					wxMenuId: '031f595f174c486888a11523528a91c4'
+				}, 'post').then(product => {
+					this.productList1 = product.rows
+				})
+				uni.request({
+					url: "https://www.my-klcl.cn/api/my-file/file/base64/f2dcf80bda14622da81ebf78e388f218",
+					method: 'GET',
+					success: (res) => {
+						this.home2 = res.data
+					}
+				})
+				this.$http(`/my-merchandise/commodity/list`, {
+					page: 1,
+					size: 10,
+					wxMenuId: '8f665bc4e69d40d78883c12c3e24ca4f'
+				}, 'post').then(product => {
+					this.productList2 = product.rows
+				})
+				uni.request({
+					url: "https://www.my-klcl.cn/api/my-file/file/base64/def6ffd2c07233c5514af0cba3259603",
+					method: 'GET',
+					success: (res) => {
+						this.home3 = res.data
+					}
+				})
+				this.$http(`/my-merchandise/commodity/list`, {
+					page: 1,
+					size: 10,
+					wxMenuId: '58cfe42dbbc14acb9c85a5e5a76365f9'
+				}, 'post').then(product => {
+					this.productList3 = product.rows
 				})
 			},
 			toCate(item) {
@@ -400,9 +469,11 @@
 		border-radius: 30upx;
 		padding: 30upx 20upx;
 		margin-top: 30upx;
+
 		.con-image {
-			width:100%;
+			width: 100%;
 		}
+
 		.list {
 			margin-top: 30upx;
 
@@ -412,19 +483,6 @@
 				overflow: hidden;
 				height: 200upx;
 
-				.c-img {
-					flex-shrink: 0;
-					width: 400upx;
-					height: 100%;
-				}
-
-				.info {
-					height: 160upx;
-					background-color: #fff;
-					padding: 20upx;
-					align-items: flex-start;
-
-				}
 			}
 		}
 

@@ -53,4 +53,15 @@
   color: #999;
   text-decoration: line-through;
 }
+.product_info.row .c-img.data-v-0185fe80 {
+  flex-shrink: 0;
+  width: 350rpx;
+  height: 200rpx;
+}
+.product_info.row .info.data-v-0185fe80 {
+  height: 160rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  align-items: flex-start;
+}
 
