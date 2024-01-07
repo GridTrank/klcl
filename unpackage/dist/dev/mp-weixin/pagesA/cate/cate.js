@@ -98,16 +98,19 @@ var components
 try {
   components = {
     uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 278))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 285))
     },
     "u-Input": function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 357))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 364))
     },
     productInfo: function() {
-      return __webpack_require__.e(/*! import() | components/productInfo/productInfo */ "components/productInfo/productInfo").then(__webpack_require__.bind(null, /*! @/components/productInfo/productInfo.vue */ 362))
+      return __webpack_require__.e(/*! import() | components/productInfo/productInfo */ "components/productInfo/productInfo").then(__webpack_require__.bind(null, /*! @/components/productInfo/productInfo.vue */ 263))
+    },
+    uLoadmore: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-loadmore/u-loadmore.vue */ 520))
     },
     uPopup: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 333))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 340))
     }
   }
 } catch (e) {
@@ -181,10 +184,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -257,24 +257,76 @@ var _default =
       topCateActive: 0,
       filterPop: false,
       cateInfo: {},
-      productList: [] };
+      productList: [],
+      status: 'loadmore',
+      page: 1,
+      id: '' };
 
   },
   onLoad: function onLoad(options) {
+    this.id = options.id;
     this.getData(options.id);
+
+  },
+  onReachBottom: function onReachBottom() {
+    this.getProduct(this.id);
   },
   methods: {
     selectTopCate: function selectTopCate(item, index) {
       this.topCateActive = index;
     },
-    getData: function getData(id) {var _this = this;
+    getProduct: function getProduct(id) {var _this = this;
+      if (id == 'new') {
+        this.$http("/my-merchandise/commodity/newList", {
+          page: this.page,
+          size: 10 },
+        'post').then(function (res) {
+          _this.page++;
+          _this.productList = res.rows;
+          if (res.rows.length < 10) {
+            _this.status = 'nomore';
+          }
+          _this.total = res.total;
+        });
+      } else {
+        this.$http("/my-merchandise/commodity/list", {
+          wxMenuId: id,
+          page: this.page,
+          size: 10 },
+        'post').then(function (res) {
+          _this.page++;
+          _this.productList = res.rows;
+          console.log(res.rows.length);
+          if (res.rows.length < 10) {
+            _this.status = 'nomore';
+          }
+          _this.total = res.total;
+        });
+      }
+    },
+    getData: function getData(id) {var _this2 = this;
+      if (id == 'new') {
+
+        this.cateInfo = {
+          remarks: '最近上新 New Arrival' };
+
+        uni.setNavigationBarTitle({
+          title: this.cateInfo.remarks });
+
+        this.getProduct(id);
+
+        return;
+
+      }
       this.$http("/my-system/wechatMenu/info/".concat(id)).then(function (res) {
-        _this.cateInfo = res.result;
+        _this2.cateInfo = res.result;
+        uni.setNavigationBarTitle({
+          title: _this2.cateInfo.remarks });
+
       });
-      this.$http("/my-merchandise/commodity/list", { wxMenuId: id }, 'post').then(function (res) {
-        _this.productList = res.rows;
-      });
+      this.getProduct(id);
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

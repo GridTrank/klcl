@@ -11,7 +11,7 @@
 				</view>
 			</view>
 			<view class="index-bg">
-				<u-swiper :list="list1" circular indicator :autoplay="false" height="150">
+				<u-swiper :list="list1" circular indicator :autoplay="true" height="150">
 				</u-swiper>
 			</view>
 			<view class="top_label row jc-sb">
@@ -37,9 +37,8 @@
 					</view>
 				</block>
 			</view>
-
 			<view class="cate-swiper">
-				<u-swiper :list="list1" circular indicator :autoplay="false" height="150">
+				<u-swiper @click="toDetail" :list="newSwiper.map(item=>item.imageBase64)" circular indicator :autoplay="true" height="90">
 				</u-swiper>
 			</view>
 
@@ -81,17 +80,14 @@
 				预约使用
 			</view>
 		</view>
-		<view class="pd20">
-			<u-swiper @click="toDetail" :list="newSwiper.map(item=>item.imageBase64)" circular indicator :autoplay="false" height="90">
-			</u-swiper>
-		</view>
+		
 	
-		<view class="con-box">
+		<view class="con-box" style="background-color: #A8CACE;">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					近期上新
+					近期上新 New Arrival
 				</view>
-				<view class="more" @click="toCate({id:'aefea9af872c4788b60a1a37f9774bee'})">
+				<view class="more" @click="toCate({id:'new'})">
 					查看更多
 				</view>
 			</view>
@@ -104,10 +100,10 @@
 			</view>
 		</view>
 
-		<view class="con-box">
+		<view class="con-box" style="background-color: #EA8D76;">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					餐饮美食
+					餐饮美食 Dining Gourmet Food
 				</view>
 				<view class="more" @click="toCate({id:'aefea9af872c4788b60a1a37f9774bee'})">
 					查看更多
@@ -122,10 +118,10 @@
 			</view>
 		</view>
 
-		<view class="con-box box2">
+		<view class="con-box box2" style="background-color: #B34422;">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					休闲娱乐
+					休闲娱乐 Leisure Entertainment
 				</view>
 				<view class="more" @click="toCate({id:'031f595f174c486888a11523528a91c4'})">
 					查看更多
@@ -139,10 +135,10 @@
 			</view>
 		</view>
 
-		<view class="con-box box2">
+		<view class="con-box box2" style="background-color: #47CF97 ;">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					研学旅游
+					研学旅游 Study Tourism
 				</view>
 				<view class="more" @click="toCate({id:'8f665bc4e69d40d78883c12c3e24ca4f'})">
 					查看更多
@@ -156,10 +152,10 @@
 			</view>
 		</view>
 
-		<view class="con-box box2">
+		<view class="con-box box2" style="background-color:#E2B07B ;">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					找好工作
+					找好工作 Find  Good Job
 				</view>
 				<view class="more" @click="toCate({id:'58cfe42dbbc14acb9c85a5e5a76365f9'})">
 					查看更多
@@ -342,16 +338,18 @@
 	.index-top {
 		width: 100%;
 		height: 530upx;
-		background-color: red;
+		background-color: #DBD9B7;
 		background-image: url('@/static/bg2.png');
-
+		// padding-bottom: 50upx;
 		// padding-top: 100upx;
 		.nav-wrap {
 			padding: 20upx;
+			display: flex;
 		}
 
 		.search {
 			color: #fff;
+			
 		}
 
 		.s-wrap {
@@ -359,7 +357,7 @@
 			border-radius: 32upx;
 			font-size: 24upx;
 			background-color: #fff;
-
+			flex:2;
 			.icon-img {
 				width: 28upx;
 				height: 28upx;
@@ -412,7 +410,7 @@
 	.buying-wrap {
 		padding: 30upx;
 		// background-image: url('@/static/bg2.png');
-		background-color: rgba(225, 22, 22, 0.8);
+		background-color: #F0B2A8;
 		border-radius: 30upx;
 
 		.title {
@@ -470,7 +468,6 @@
 	}
 
 	.con-box {
-		background-color: rgba(25, 222, 22, 0.5);
 		border-radius: 30upx;
 		padding: 30upx 20upx;
 		margin-top: 30upx;
