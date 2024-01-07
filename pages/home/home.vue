@@ -82,7 +82,7 @@
 			</view>
 		</view>
 		<view class="pd20">
-			<u-swiper :list="newSwiper.map(item=>item.imgPreviewUrl)" circular indicator :autoplay="false" height="90">
+			<u-swiper @click="toDetail" :list="newSwiper.map(item=>item.imageBase64)" circular indicator :autoplay="false" height="90">
 			</u-swiper>
 		</view>
 	
@@ -306,6 +306,11 @@
 					wxMenuId: '58cfe42dbbc14acb9c85a5e5a76365f9'
 				}, 'post').then(product => {
 					this.productList3 = product.rows
+				})
+			},
+			toDetail(index) {
+				uni.navigateTo({
+					url: `/pagesA/detail/detail?id=${this.newSwiper[index].commodityId}`
 				})
 			},
 			toCate(item) {

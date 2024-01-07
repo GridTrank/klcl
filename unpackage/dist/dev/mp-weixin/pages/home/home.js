@@ -129,7 +129,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   var g0 = _vm.newSwiper.map(function(item) {
-    return item.imgPreviewUrl
+    return item.imageBase64
   })
 
   if (!_vm._isMounted) {
@@ -488,6 +488,11 @@ var _default =
       'post').then(function (product) {
         _this.productList3 = product.rows;
       });
+    },
+    toDetail: function toDetail(index) {
+      uni.navigateTo({
+        url: "/pagesA/detail/detail?id=".concat(this.newSwiper[index].commodityId) });
+
     },
     toCate: function toCate(item) {
       uni.navigateTo({
