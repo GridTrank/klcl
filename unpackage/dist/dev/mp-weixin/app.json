@@ -2,8 +2,9 @@
   "pages": [
     "pages/home/home",
     "pages/share/share",
-    "pages/user/user",
     "pages/login/login",
+    "pages/msg/msg",
+    "pages/user/user",
     "pages/register/register",
     "pages/findPwd/findPwd"
   ],
@@ -28,6 +29,7 @@
       "pages": [
         "orderDetail/orderDetail",
         "bill/bill",
+        "message/message",
         "collection/collection",
         "info/info"
       ]
@@ -53,7 +55,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/login/login",
+        "pagePath": "pages/msg/msg",
         "iconPath": "static/tabbar/msg-a.jpg",
         "selectedIconPath": "static/tabbar/msg-a.jpg",
         "text": "客服"

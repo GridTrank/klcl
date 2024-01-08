@@ -34,6 +34,9 @@
 .login .wx.data-v-b237504c {
   width: 150rpx;
 }
+.login .blue.data-v-b237504c {
+  color: skyblue;
+}
 .login .btn.data-v-b237504c {
   width: 80%;
   margin: 20rpx auto 0;

@@ -16,20 +16,26 @@
 				"enablePullDownRefresh": true
 			}
 		}, {
-			"path": "pages/user/user",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "我的",
-				"enablePullDownRefresh": false
-			}
-		}, {
 			"path": "pages/login/login",
 			"style": {
 				"navigationStyle": "custom",
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-
+		}, {
+			"path": "pages/msg/msg",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/user/user",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			}
 		}, {
 			"path": "pages/register/register",
 			"style": {
@@ -49,34 +55,35 @@
 	"subPackages": [{
 			"root": "pagesA",
 			"pages": [{
-				"path": "search/search",
-				"style": {
-					"navigationStyle": "custom",
-					"navigationBarTitleText": "搜索",
-					"enablePullDownRefresh": false
-				}
-			}, {
-				"path": "searchResult/searchResult",
-				"style": {
-					"navigationStyle": "custom",
-					"navigationBarTitleText": "",
-					"navigationBarTextStyle": "white"
-				}
-			}, {
-				"path": "detail/detail",
-				"style": {
-					"navigationBarTitleText": "详情",
-					"enablePullDownRefresh": false
-				}
+					"path": "search/search",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "搜索",
+						"enablePullDownRefresh": false
+					}
+				}, {
+					"path": "searchResult/searchResult",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "",
+						"navigationBarTextStyle": "white"
+					}
+				}, {
+					"path": "detail/detail",
+					"style": {
+						"navigationBarTitleText": "详情",
+						"enablePullDownRefresh": false
+					}
 
-			},
-			{
-				"path" : "cate/cate",
-				"style" :  {
-					"navigationBarTitleText" : "分类",
-					"enablePullDownRefresh" : false
+				},
+				{
+					"path": "cate/cate",
+					"style": {
+						"navigationBarTitleText": "分类",
+						"enablePullDownRefresh": false
+					}
 				}
-			}]
+			]
 		},
 		{
 			"root": "pagesB",
@@ -87,7 +94,7 @@
 						"enablePullDownRefresh": false
 					}
 				}
-				
+
 			]
 		},
 		{
@@ -102,6 +109,13 @@
 				"path": "bill/bill",
 				"style": {
 					"navigationBarTitleText": "账单",
+					"enablePullDownRefresh": false
+				}
+
+			},{
+				"path": "message/message",
+				"style": {
+					"navigationBarTitleText": "隐私协议",
 					"enablePullDownRefresh": false
 				}
 
@@ -146,7 +160,7 @@
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/login/login",
+				"pagePath": "pages/msg/msg",
 				"iconPath": "static/tabbar/msg-a.jpg",
 				"selectedIconPath": "static/tabbar/msg-a.jpg",
 				"text": "客服"

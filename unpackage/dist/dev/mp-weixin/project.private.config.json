@@ -9,6 +9,13 @@
         "miniprogram": {
             "list": [
                 {
+                    "name": "",
+                    "pathName": "pages/login/login",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
                     "name": "搜索",
                     "pathName": "pagesA/search/search",
                     "query": "",

@@ -150,11 +150,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
-    return {};
-
+    return {
+      checked: [] };
 
   },
   onReady: function onReady() {
@@ -179,7 +180,11 @@ var _default =
 
 
   methods: {
+    toMessage: function toMessage() {
+      uni.navigateTo({
+        url: "/pagesC/message/message" });
 
+    },
     getuserinfo: function getuserinfo(token) {
       this.$http('/my-system/user/info').then(function (r) {
         uni.setStorageSync('userInfo', r.result);

@@ -6,7 +6,7 @@ let _debounceTimeout = null,
  * @param {Function} 执行函数
  * @param {Number} delay 延时ms   
  */
-export const debounce = (fn, delay=500) => {
+export const debounce = (fn, delay = 500) => {
 	clearTimeout(_debounceTimeout);
 	_debounceTimeout = setTimeout(() => {
 		fn();
@@ -17,14 +17,14 @@ export const debounce = (fn, delay=500) => {
  * @param {Function} 执行函数
  * @param {Number} delay 延时ms  
  */
-export const throttle = (fn, delay=500) => {
-	if(_throttleRunning){
+export const throttle = (fn, delay = 500) => {
+	if (_throttleRunning) {
 		return;
 	}
 	_throttleRunning = true;
 	fn();
 	setTimeout(() => {
-	    _throttleRunning = false;
+		_throttleRunning = false;
 	}, delay);
 }
 
@@ -39,8 +39,8 @@ export const backPage = () => {
 /**
  * toast
  */
-export const msg = (title = '', param={}) => {
-	if(!title) return;
+export const msg = (title = '', param = {}) => {
+	if (!title) return;
 	uni.showToast({
 		title,
 		duration: param.duration || 1500,
@@ -52,22 +52,27 @@ export const msg = (title = '', param={}) => {
  * 检查登录
  * @return {Boolean}
  */
-export const isLogin = (options={}) => {
+export const isLogin = (options = {}) => {
 	const token = uni.getStorageSync('token');
-	if(token){
+	console.log(token)
+	if (token) {
 		return true;
-	}else{
-        // uni.showToast({
-        //     title:'请先登录',
-        //     icon:'none'
-        // })
-        setTimeout(()=>{
-            uni.navigateTo({
-            	url: '/pages/login/login'
-            })
-        },1500)
-        return false
-    }
+	} else {
+		// uni.showToast({
+		//     title:'请先登录',
+		//     icon:'none'
+		// })
+		uni.navigateTo({
+			url:'/pages/login/login',
+			fail: (res) => {
+			                    console.log(res)//打印错误信息
+			                }
+		})
+		// uni.navigateTo({
+		// 	url: '/pages/login/login'
+		// })
+		return false
+	}
 }
 /**
  * 获取页面栈
@@ -86,10 +91,10 @@ export const prePage = (preIndex = 1) => {
  * @return {String}
  */
 export const date = (format, timeStamp) => {
-	if('' + timeStamp.length <= 10){
-		timeStamp = + timeStamp * 1000;
-	}else{
-		timeStamp = + timeStamp;
+	if ('' + timeStamp.length <= 10) {
+		timeStamp = +timeStamp * 1000;
+	} else {
+		timeStamp = +timeStamp;
 	}
 	let _date = new Date(timeStamp),
 		Y = _date.getFullYear(),
@@ -98,21 +103,28 @@ export const date = (format, timeStamp) => {
 		H = _date.getHours(),
 		i = _date.getMinutes(),
 		s = _date.getSeconds();
-	
+
 	m = m < 10 ? '0' + m : m;
 	d = d < 10 ? '0' + d : d;
 	H = H < 10 ? '0' + H : H;
 	i = i < 10 ? '0' + i : i;
 	s = s < 10 ? '0' + s : s;
 
-	return format.replace(/[YmdHis]/g, key=>{
-		return {Y,m,d,H,i,s}[key];
+	return format.replace(/[YmdHis]/g, key => {
+		return {
+			Y,
+			m,
+			d,
+			H,
+			i,
+			s
+		} [key];
 	});
 }
 //二维数组去重
 export const getUnique = array => {
 	let obj = {}
-    return array.filter((item, index) => {
+	return array.filter((item, index) => {
 		let newItem = item + JSON.stringify(item)
 		return obj.hasOwnProperty(newItem) ? false : obj[newItem] = true
 	})
@@ -145,7 +157,8 @@ export const checkStr = (str, type) => {
 		case 'IP': //IP
 			return /((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))/.test(str);
 		case 'date': //日期时间
-			return /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2})(?:\:\d{2}|:(\d{2}):(\d{2}))$/.test(str) || /^(\d{4})\-(\d{2})\-(\d{2})$/
+			return /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2})(?:\:\d{2}|:(\d{2}):(\d{2}))$/.test(str) ||
+				/^(\d{4})\-(\d{2})\-(\d{2})$/
 				.test(str)
 		case 'number': //数字
 			return /^[0-9]$/.test(str);
@@ -160,7 +173,7 @@ export const checkStr = (str, type) => {
 		case 'HTML': //HTML标记
 			return /<("[^"]*"|'[^']*'|[^'">])*>/.test(str);
 		case 'pwdLength': //HTML标记
-			return str.length>=6;
+			return str.length >= 6;
 		default:
 			return true;
 	}
@@ -168,29 +181,29 @@ export const checkStr = (str, type) => {
 
 // 格式化时间
 export const dateFormat = function(fmt = 'YYYY-MM-DD', date = new Date()) {
-  const time = new Date(date)
-  const weekArr = ['日', '一', '二', '三', '四', '五', '六']
-  var o = {
-    'M+': time.getMonth() + 1, //月份
-    'D+': time.getDate(), //日
-    'h+': time.getHours(), //小时
-    'm+': time.getMinutes(), //分
-    's+': time.getSeconds(), //秒
-    'q+': Math.floor((time.getMonth() + 3) / 3), //季度
-    S: time.getMilliseconds(), //毫秒
-    W: time.getDay(), //星期
-  }
-  if (/(Y+)/.test(fmt))
-    fmt = fmt.replace(RegExp.$1, (time.getFullYear() + '').substr(4 - RegExp.$1.length))
-  for (var k in o)
-    if (new RegExp('(' + k + ')').test(fmt))
-      fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1 == 'W'
-          ? weekArr[o[k]]
-          : RegExp.$1.length == 1
-          ? o[k]
-          : ('00' + o[k]).substr(('' + o[k]).length)
-      )
-  return fmt
+	const time = new Date(date)
+	const weekArr = ['日', '一', '二', '三', '四', '五', '六']
+	var o = {
+		'M+': time.getMonth() + 1, //月份
+		'D+': time.getDate(), //日
+		'h+': time.getHours(), //小时
+		'm+': time.getMinutes(), //分
+		's+': time.getSeconds(), //秒
+		'q+': Math.floor((time.getMonth() + 3) / 3), //季度
+		S: time.getMilliseconds(), //毫秒
+		W: time.getDay(), //星期
+	}
+	if (/(Y+)/.test(fmt))
+		fmt = fmt.replace(RegExp.$1, (time.getFullYear() + '').substr(4 - RegExp.$1.length))
+	for (var k in o)
+		if (new RegExp('(' + k + ')').test(fmt))
+			fmt = fmt.replace(
+				RegExp.$1,
+				RegExp.$1 == 'W' ?
+				weekArr[o[k]] :
+				RegExp.$1.length == 1 ?
+				o[k] :
+				('00' + o[k]).substr(('' + o[k]).length)
+			)
+	return fmt
 }

@@ -89,7 +89,7 @@
 		},
 		methods: {
 			tabHandle(item, index) {
-				
+				console.log(item,index)
 				if (item.label == '客服') {
 					this.customShow = true;
 					return
@@ -103,6 +103,7 @@
 					}
 
 				} else {
+					
 					uni.switchTab({
 						url: item.path
 					})

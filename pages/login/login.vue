@@ -1,10 +1,11 @@
 <template>
 	<view class="login">
 		<image src="@/static/login_icon.png" class="wx" mode="widthFix"></image>
-		<button class="btn" @click="submit">
+		<button class="btn mb20" @click="submit">
 			<image src="@/static/login_icon.png" class="icon" mode="heightFix"></image>
 			微信授权登录
 		</button>
+		<view class="row mt20">我已阅读并同意<text class="blue" @click="toMessage">《隐私政策》</text></view>
 		<view class="back" @click="$util.backPage()">
 			<image src="@/static/back.png" class="icon" mode="widthFix"></image>返回
 		</view>
@@ -15,11 +16,11 @@
 	export default {
 		data() {
 			return {
-				
+				checked: [],
 			};
 		},
 		onReady() {
-			
+
 		},
 		onLoad() {
 			if (!uni.getStorageSync('token')) {
@@ -37,10 +38,14 @@
 
 		},
 		watch: {
-			
+
 		},
 		methods: {
-
+			toMessage() {
+				uni.navigateTo({
+					url: "/pagesC/message/message"
+				})
+			},
 			getuserinfo(token) {
 				this.$http('/my-system/user/info').then(r => {
 					uni.setStorageSync('userInfo', r.result)
@@ -87,6 +92,10 @@
 
 		.wx {
 			width: 150upx;
+		}
+
+		.blue {
+			color: skyblue;
 		}
 
 		.btn {
