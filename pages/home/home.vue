@@ -339,7 +339,7 @@
 		width: 100%;
 		height: 530upx;
 		background-color: #DBD9B7;
-		background-image: url('@/static/bg2.png');
+		// background-image: url('@/static/bg2.png');
 		// padding-bottom: 50upx;
 		// padding-top: 100upx;
 		.nav-wrap {

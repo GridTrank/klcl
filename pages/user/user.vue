@@ -120,8 +120,15 @@
 		},
 		onLoad() {
 			this.pdTop=getApp().globalData.sysSize.statusBarHeight+30
+			this.getuserinfo()
 		},
 		methods:{
+			getuserinfo(token) {
+				this.$http('/my-system/user/info').then(r => {
+					uni.setStorageSync('userInfo', r.result)
+				})
+			},
+			
 			settleIn(){
 				uni.navigateTo({
 					url:'/pagesC/examine/examine'

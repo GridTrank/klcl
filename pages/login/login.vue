@@ -5,7 +5,12 @@
 			<image src="@/static/login_icon.png" class="icon" mode="heightFix"></image>
 			微信授权登录
 		</button>
-		<view class="row mt20">我已阅读并同意<text class="blue" @click="toMessage">《隐私政策》</text></view>
+		<view class="row mt20">
+			<checkbox-group @change="handleChange">
+				<checkbox value="message" />
+				我已阅读并同意<text class="blue" @click="toMessage">《隐私政策》</text>
+			</checkbox-group>
+		</view>
 		<view class="back" @click="$util.backPage()">
 			<image src="@/static/back.png" class="icon" mode="widthFix"></image>返回
 		</view>
@@ -16,7 +21,7 @@
 	export default {
 		data() {
 			return {
-				checked: [],
+				checked: false,
 			};
 		},
 		onReady() {
@@ -41,6 +46,9 @@
 
 		},
 		methods: {
+			handleChange(e) {
+				this.checked = !!e.detail.value.length
+			},
 			toMessage() {
 				uni.navigateTo({
 					url: "/pagesC/message/message"
@@ -53,6 +61,13 @@
 			},
 
 			submit() {
+				if(!this.checked) {
+					uni.showToast({
+						title: '请同意隐私协议',
+						icon: 'none'
+					})
+					return;
+				}
 				uni.getUserProfile({
 					desc: '登录',
 					success: (e) => {
