@@ -124,6 +124,7 @@
 			this.getuserinfo()
 		},
 		onShow() {
+			
 			this.userInfo=uni.getStorageSync('userInfo')
 			console.log(121111,this.userInfo)
 		},
