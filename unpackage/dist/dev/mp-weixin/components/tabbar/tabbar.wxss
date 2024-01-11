@@ -53,7 +53,7 @@
 }
 .custom-wrap .close {
   position: absolute;
-  bottom: -80rpx;
+  bottom: -120rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,6 +88,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 30rpx 0;
 }
 .custom-wrap .ewm-wrap .ewm {
   width: 200rpx;

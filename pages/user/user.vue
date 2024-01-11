@@ -6,7 +6,7 @@
 				<view class="left row ">
 					<image src="@/static/images/avatar.png" class="u-img mr20"></image>
 					<view class="u-info">
-						<view class="t1 b">姓名</view>
+						<view class="t1 b">{{userInfo.name || '--'}}</view>
 						<view class="t2">年龄：19 ｜ 男</view>
 						<view class="t3">手机号：1231231231</view>
 					</view>
@@ -96,6 +96,7 @@
 		data() {
 			return {
 				pdTop:0,
+				userInfo:{},
 				userList:[
 					{
 						label:'未接单',
@@ -121,6 +122,10 @@
 		onLoad() {
 			this.pdTop=getApp().globalData.sysSize.statusBarHeight+30
 			this.getuserinfo()
+		},
+		onShow() {
+			this.userInfo=uni.getStorageSync('userInfo')
+			console.log(121111,this.userInfo)
 		},
 		methods:{
 			getuserinfo(token) {

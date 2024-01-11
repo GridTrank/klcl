@@ -49,7 +49,7 @@
 			</view>
 			<scroll-view class="mt20" scroll-x="true">
 				<view class="buying-list">
-					<view class="buying-item" v-for="(item,index) in timeLimitList" :key="index">
+					<view class="buying-item" v-for="(item,index) in timeLimitList" :key="index" @click="toLimit(item)">
 						<image src="@/static/home1.png" class="b-img"></image>
 						<view class="name twoHidden">{{item.title}}</view>
 						<view class="buy_info">
@@ -307,6 +307,13 @@
 			toDetail(index) {
 				uni.navigateTo({
 					url: `/pagesA/detail/detail?id=${this.newSwiper[index].commodityId}`
+				})
+			},
+			toLimit(data){
+				
+				
+				uni.navigateTo({
+					url: `/pagesA/detail/detail?id=${data.commodityId}`
 				})
 			},
 			toCate(item) {

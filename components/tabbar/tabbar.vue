@@ -23,7 +23,7 @@
 						<view>客服电话</view>
 						<view>18150638166</view>
 					</view>
-					<a class="tel-btn" href="tel:18150638166">拨打热线</a>
+					<view class="tel-btn" @click="postMobile" href="tel:18150638166">拨打热线</view>
 				</view>
 				<view class="ewm-wrap">
 					<image src="@/static/custom-ewm.jpg" class="ewm" mode="widthFix"></image>
@@ -88,6 +88,12 @@
 			uni.hideTabBar()
 		},
 		methods: {
+			
+			postMobile(){
+				uni.makePhoneCall({
+					phoneNumber: '18150638166' //仅为示例
+				});
+			},
 			tabHandle(item, index) {
 				console.log(item,index)
 				if (item.label == '客服') {
@@ -167,7 +173,7 @@
 
 		.close {
 			position: absolute;
-			bottom: -80upx;
+			bottom: -120upx;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -207,7 +213,7 @@
 			display: flex;
 			align-items: center;
 			flex-direction: column;
-
+			padding: 30upx 0;
 			.ewm {
 				width: 200upx;
 				margin: 40upx 0;
