@@ -50,7 +50,7 @@
 			<scroll-view class="mt20" scroll-x="true">
 				<view class="buying-list">
 					<view class="buying-item" v-for="(item,index) in timeLimitList" :key="index" @click="toLimit(item)">
-						<image src="@/static/home1.png" class="b-img"></image>
+						<image :src="item.imgPreviewUrl" class="b-img"></image>
 						<view class="name twoHidden">{{item.title}}</view>
 						<view class="buy_info">
 							<view class="price-wrap">
@@ -350,6 +350,7 @@
 		.nav-wrap {
 			padding: 20upx;
 			display: flex;
+			align-items: center;
 		}
 
 		.search {

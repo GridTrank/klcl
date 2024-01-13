@@ -37,6 +37,7 @@
 .index-top .nav-wrap.data-v-92bb8f34 {
   padding: 20rpx;
   display: flex;
+  align-items: center;
 }
 .index-top .search.data-v-92bb8f34 {
   color: #fff;

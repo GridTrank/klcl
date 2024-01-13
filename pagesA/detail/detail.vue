@@ -48,7 +48,7 @@
 				</view>
 			</view>
 
-			<view class="releated_wrap">
+			<view class="releated_wrap" v-if="false">
 				<view class="title">
 					相关产品
 				</view>

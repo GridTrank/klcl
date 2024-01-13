@@ -1,6 +1,6 @@
 <template>
 	<view :class="['product_info',type]" @click="toDetial">
-		<image :src="info.commodityFileInfo[0].imgPreviewUrl" class="c-img" mode="aspectFill"></image>
+		<image :src="info.commodityFileInfo[0].imgPreviewUrl" class="c-img" mode="widthFix"></image>
 		<view class="info column jc-sb">
 			<view class="name twoHidden">{{info.title}}</view>
 			<view class="price">
@@ -52,7 +52,6 @@
 
 		.c-img {
 			height: 200upx;
-			width: 100%;
 			display: block;
 		}
 
@@ -79,8 +78,8 @@
 		&.row {
 			.c-img {
 				flex-shrink: 0;
-				width: 350upx;
-				height: 200rpx;
+				width: 228upx;
+				// height: 200rpx;
 			}
 			
 			.info {

@@ -274,10 +274,10 @@ var _default = {
     this.id = options.id;
     this.getData(options.id);
     var obj = {
-      'aefea9af872c4788b60a1a37f9774bee': 'da7b82e85797392d1e0f16104f51c1c5',
-      '031f595f174c486888a11523528a91c4': 'dae69d23851cc1318723de754d4e94eb',
-      '8f665bc4e69d40d78883c12c3e24ca4f': 'f2dcf80bda14622da81ebf78e388f218',
-      '58cfe42dbbc14acb9c85a5e5a76365f9': 'def6ffd2c07233c5514af0cba3259603'
+      'f5f5bf1d22794704a1603136674a536b': 'da7b82e85797392d1e0f16104f51c1c5',
+      '1a19f3644c0544bab087165629d9aa88': 'dae69d23851cc1318723de754d4e94eb',
+      '7f1011053f5742b0ae75fe7636a05c34': 'f2dcf80bda14622da81ebf78e388f218',
+      '4af74be01d2d41708dab00cef66c3a6e': 'def6ffd2c07233c5514af0cba3259603'
     };
     if (obj[options.id]) {
       uni.request({
