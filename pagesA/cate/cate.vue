@@ -196,7 +196,7 @@
 			padding: 30upx 20upx;
 
 			.cate_title {
-				font-size: 40upx;
+				font-size: 32upx;
 				text-align: center;
 			}
 

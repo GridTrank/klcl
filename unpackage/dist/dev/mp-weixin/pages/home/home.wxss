@@ -137,8 +137,24 @@
   padding: 30rpx 20rpx;
   margin-top: 30rpx;
 }
+.con-box.bg1.data-v-92bb8f34 {
+  background: linear-gradient(180deg, #ea8d76 0%, rgba(234, 141, 118, 0.3) 100%);
+}
+.con-box.bg2.data-v-92bb8f34 {
+  background: linear-gradient(180deg, #ea8d76 0%, rgba(234, 141, 118, 0.3) 100%);
+}
+.con-box.bg3.data-v-92bb8f34 {
+  background: linear-gradient(180deg, #b34422 0%, rgba(179, 68, 34, 0.3) 100%);
+}
+.con-box.bg4.data-v-92bb8f34 {
+  background: linear-gradient(180deg, #47cf97 0%, rgba(71, 207, 151, 0.3) 100%);
+}
+.con-box.bg5.data-v-92bb8f34 {
+  background: linear-gradient(180deg, #e2b07b 0%, rgba(226, 176, 123, 0.3) 100%);
+}
 .con-box .con-image.data-v-92bb8f34 {
   width: 100%;
+  margin-top: 20rpx;
 }
 .con-box .list.data-v-92bb8f34 {
   margin-top: 30rpx;

@@ -82,7 +82,7 @@
 		</view>
 		
 	
-		<view class="con-box" style="background-color: #A8CACE;">
+		<view class="con-box bg1" >
 			<view class="con-top row jc-sb">
 				<view class="title">
 					近期上新 New Arrival
@@ -100,12 +100,12 @@
 			</view>
 		</view>
 
-		<view class="con-box" style="background-color: #EA8D76;">
+		<view class="con-box bg2" >
 			<view class="con-top row jc-sb">
 				<view class="title">
 					餐饮美食 Dining Gourmet Food
 				</view>
-				<view class="more" @click="toCate({id:'aefea9af872c4788b60a1a37f9774bee'})">
+				<view class="more" @click="toCate({id:'f5f5bf1d22794704a1603136674a536b'})">
 					查看更多
 				</view>
 			</view>
@@ -118,12 +118,12 @@
 			</view>
 		</view>
 
-		<view class="con-box box2" style="background-color: #B34422;">
+		<view class="con-box box2 bg3">
 			<view class="con-top row jc-sb">
 				<view class="title">
 					休闲娱乐 Leisure Entertainment
 				</view>
-				<view class="more" @click="toCate({id:'031f595f174c486888a11523528a91c4'})">
+				<view class="more" @click="toCate({id:'1a19f3644c0544bab087165629d9aa88'})">
 					查看更多
 				</view>
 			</view>
@@ -135,12 +135,12 @@
 			</view>
 		</view>
 
-		<view class="con-box box2" style="background-color: #47CF97 ;">
+		<view class="con-box box2 bg4">
 			<view class="con-top row jc-sb">
 				<view class="title">
 					研学旅游 Study Tourism
 				</view>
-				<view class="more" @click="toCate({id:'8f665bc4e69d40d78883c12c3e24ca4f'})">
+				<view class="more" @click="toCate({id:'7f1011053f5742b0ae75fe7636a05c34'})">
 					查看更多
 				</view>
 			</view>
@@ -152,12 +152,12 @@
 			</view>
 		</view>
 
-		<view class="con-box box2" style="background-color:#E2B07B ;">
+		<view class="con-box box2 bg5">
 			<view class="con-top row jc-sb">
 				<view class="title">
 					找好工作 Find  Good Job
 				</view>
-				<view class="more" @click="toCate({id:'58cfe42dbbc14acb9c85a5e5a76365f9'})">
+				<view class="more" @click="toCate({id:'4af74be01d2d41708dab00cef66c3a6e'})">
 					查看更多
 				</view>
 			</view>
@@ -310,8 +310,6 @@
 				})
 			},
 			toLimit(data){
-				
-				
 				uni.navigateTo({
 					url: `/pagesA/detail/detail?id=${data.commodityId}`
 				})
@@ -478,9 +476,25 @@
 		border-radius: 30upx;
 		padding: 30upx 20upx;
 		margin-top: 30upx;
+		&.bg1{
+			background: linear-gradient(180deg, rgba(234,141,118 ,1) 0%, rgba(234,141,118 ,0.3) 100%);
+		}
+		&.bg2{
+			background: linear-gradient(180deg, rgba(234,141,118 ,1) 0%, rgba(234,141,118 ,0.3) 100%);
+		}
+		&.bg3{
+			background: linear-gradient(180deg, rgba(179,68,34 ,1) 0%, rgba(179,68,34 ,0.3) 100%);
+		}
+		&.bg4{
+			background: linear-gradient(180deg, rgba(71,207,151 ,1) 0%, rgba(71,207,151,0.3) 100%);
+		}
+		&.bg5{
+			background: linear-gradient(180deg, rgba(226,176,123 ,1) 0%, rgba(226,176,123,0.3) 100%);
+		}
 
 		.con-image {
 			width: 100%;
+			margin-top: 20upx;
 		}
 
 		.list {

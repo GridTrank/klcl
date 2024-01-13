@@ -49,7 +49,7 @@
   padding: 30rpx 20rpx;
 }
 .cate_wrap .cate_list .cate_title.data-v-c9f3beea {
-  font-size: 40rpx;
+  font-size: 32rpx;
   text-align: center;
 }
 .cate_wrap .cate_list .list.data-v-c9f3beea {
