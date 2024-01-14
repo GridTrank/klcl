@@ -59,8 +59,8 @@
 								<text class="p2">￥{{item.price}}</text>
 							</view>
 							<view class="time">
-								<!-- {{countDown(item.limitedEndTime)}} -->
-								<countDown :time="item.limitedEndTime"></countDown>
+								<!-- <countDown :ctime="item.limitedEndTime"></countDown> -->
+								<liu-countdown :auto="true" ref="countdown" mode="4" :endDate="item.limitedEndTime"></liu-countdown>
 							</view>
 							<view class="buy">
 								立即抢购

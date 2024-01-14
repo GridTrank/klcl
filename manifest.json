@@ -52,5 +52,21 @@
 		"libVersion": "latest",
 		"requiredPrivateInfos": ["getLocation"]
 	},
+	"h5": {
+		"devServer": {
+			"port": "8080",
+			"disableHostCheck": true,
+			"proxy": {
+				"/api": {
+					"target": "https://www.my-klcl.cn/api",
+					"changeOrigin": true,
+					"secure": false,
+					"pathRewrite": {
+						"^/api": ""
+					}
+				}
+			}
+		}
+	},
 	"vueVersion": "2"
 }

@@ -3,7 +3,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "u-swiper": "/uni_modules/uview-ui/components/u-swiper/u-swiper",
-    "count-down": "/components/countDown/countDown",
+    "liu-countdown": "/uni_modules/liu-countdown/components/liu-countdown/liu-countdown",
     "product-info": "/components/productInfo/productInfo",
     "tabbar": "/components/tabbar/tabbar"
   }

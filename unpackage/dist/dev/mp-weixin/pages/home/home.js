@@ -103,14 +103,14 @@ try {
     uSwiper: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 293))
     },
-    countDown: function () {
-      return __webpack_require__.e(/*! import() | components/countDown/countDown */ "components/countDown/countDown").then(__webpack_require__.bind(null, /*! @/components/countDown/countDown.vue */ 301))
+    liuCountdown: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/liu-countdown/components/liu-countdown/liu-countdown */ "uni_modules/liu-countdown/components/liu-countdown/liu-countdown").then(__webpack_require__.bind(null, /*! @/uni_modules/liu-countdown/components/liu-countdown/liu-countdown.vue */ 301))
     },
     productInfo: function () {
-      return __webpack_require__.e(/*! import() | components/productInfo/productInfo */ "components/productInfo/productInfo").then(__webpack_require__.bind(null, /*! @/components/productInfo/productInfo.vue */ 306))
+      return __webpack_require__.e(/*! import() | components/productInfo/productInfo */ "components/productInfo/productInfo").then(__webpack_require__.bind(null, /*! @/components/productInfo/productInfo.vue */ 308))
     },
     tabbar: function () {
-      return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 313))
+      return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 315))
     },
   }
 } catch (e) {
