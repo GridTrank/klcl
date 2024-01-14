@@ -440,7 +440,7 @@ var _default = {
         _this.newSwiper = res.rows;
       });
       uni.request({
-        url: "https://www.my-klcl.cn/api/my-file/file/base64/da7b82e85797392d1e0f16104f51c1c5",
+        url: "https://www.my-klcl.cn/api/my-file/file/preview/da7b82e85797392d1e0f16104f51c1c5",
         method: 'GET',
         success: function success(res) {
           _this.home0 = res.data;
