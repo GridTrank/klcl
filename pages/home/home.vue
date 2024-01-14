@@ -264,7 +264,7 @@
 					this.productList0 = product.rows
 				})
 				uni.request({
-					url: "https://www.my-klcl.cn/api/my-file/file/base64/dae69d23851cc1318723de754d4e94eb",
+					url: "https://www.my-klcl.cn/api/my-file/file/preview/dae69d23851cc1318723de754d4e94eb",
 					method: 'GET',
 					success: (res) => {
 						this.home1 = res.data
@@ -278,7 +278,7 @@
 					this.productList1 = product.rows
 				})
 				uni.request({
-					url: "https://www.my-klcl.cn/api/my-file/file/base64/f2dcf80bda14622da81ebf78e388f218",
+					url: "https://www.my-klcl.cn/api/my-file/file/preview/f2dcf80bda14622da81ebf78e388f218",
 					method: 'GET',
 					success: (res) => {
 						this.home2 = res.data
@@ -292,7 +292,7 @@
 					this.productList2 = product.rows
 				})
 				uni.request({
-					url: "https://www.my-klcl.cn/api/my-file/file/base64/def6ffd2c07233c5514af0cba3259603",
+					url: "https://www.my-klcl.cn/api/my-file/file/preview/def6ffd2c07233c5514af0cba3259603",
 					method: 'GET',
 					success: (res) => {
 						this.home3 = res.data
