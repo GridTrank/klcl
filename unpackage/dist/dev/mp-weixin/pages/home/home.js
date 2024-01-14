@@ -103,11 +103,14 @@ try {
     uSwiper: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 293))
     },
+    countDown: function () {
+      return __webpack_require__.e(/*! import() | components/countDown/countDown */ "components/countDown/countDown").then(__webpack_require__.bind(null, /*! @/components/countDown/countDown.vue */ 301))
+    },
     productInfo: function () {
-      return __webpack_require__.e(/*! import() | components/productInfo/productInfo */ "components/productInfo/productInfo").then(__webpack_require__.bind(null, /*! @/components/productInfo/productInfo.vue */ 301))
+      return __webpack_require__.e(/*! import() | components/productInfo/productInfo */ "components/productInfo/productInfo").then(__webpack_require__.bind(null, /*! @/components/productInfo/productInfo.vue */ 306))
     },
     tabbar: function () {
-      return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 308))
+      return Promise.all(/*! import() | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 313))
     },
   }
 } catch (e) {
@@ -195,6 +198,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+//
+//
 //
 //
 //
@@ -514,6 +519,21 @@ var _default = {
     onRightClick: function onRightClick() {
       this.toSearch();
       console.log('search');
+    },
+    countDown: function countDown(time) {
+      var nowTime = +new Date(); //返回当前时间总的毫秒数
+      var inputTime = +new Date(time); //返回用户输入时间总毫秒数
+      var times = (inputTime - nowTime) / 1000; //剩余时间总的秒数
+      //转换时分秒
+      var d = parseInt(times / 60 / 60 / 24);
+      var h = parseInt(times / 60 / 60 % 24);
+      var m = parseInt(times / 60 % 60);
+      var s = parseInt(times % 60);
+      // setInterval(()=>{
+      // 	this.countDown(inputTime-1000)
+      // 	console.log(1212121)
+      // 	return `${d}天 ${h}:${m}:${s}`
+      // },1000)
     }
   }
 };

@@ -207,3 +207,5 @@ export const dateFormat = function(fmt = 'YYYY-MM-DD', date = new Date()) {
 			)
 	return fmt
 }
+
+

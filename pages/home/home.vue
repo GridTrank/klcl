@@ -38,7 +38,8 @@
 				</block>
 			</view>
 			<view class="cate-swiper">
-				<u-swiper @click="toDetail" :list="newSwiper.map(item=>item.imageBase64)" circular indicator :autoplay="true" height="150">
+				<u-swiper @click="toDetail" :list="newSwiper.map(item=>item.imageBase64)" circular indicator
+					:autoplay="true" height="150">
 				</u-swiper>
 			</view>
 
@@ -51,14 +52,15 @@
 				<view class="buying-list">
 					<view class="buying-item" v-for="(item,index) in timeLimitList" :key="index" @click="toLimit(item)">
 						<image :src="item.imgPreviewUrl" class="b-img"></image>
-						<view class="name twoHidden">{{item.title}}</view>
 						<view class="buy_info">
+							<view class="name twoHidden">{{item.title}}</view>
 							<view class="price-wrap">
 								<text class="p1">￥{{item.rushPurchasePrice}}</text>
 								<text class="p2">￥{{item.price}}</text>
 							</view>
 							<view class="time">
-								{{item.limitedEndTime}}
+								<!-- {{countDown(item.limitedEndTime)}} -->
+								<countDown :time="item.limitedEndTime"></countDown>
 							</view>
 							<view class="buy">
 								立即抢购
@@ -80,9 +82,9 @@
 				预约使用
 			</view>
 		</view>
-		
-	
-		<view class="con-box bg1" >
+
+
+		<view class="con-box bg1">
 			<view class="con-top row jc-sb">
 				<view class="title">
 					近期上新 New Arrival
@@ -100,7 +102,7 @@
 			</view>
 		</view>
 
-		<view class="con-box bg2" >
+		<view class="con-box bg2">
 			<view class="con-top row jc-sb">
 				<view class="title">
 					餐饮美食 Dining Gourmet Food
@@ -155,7 +157,7 @@
 		<view class="con-box box2 bg5">
 			<view class="con-top row jc-sb">
 				<view class="title">
-					找好工作 Find  Good Job
+					找好工作 Find Good Job
 				</view>
 				<view class="more" @click="toCate({id:'4af74be01d2d41708dab00cef66c3a6e'})">
 					查看更多
@@ -187,8 +189,8 @@
 				productList3: [],
 				menuList: [],
 				timeLimitList: [],
-				newList:[],
-				newSwiper:[],
+				newList: [],
+				newSwiper: [],
 				limiMenu: 7,
 				mysNavConfig: {
 					isHome: false,
@@ -245,7 +247,7 @@
 					size: 99
 				}, 'post').then(res => {
 					this.newSwiper = res.rows
-				
+
 				})
 				uni.request({
 					url: "https://www.my-klcl.cn/api/my-file/file/base64/da7b82e85797392d1e0f16104f51c1c5",
@@ -309,7 +311,7 @@
 					url: `/pagesA/detail/detail?id=${this.newSwiper[index].commodityId}`
 				})
 			},
-			toLimit(data){
+			toLimit(data) {
 				uni.navigateTo({
 					url: `/pagesA/detail/detail?id=${data.commodityId}`
 				})
@@ -328,7 +330,24 @@
 			onRightClick() {
 				this.toSearch()
 				console.log('search')
-			}
+			},
+			countDown(time) {
+				var nowTime = +new Date(); //返回当前时间总的毫秒数
+				var inputTime = +new Date(time); //返回用户输入时间总毫秒数
+				var times = (inputTime - nowTime) / 1000; //剩余时间总的秒数
+				//转换时分秒
+				var d = parseInt(times / 60 / 60 / 24);
+				var h = parseInt(times / 60 / 60 % 24);
+				var m = parseInt(times / 60 % 60);
+				var s = parseInt(times % 60);
+				// setInterval(()=>{
+				// 	this.countDown(inputTime-1000)
+				// 	console.log(1212121)
+				// 	return `${d}天 ${h}:${m}:${s}`
+				// },1000)
+				
+			},
+
 		}
 	}
 </script>
@@ -344,6 +363,7 @@
 		width: 100%;
 		height: 530upx;
 		background-color: #DBD9B7;
+
 		// background-image: url('@/static/bg2.png');
 		// padding-bottom: 50upx;
 		// padding-top: 100upx;
@@ -355,7 +375,7 @@
 
 		.search {
 			color: #fff;
-			
+
 		}
 
 		.s-wrap {
@@ -363,7 +383,8 @@
 			border-radius: 32upx;
 			font-size: 24upx;
 			background-color: #fff;
-			flex:2;
+			flex: 2;
+
 			.icon-img {
 				width: 28upx;
 				height: 28upx;
@@ -462,7 +483,43 @@
 				}
 
 				.buy_info {
+
 					padding: 20upx;
+
+					.name {
+						height: 76upx;
+					}
+
+					.price-wrap {
+						margin-top: 10upx;
+
+						.p1 {
+							color: red;
+							font-size: 28upx;
+							font-weight: 600;
+						}
+
+						.p2 {
+							color: rgba(0, 0, 0, 0.6);
+							font-size: 24upx;
+							text-decoration: line-through;
+							margin-left: 10upx;
+						}
+					}
+					.time{
+						margin-top: 10upx;
+						text-align: center;
+						color: #000;
+						font-weight: 600;
+					}
+					.buy {
+						background-color: rgba(238, 70, 70, 0.3);
+						text-align: center;
+						padding: 12upx 0;
+						border-radius: 10upx;
+						color: red;
+						margin-top: 10upx;
+					}
 				}
 			}
 		}
@@ -477,20 +534,25 @@
 		border-radius: 30upx;
 		padding: 30upx 20upx;
 		margin-top: 30upx;
-		&.bg1{
-			background: linear-gradient(180deg, rgba(234,141,118 ,1) 0%, rgba(234,141,118 ,0.3) 100%);
+
+		&.bg1 {
+			background: linear-gradient(180deg, rgba(234, 141, 118, 1) 0%, rgba(234, 141, 118, 0.3) 100%);
 		}
-		&.bg2{
-			background: linear-gradient(180deg, rgba(234,141,118 ,1) 0%, rgba(234,141,118 ,0.3) 100%);
+
+		&.bg2 {
+			background: linear-gradient(180deg, rgba(234, 141, 118, 1) 0%, rgba(234, 141, 118, 0.3) 100%);
 		}
-		&.bg3{
-			background: linear-gradient(180deg, rgba(179,68,34 ,1) 0%, rgba(179,68,34 ,0.3) 100%);
+
+		&.bg3 {
+			background: linear-gradient(180deg, rgba(179, 68, 34, 1) 0%, rgba(179, 68, 34, 0.3) 100%);
 		}
-		&.bg4{
-			background: linear-gradient(180deg, rgba(71,207,151 ,1) 0%, rgba(71,207,151,0.3) 100%);
+
+		&.bg4 {
+			background: linear-gradient(180deg, rgba(71, 207, 151, 1) 0%, rgba(71, 207, 151, 0.3) 100%);
 		}
-		&.bg5{
-			background: linear-gradient(180deg, rgba(226,176,123 ,1) 0%, rgba(226,176,123,0.3) 100%);
+
+		&.bg5 {
+			background: linear-gradient(180deg, rgba(226, 176, 123, 1) 0%, rgba(226, 176, 123, 0.3) 100%);
 		}
 
 		.con-image {

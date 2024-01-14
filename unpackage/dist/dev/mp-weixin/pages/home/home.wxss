@@ -130,6 +130,37 @@
 .buying-wrap .buying-list .buying-item .buy_info.data-v-92bb8f34 {
   padding: 20rpx;
 }
+.buying-wrap .buying-list .buying-item .buy_info .name.data-v-92bb8f34 {
+  height: 76rpx;
+}
+.buying-wrap .buying-list .buying-item .buy_info .price-wrap.data-v-92bb8f34 {
+  margin-top: 10rpx;
+}
+.buying-wrap .buying-list .buying-item .buy_info .price-wrap .p1.data-v-92bb8f34 {
+  color: red;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.buying-wrap .buying-list .buying-item .buy_info .price-wrap .p2.data-v-92bb8f34 {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 24rpx;
+  text-decoration: line-through;
+  margin-left: 10rpx;
+}
+.buying-wrap .buying-list .buying-item .buy_info .time.data-v-92bb8f34 {
+  margin-top: 10rpx;
+  text-align: center;
+  color: #000;
+  font-weight: 600;
+}
+.buying-wrap .buying-list .buying-item .buy_info .buy.data-v-92bb8f34 {
+  background-color: rgba(238, 70, 70, 0.3);
+  text-align: center;
+  padding: 12rpx 0;
+  border-radius: 10rpx;
+  color: red;
+  margin-top: 10rpx;
+}
 .pd20.data-v-92bb8f34 {
   padding: 20rpx;
 }

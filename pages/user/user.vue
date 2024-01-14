@@ -64,7 +64,7 @@
 				</view>
 			</view>
 			
-			<view class="model-wrap c-list mt20">
+			<!-- <view class="model-wrap c-list mt20">
 				<view class="row c-item" @click="navTo('/pagesC/collection/collection')">
 					<image src="@/static/images/user-sc.png" class="i-img"></image>
 					<text class="f32-c333">我的收藏</text>
@@ -85,7 +85,7 @@
 					<image src="@/static/images/user-yj.png" class="i-img"></image>
 					<text class="f32-c333">意见反馈</text>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<tabbar :activeIndexProp="3"></tabbar>
 	</view>

@@ -1,6 +1,6 @@
 <template>
 	<view class="register">
-		<view class="form-wrap">
+		<!-- <view class="form-wrap">
 			<u--form
 			labelPosition="left"
 			:model="userInfo"
@@ -65,7 +65,7 @@
 			<view class="btn">
 				确认
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
