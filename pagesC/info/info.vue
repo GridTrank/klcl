@@ -1,51 +1,22 @@
 <template>
 	<view class="info-wrap">
 		<view class="form-wrap">
-			<u--form
-			labelPosition="left"
-			:model="userInfo"
-			ref="uForm">
-				<u-form-item  prop="name" label="头像:" borderBottom  labelWidth="100">
-					<u-upload
-						:fileList="fileList"
-						name="1"
-						multiple
-						:maxCount="1"
-					></u-upload>
+			<u--form labelPosition="left" :model="userInfo" ref="uForm">
+				<u-form-item prop="name" label="姓名:" borderBottom labelWidth="100">
+					<u-input v-model="userInfo.name" placeholder="请输入姓名" border="none"></u-input>
 				</u-form-item>
-				<u-form-item  prop="name" label="性别:" borderBottom  labelWidth="100">
-					<u-radio-group v-model="userInfo.sex">
-						<u-radio shape="circle" label="男" :name="1"></u-radio>
-						<u-radio shape="circle" label="女" :name="2"></u-radio>
-					</u-radio-group>
+				<u-form-item prop="name" label="手机号:" borderBottom labelWidth="100">
+					<u-input v-model="userInfo.phone" placeholder="请输入手机号" border="none"></u-input>
 				</u-form-item>
-				<u-form-item  prop="name" label="年龄:" borderBottom  labelWidth="100">
-					<u-input v-model="userInfo.name" placeholder="请输入上岗证类型" border="none" ></u-input>
+				<u-form-item prop="email" label="邮箱:" borderBottom labelWidth="100">
+					<u-input v-model="userInfo.email" placeholder="请输入邮箱" border="none"></u-input>
 				</u-form-item>
-				<u-form-item  prop="name" label="联系方式:" borderBottom labelWidth="100">
-					<u-input v-model="userInfo.name" placeholder="请输入司机费用" border="none" ></u-input>
-				</u-form-item>
-				<u-form-item  prop="name" label="驾龄:" borderBottom labelWidth="100">
-					<u-input v-model="userInfo.name" placeholder="请输入追加费用" border="none" ></u-input>
-				</u-form-item>
-				<u-form-item  prop="name" label="驾照类型:" borderBottom labelWidth="100">
-					<u-input v-model="userInfo.name" placeholder="请输入联系电话" border="none" ></u-input>
-				</u-form-item>
-				<u-form-item  prop="name" label="上岗证类型:" borderBottom labelWidth="100">
-					<u-input v-model="userInfo.name" placeholder="请输入联系电话" border="none" ></u-input>
-				</u-form-item>
-				<u-form-item  prop="name" label="公司名称:" borderBottom labelWidth="100">
-					<u-input v-model="userInfo.name" placeholder="请输入联系电话" border="none" ></u-input>
-				</u-form-item>
-				<u-form-item  prop="name" label="公司介绍:" borderBottom labelWidth="100">
-					<u--textarea v-model="userInfo.name" placeholder="请输入联系电话" border="none" ></u--textarea>
+				<u-form-item prop="name" label="地址:" borderBottom labelWidth="100">
+					<u-input v-model="userInfo.address" placeholder="请输入地址" border="none"></u-input>
 				</u-form-item>
 			</u--form>
-			<view class="btn-wrap row jc-sb">
-				<view class="btn">
-					修改
-				</view>
-				<view class="btn">
+			<view class="btn-wrap">
+				<view class="btn" @click="save">
 					保存
 				</view>
 			</view>
@@ -57,24 +28,46 @@
 	export default {
 		data() {
 			return {
-				userInfo:{
-					sex:1
+				userInfo: {
+					sex: 1
 				},
-				fileList:[]
+				fileList: []
 			};
+		},
+		created(){
+			this.userInfo = uni.getStorageSync('userInfo');
+		},
+		methods: {
+			save() {
+				this.$http('/my-system/user/update', this.userInfo, 'POST').then(r => {
+					uni.setStorageSync('userInfo', this.userInfo);
+					uni.switchTab({
+						url: '/pages/user/user'
+					})
+				})
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-.info-wrap{
-	min-height: 100vh;
-	background-color: #fff;
-	padding: 32upx;
-	.btn-wrap{
-		width: 60%;
-		margin: 0 auto;
-		margin-top: 80upx;
+	.info-wrap {
+		min-height: 100vh;
+		background-color: #fff;
+		padding: 32upx;
+
+		.btn-wrap {
+			width: 80%;
+			margin: 0 auto;
+			margin-top: 80upx;
+			.btn {
+				text-align: center;
+				height: 80upx;
+				background: #FB852F;
+				border-radius: 10upx;
+				line-height: 80upx;
+				color: #fff;
+			}
+		}
 	}
-}
 </style>

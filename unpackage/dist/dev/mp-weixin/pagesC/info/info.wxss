@@ -30,8 +30,16 @@
   padding: 32rpx;
 }
 .info-wrap .btn-wrap.data-v-905b6f26 {
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 80rpx;
+}
+.info-wrap .btn-wrap .btn.data-v-905b6f26 {
+  text-align: center;
+  height: 80rpx;
+  background: #FB852F;
+  border-radius: 10rpx;
+  line-height: 80rpx;
+  color: #fff;
 }
 

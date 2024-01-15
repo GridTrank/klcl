@@ -37,10 +37,17 @@
   padding: 30rpx;
   padding-bottom: 220rpx;
 }
-.info-wrap .user-info .left .u-img.data-v-80842834 {
+.info-wrap .user-info .left .avatar-wrapper.data-v-80842834 {
   width: 127rpx;
   height: 127rpx;
   border-radius: 50%;
+  margin-right: 20rpx;
+  padding: 0;
+  overflow: hidden;
+}
+.info-wrap .user-info .left .u-img.data-v-80842834 {
+  width: 127rpx;
+  height: 127rpx;
 }
 .info-wrap .user-info .left .u-info.data-v-80842834 {
   color: #fff;
