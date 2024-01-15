@@ -88,13 +88,14 @@
 				'4af74be01d2d41708dab00cef66c3a6e':'def6ffd2c07233c5514af0cba3259603'
 			}
 			if(obj[options.id]){
-				uni.request({
-					url: `https://www.my-klcl.cn/api/my-file/file/base64/${obj[options.id]}`,
-					method: 'GET',
-					success: (res) => {
-						this.imgPreviewUrl = res.data
-					}
-				})
+				this.imgPreviewUrl = 'https://www.my-klcl.cn/api/my-file/file/preview/'+obj[options.id]
+				// uni.request({
+				// 	url: `https://www.my-klcl.cn/api/my-file/file/base64/${obj[options.id]}`,
+				// 	method: 'GET',
+				// 	success: (res) => {
+				// 		this.imgPreviewUrl = res.data
+				// 	}
+				// })
 			}
 
 		},

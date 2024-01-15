@@ -102,7 +102,7 @@
 			</view>
 		</view>
 
-		<view class="con-box bg2">
+		<view class="con-box box2 bg2">
 			<view class="con-top row jc-sb">
 				<view class="title">
 					餐饮美食 Dining Gourmet Food
@@ -111,7 +111,7 @@
 					查看更多
 				</view>
 			</view>
-			<image :src="home0" class="con-image" mode="widthFix"></image>
+			<image src="https://www.my-klcl.cn/api/my-file/file/preview/da7b82e85797392d1e0f16104f51c1c5" class="con-image" mode="widthFix"></image>
 			<view class="list">
 				<view class="item" v-for="(item,index) in productList0" :key="index">
 					<productInfo :info="item"></productInfo>
@@ -129,7 +129,7 @@
 					查看更多
 				</view>
 			</view>
-			<image :src="home1" class="con-image" mode="widthFix"></image>
+			<image src="https://www.my-klcl.cn/api/my-file/file/preview/dae69d23851cc1318723de754d4e94eb" class="con-image" mode="widthFix"></image>
 			<view class="list ">
 				<view class="item" v-for="(item,index) in productList1" :key="index">
 					<productInfo :info="item"></productInfo>
@@ -146,7 +146,7 @@
 					查看更多
 				</view>
 			</view>
-			<image :src="home2" class="con-image" mode="widthFix"></image>
+			<image src="https://www.my-klcl.cn/api/my-file/file/preview/f2dcf80bda14622da81ebf78e388f218" class="con-image" mode="widthFix"></image>
 			<view class="list">
 				<view class="item" v-for="(item,index) in productList2" :key="index">
 					<productInfo :info="item"></productInfo>
@@ -163,7 +163,7 @@
 					查看更多
 				</view>
 			</view>
-			<image :src="home3" class="con-image" mode="widthFix"></image>
+			<image src="https://www.my-klcl.cn/api/my-file/file/preview/def6ffd2c07233c5514af0cba3259603" class="con-image" mode="widthFix"></image>
 			<view class="list">
 				<view class="item" v-for="(item,index) in productList3" :key="index">
 					<productInfo :info="item"></productInfo>
@@ -237,6 +237,8 @@
 					size: 99
 				}, 'post').then(res => {
 					this.timeLimitList = res.rows;
+					
+					
 				})
 				this.$http(`/my-merchandise/commodity/newList`, {
 					size: 10
@@ -249,61 +251,44 @@
 					this.newSwiper = res.rows
 
 				})
-				uni.request({
-					url: "https://www.my-klcl.cn/api/my-file/file/preview/da7b82e85797392d1e0f16104f51c1c5",
-					method: 'GET',
-					success: (res) => {
-						this.home0 = res.data
-					}
-				})
 				this.$http(`/my-merchandise/commodity/list`, {
 					page: 1,
 					size: 10,
-					wxMenuId: 'aefea9af872c4788b60a1a37f9774bee'
+					wxMenuId: 'f5f5bf1d22794704a1603136674a536b'
 				}, 'post').then(product => {
 					this.productList0 = product.rows
 				})
-				uni.request({
-					url: "https://www.my-klcl.cn/api/my-file/file/preview/dae69d23851cc1318723de754d4e94eb",
-					method: 'GET',
-					success: (res) => {
-						this.home1 = res.data
-					}
-				})
+				
 				this.$http(`/my-merchandise/commodity/list`, {
 					page: 1,
 					size: 10,
-					wxMenuId: '031f595f174c486888a11523528a91c4'
+					wxMenuId: '1a19f3644c0544bab087165629d9aa88'
 				}, 'post').then(product => {
 					this.productList1 = product.rows
 				})
-				uni.request({
-					url: "https://www.my-klcl.cn/api/my-file/file/preview/f2dcf80bda14622da81ebf78e388f218",
-					method: 'GET',
-					success: (res) => {
-						this.home2 = res.data
-					}
-				})
+				
 				this.$http(`/my-merchandise/commodity/list`, {
 					page: 1,
 					size: 10,
-					wxMenuId: '8f665bc4e69d40d78883c12c3e24ca4f'
+					wxMenuId: '7f1011053f5742b0ae75fe7636a05c34'
 				}, 'post').then(product => {
 					this.productList2 = product.rows
 				})
-				uni.request({
-					url: "https://www.my-klcl.cn/api/my-file/file/preview/def6ffd2c07233c5514af0cba3259603",
-					method: 'GET',
-					success: (res) => {
-						this.home3 = res.data
-					}
-				})
 				this.$http(`/my-merchandise/commodity/list`, {
 					page: 1,
 					size: 10,
-					wxMenuId: '58cfe42dbbc14acb9c85a5e5a76365f9'
+					wxMenuId: '4af74be01d2d41708dab00cef66c3a6e'
 				}, 'post').then(product => {
 					this.productList3 = product.rows
+				})
+			},
+			getCommodityList(id,pusData){
+				this.$http(`/my-merchandise/commodity/list`, {
+					wxMenuId: id,
+					page: 1,
+					size: 20
+				}, 'post').then(res => {
+					this.productList = res.rows;
 				})
 			},
 			toDetail(index) {
@@ -567,7 +552,7 @@
 				margin-bottom: 20upx;
 				border-radius: 20upx;
 				overflow: hidden;
-				height: 200upx;
+				// height: 200upx;
 
 			}
 		}

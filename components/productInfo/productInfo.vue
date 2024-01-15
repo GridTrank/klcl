@@ -51,7 +51,7 @@
 		overflow: hidden;
 
 		.c-img {
-			height: 200upx;
+			width:100%;
 			display: block;
 		}
 

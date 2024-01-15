@@ -270,7 +270,6 @@ var _default = {
     };
   },
   onLoad: function onLoad(options) {
-    var _this = this;
     this.id = options.id;
     this.getData(options.id);
     var obj = {
@@ -280,13 +279,14 @@ var _default = {
       '4af74be01d2d41708dab00cef66c3a6e': 'def6ffd2c07233c5514af0cba3259603'
     };
     if (obj[options.id]) {
-      uni.request({
-        url: "https://www.my-klcl.cn/api/my-file/file/base64/".concat(obj[options.id]),
-        method: 'GET',
-        success: function success(res) {
-          _this.imgPreviewUrl = res.data;
-        }
-      });
+      this.imgPreviewUrl = 'https://www.my-klcl.cn/api/my-file/file/preview/' + obj[options.id];
+      // uni.request({
+      // 	url: `https://www.my-klcl.cn/api/my-file/file/base64/${obj[options.id]}`,
+      // 	method: 'GET',
+      // 	success: (res) => {
+      // 		this.imgPreviewUrl = res.data
+      // 	}
+      // })
     }
   },
   onReachBottom: function onReachBottom() {
@@ -297,18 +297,18 @@ var _default = {
       this.topCateActive = index;
     },
     getProduct: function getProduct(id) {
-      var _this2 = this;
+      var _this = this;
       if (id == 'new') {
         this.$http("/my-merchandise/commodity/newList", {
           page: this.page,
           size: 10
         }, 'post').then(function (res) {
-          _this2.page++;
-          _this2.productList = res.rows;
+          _this.page++;
+          _this.productList = res.rows;
           if (res.rows.length < 10) {
-            _this2.status = 'nomore';
+            _this.status = 'nomore';
           }
-          _this2.total = res.total;
+          _this.total = res.total;
         });
       } else {
         this.$http("/my-merchandise/commodity/list", {
@@ -316,18 +316,18 @@ var _default = {
           page: this.page,
           size: 10
         }, 'post').then(function (res) {
-          _this2.page++;
-          _this2.productList = res.rows;
+          _this.page++;
+          _this.productList = res.rows;
           console.log(res.rows.length);
           if (res.rows.length < 10) {
-            _this2.status = 'nomore';
+            _this.status = 'nomore';
           }
-          _this2.total = res.total;
+          _this.total = res.total;
         });
       }
     },
     getData: function getData(id) {
-      var _this3 = this;
+      var _this2 = this;
       if (id == 'new') {
         this.cateInfo = {
           remarks: '最近上新 New Arrival'
@@ -339,9 +339,9 @@ var _default = {
         return;
       }
       this.$http("/my-system/wechatMenu/info/".concat(id)).then(function (res) {
-        _this3.cateInfo = res.result;
+        _this2.cateInfo = res.result;
         uni.setNavigationBarTitle({
-          title: _this3.cateInfo.remarks
+          title: _this2.cateInfo.remarks
         });
       });
       this.getProduct(id);

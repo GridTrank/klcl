@@ -33,7 +33,7 @@
   overflow: hidden;
 }
 .product_info .c-img.data-v-0185fe80 {
-  height: 200rpx;
+  width: 100%;
   display: block;
 }
 .product_info .info.data-v-0185fe80 {

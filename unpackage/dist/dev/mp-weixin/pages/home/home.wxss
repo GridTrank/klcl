@@ -195,7 +195,6 @@
   margin-bottom: 20rpx;
   border-radius: 20rpx;
   overflow: hidden;
-  height: 200rpx;
 }
 .con-box.box2 .list.data-v-92bb8f34 {
   display: flex;
