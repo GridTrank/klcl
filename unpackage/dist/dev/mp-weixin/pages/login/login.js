@@ -194,7 +194,7 @@ var _default =
 
     },
     getuserinfo: function getuserinfo() {
-      this.$http('/my-system/user/info', {}, 'POST').then(function (r) {
+      this.$http('/my-system/user/info').then(function (r) {
         uni.setStorageSync('userInfo', r.result);
       });
     },

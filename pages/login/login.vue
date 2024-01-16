@@ -55,7 +55,7 @@
 				})
 			},
 			getuserinfo() {
-				this.$http('/my-system/user/info', {}, 'POST').then(r => {
+				this.$http('/my-system/user/info').then(r => {
 					uni.setStorageSync('userInfo', r.result)
 				})
 			},

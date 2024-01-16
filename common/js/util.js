@@ -63,14 +63,11 @@ export const isLogin = (options = {}) => {
 		//     icon:'none'
 		// })
 		uni.navigateTo({
-			url:'/pages/login/login',
+			url: '/pages/login/login',
 			fail: (res) => {
-			                    console.log(res)//打印错误信息
-			                }
+				console.log(res) //打印错误信息
+			}
 		})
-		// uni.navigateTo({
-		// 	url: '/pages/login/login'
-		// })
 		return false
 	}
 }
@@ -207,5 +204,3 @@ export const dateFormat = function(fmt = 'YYYY-MM-DD', date = new Date()) {
 			)
 	return fmt
 }
-
-

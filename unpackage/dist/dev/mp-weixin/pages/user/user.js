@@ -294,11 +294,6 @@ var _default =
       this.avatar = e.detail.avatarUrl;
     },
     getuserinfo: function getuserinfo(token) {var _this = this;
-      this.$http('/my-system/collection/list').then(function (r) {
-        console.log(r);
-        // uni.setStorageSync('userInfo', r.result)
-        // this.userInfo = r.result
-      });
       this.$http('/my-system/user/info').then(function (r) {
         uni.setStorageSync('userInfo', r.result);
         _this.userInfo = r.result;

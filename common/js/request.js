@@ -30,12 +30,19 @@ export const request = (url, data, method, cacheName, time) => {
 				uni.hideLoading()
 				if (res.data.success) {
 					resolve(res.data)
-				} else if (Number(res.data.code) === 11012 || Number(res.data.code) === 11013) {
+				} else if (Number(res.data.result) === 11012 || Number(res.data.result) ===
+					11013) {
 					uni.showToast({
 						title: '登录过期，请重新登录',
 						icon: 'none'
 					})
 					uni.clearStorageSync()
+					uni.navigateTo({
+						url: '/pages/login/login',
+						fail: (res) => {
+							console.log(res) //打印错误信息
+						}
+					})
 					reject(res.data)
 				} else {
 					uni.showToast({
