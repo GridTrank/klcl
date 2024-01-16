@@ -54,14 +54,14 @@
 					url: "/pagesC/message/message"
 				})
 			},
-			getuserinfo(token) {
-				this.$http('/my-system/user/info').then(r => {
+			getuserinfo() {
+				this.$http('/my-system/user/info', {}, 'POST').then(r => {
 					uni.setStorageSync('userInfo', r.result)
 				})
 			},
 
 			submit() {
-				if(!this.checked) {
+				if (!this.checked) {
 					uni.showToast({
 						title: '请同意隐私协议',
 						icon: 'none'
@@ -74,10 +74,12 @@
 						uni.login({
 							provider: 'weixin',
 							success: (res) => {
+
 								this.$http('/my-auth/auth/wechatLogin', {
 									wechatCode: res.code,
 								}).then(r => {
 									console.log(222, r)
+
 									uni.setStorageSync('token', r.result)
 									this.getuserinfo()
 									this.$util.backPage()

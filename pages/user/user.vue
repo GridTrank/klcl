@@ -127,17 +127,21 @@
 
 		},
 		onShow() {
-
 			this.userInfo = uni.getStorageSync('userInfo')
-			console.log(121111, this.userInfo)
 		},
 		methods: {
 			onChooseAvatar(e) {
 				this.avatar = e.detail.avatarUrl
 			},
 			getuserinfo(token) {
+				this.$http('/my-system/collection/list').then(r => {
+					console.log(r)
+					// uni.setStorageSync('userInfo', r.result)
+					// this.userInfo = r.result
+				})
 				this.$http('/my-system/user/info').then(r => {
 					uni.setStorageSync('userInfo', r.result)
+					this.userInfo = r.result
 				})
 			},
 
