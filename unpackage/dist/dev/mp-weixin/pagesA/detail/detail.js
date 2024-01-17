@@ -100,6 +100,9 @@ try {
     uSwiper: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 271))
     },
+    liuCountdown: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/liu-countdown/components/liu-countdown/liu-countdown */ "uni_modules/liu-countdown/components/liu-countdown/liu-countdown").then(__webpack_require__.bind(null, /*! @/uni_modules/liu-countdown/components/liu-countdown/liu-countdown.vue */ 279))
+    },
     uSticky: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-sticky/u-sticky */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-sticky/u-sticky")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-sticky/u-sticky.vue */ 355))
     },
@@ -134,9 +137,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var g0 = _vm.productInfo.commodityDetails.map(function(item) {
+  var g0 = (_vm.productInfo.commodityDetails || []).map(function(item) {
     return item.imgPreviewUrl
   })
+  var m0 =
+    _vm.productInfo.flashSale == 1 && _vm.status != 2 ? _vm.getTime() : null
 
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
@@ -152,7 +157,8 @@ var render = function() {
     {},
     {
       $root: {
-        g0: g0
+        g0: g0,
+        m0: m0
       }
     }
   )
@@ -189,7 +195,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -338,13 +350,29 @@ var _default =
 
 
       activeIndex: 0,
-      productInfo: {} };
+      productInfo: {},
+      status: 0 };
 
   },
   onLoad: function onLoad(options) {
     this.getData(options.id);
   },
   methods: {
+    getTime: function getTime() {
+      var start = new Date(this.productInfo.startDate).getTime();
+      var now = new Date().getTime();
+      var end = new Date(this.productInfo.cutoffDate).getTime();
+      if (start > now) {
+        this.status = 1;
+        return this.productInfo.startDate;
+      } else if (end < now) {
+        this.status = 2;
+        return this.productInfo.cutoffDate;
+      } else {
+        this.status = 0;
+        return this.productInfo.cutoffDate;
+      }
+    },
     getData: function getData(id) {var _this = this;
       this.$http("/my-merchandise/commodity/info/".concat(id)).then(function (res) {
         _this.productInfo = res.result;
@@ -352,7 +380,13 @@ var _default =
     },
     tabChange: function tabChange(item) {
       this.activeIndex = item.value;
+    },
+    toTab: function toTab(url) {
+      uni.switchTab({
+        url: url });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

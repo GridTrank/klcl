@@ -1,7 +1,7 @@
 <template>
 	<view class="detail_wrap">
 		<view class="swiper_wrap">
-			<u-swiper :list="productInfo.commodityDetails.map(item=>item.imgPreviewUrl)" circular indicator
+			<u-swiper :list="(productInfo.commodityDetails || []).map(item=>item.imgPreviewUrl)" circular indicator
 				:autoplay="false" height="180">
 			</u-swiper>
 		</view>
@@ -10,7 +10,11 @@
 				限时抢购
 			</view>
 			<view class="time">
-				距离抢购结束
+				<text v-if="status == 0">距离抢购结束</text>
+				<text v-if="status == 1">距离开抢</text>
+				<text v-if="status == 2">抢购已结束</text>
+				<liu-countdown v-if="status != 2" :auto="true" ref="countdown" mode="4" :endDate="getTime()">
+				</liu-countdown>
 			</view>
 		</view>
 		<view class="detail_info">
@@ -48,7 +52,7 @@
 				</view>
 			</view>
 
-			<view class="releated_wrap" v-if="false">
+			<view class="releated_wrap">
 				<view class="title">
 					相关产品
 				</view>
@@ -90,18 +94,20 @@
 		</view>
 		<div class="tab-bar row">
 			<view class="icon">
-				<image src="@/static/home.png" mode="heightFix"></image>
+				<image src="@/static/home.png" mode="heightFix" @click="toTab('/pages/home/home')"></image>
 				<view>首页</view>
 			</view>
 			<view class="icon">
-				<image src="@/static/user.png" mode="heightFix"></image>
+				<image src="@/static/user.png" mode="heightFix" @click="toTab('/pages/user/user')"></image>
 				<view>我的</view>
 			</view>
 			<view class="icon">
 				<image src="@/static/share.png" mode="heightFix"></image>
 				<view>海报</view>
 			</view>
-			<button class="btn" @click="showPop=true">立即预定</button>
+			<button class="btn" @click="showPop=true" v-if="status == 0">立即预定</button>
+			<button class="btn" v-else-if="status == 1">即将开抢</button>
+			<button class="btn" v-else-if="status == 2">已结束</button>
 		</div>
 		<u-popup :show="showPop">
 			<view class="sku-wrap">
@@ -147,13 +153,29 @@
 					},
 				],
 				activeIndex: 0,
-				productInfo: {}
+				productInfo: {},
+				status: 0
 			}
 		},
 		onLoad(options) {
 			this.getData(options.id)
 		},
 		methods: {
+			getTime() {
+				const start = new Date(this.productInfo.startDate).getTime();
+				const now = new Date().getTime();
+				const end = new Date(this.productInfo.cutoffDate).getTime();
+				if (start > now) {
+					this.status = 1
+					return this.productInfo.startDate
+				} else if (end < now) {
+					this.status = 2
+					return this.productInfo.cutoffDate
+				} else {
+					this.status = 0
+					return this.productInfo.cutoffDate
+				}
+			},
 			getData(id) {
 				this.$http(`/my-merchandise/commodity/info/${id}`).then(res => {
 					this.productInfo = res.result
@@ -161,6 +183,11 @@
 			},
 			tabChange(item) {
 				this.activeIndex = item.value
+			},
+			toTab(url) {
+				uni.switchTab({
+					url
+				})
 			}
 		}
 	}
@@ -171,9 +198,7 @@
 		min-height: 100vh;
 		background-color: #efefef;
 		padding-bottom: 100upx;
-		[alt]{
-			max-width: 100%;
-		}
+
 		.buy {
 			padding: 30upx;
 			background-color: $base-color;
@@ -385,7 +410,7 @@
 		}
 
 		.tab-bar {
-			z-index: 10;
+			z-index: 1000;
 			height: 100upx;
 			background-color: #fff;
 			position: fixed;
