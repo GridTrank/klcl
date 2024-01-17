@@ -46,13 +46,13 @@ export const request = (url, data, method, cacheName, time) => {
 					reject(res.data)
 				} else {
 					uni.showToast({
-						title: res.data.msg || '请求失败',
+						title: res.data.errorDesc || '请求失败',
 						icon: 'none'
 					})
 					reject(res.data)
 				}
 				if (time > 0) {
-					cache.put(cacheName, res.data.data, time);
+					cache.put(cacheName, res.data.result, time);
 				}
 			},
 			fail: function(err) {
