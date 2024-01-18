@@ -135,6 +135,16 @@ var render = function() {
     return item.imageBase64
   })
 
+  var l0 = _vm.__map(_vm.timeLimitList, function(item, index) {
+    var $orig = _vm.__get_orig(item)
+
+    var m0 = _vm.getTime(item)
+    return {
+      $orig: $orig,
+      m0: m0
+    }
+  })
+
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
       _vm.limiMenu = 99
@@ -145,7 +155,8 @@ var render = function() {
     {},
     {
       $root: {
-        g0: g0
+        g0: g0,
+        l0: l0
       }
     }
   )
@@ -183,6 +194,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -410,6 +427,21 @@ var _default =
     }, 3000);
   },
   methods: {
+    getTime: function getTime(item) {
+      var start = new Date(item.limitedStartTime).getTime();
+      var now = new Date().getTime();
+      var end = new Date(item.limitedEndTime).getTime();
+      console.log(start, now);
+      if (start > now) {
+        item.status = 1;
+        return item.limitedStartTime;
+      } else if (end < now) {
+        item.status = 2;
+        return item.limitedEndTime;
+      } else {
+        return item.limitedEndTime;
+      }
+    },
     init: function init() {var _this = this;
       this.$http("/my-system/wechatMenu/list", {
         size: 99 },

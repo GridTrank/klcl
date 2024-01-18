@@ -60,10 +60,16 @@
 							</view>
 							<view class="time">
 								<!-- <countDown :ctime="item.limitedEndTime"></countDown> -->
-								<liu-countdown :auto="true" ref="countdown" mode="4" :endDate="item.limitedEndTime"></liu-countdown>
+								<liu-countdown :auto="true" ref="countdown" mode="4" :endDate="getTime(item)"></liu-countdown>
 							</view>
-							<view class="buy">
+							<view class="buy" v-if="!item.status">
 								立即抢购
+							</view>
+							<view class="buy" v-else-if="item.status == 1">
+								即将开售
+							</view>
+							<view class="buy" v-else-if="item.status == 2">
+								已结束
 							</view>
 						</view>
 
@@ -226,6 +232,21 @@
 			}, 3000)
 		},
 		methods: {
+			getTime(item){
+				const start = new Date(item.limitedStartTime).getTime();
+				const now = new Date().getTime();
+				const end = new Date(item.limitedEndTime).getTime();
+				console.log(start,now)
+				if(start > now) {
+					item.status = 1
+					return item.limitedStartTime
+				}else if(end < now){
+					item.status = 2
+					return item.limitedEndTime
+				}else{
+					return item.limitedEndTime
+				}
+			},
 			init() {
 				this.$http(`/my-system/wechatMenu/list`, {
 					size: 99
