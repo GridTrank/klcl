@@ -427,6 +427,9 @@ var _default =
     }, 3000);
   },
   methods: {
+    countdownChange: function countdownChange(obj) {
+      // console.log(obj)
+    },
     getTime: function getTime(item) {
       var start = new Date(item.limitedStartTime).getTime();
       var now = new Date().getTime();
