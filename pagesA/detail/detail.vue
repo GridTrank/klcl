@@ -186,7 +186,7 @@
 			},
 			toTab(url) {
 				uni.switchTab({
-					url 
+					url  
 				})
 			}
 		}
