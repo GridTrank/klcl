@@ -27,29 +27,31 @@ export const request = (url, data, method, cacheName, time) => {
 			},
 			method: method || 'GET',
 			success: (res) => {
-				let result = res.data.result
 				uni.hideLoading()
 				if (res.data.success) {
 					resolve(res.data)
-				} else if (Number(result) === 11012 || Number(result) === 11013) {
+				} else if ([11011,11012,11013].includes(Number(res.data.result))) {
 					uni.showToast({
 						title: '登录过期，请重新登录',
 						icon: 'none'
 					})
 					uni.clearStorageSync()
 					uni.navigateTo({
-						url: '/pages/login/login'
+						url: '/pages/login/login',
+						fail: (res) => {
+							console.log(res) //打印错误信息
+						}
 					})
 					reject(res.data)
 				} else {
 					uni.showToast({
-						title: res.data.msg || '请求失败',
+						title: res.data.errorDesc || '请求失败',
 						icon: 'none'
 					})
 					reject(res.data)
 				}
 				if (time > 0) {
-					cache.put(cacheName, res.data.data, time);
+					cache.put(cacheName, res.data.result, time);
 				}
 			},
 			fail: function(err) {

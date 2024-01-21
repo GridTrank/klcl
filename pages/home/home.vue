@@ -60,7 +60,7 @@
 							</view>
 							<view class="time">
 								<!-- <countDown :ctime="item.limitedEndTime"></countDown> -->
-								<liu-countdown :auto="true" ref="countdown" mode="4" :endDate="getTime(item)"></liu-countdown>
+								<liu-countdown :auto="true" ref="countdown" mode="4" :endDate="getTime(item)" @change="countdownChange"></liu-countdown>
 							</view>
 							<view class="buy" v-if="!item.status">
 								立即抢购
@@ -232,6 +232,9 @@
 			}, 3000)
 		},
 		methods: {
+			countdownChange(obj){
+				// console.log(obj)
+			},
 			getTime(item){
 				const start = new Date(item.limitedStartTime).getTime();
 				const now = new Date().getTime();

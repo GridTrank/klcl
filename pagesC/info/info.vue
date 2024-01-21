@@ -41,6 +41,10 @@
 			save() {
 				this.$http('/my-system/user/update', this.userInfo, 'POST').then(r => {
 					uni.setStorageSync('userInfo', this.userInfo);
+					uni.showToast({
+						title: '操作成功',
+						icon: 'none'
+					})
 					uni.switchTab({
 						url: '/pages/user/user'
 					})

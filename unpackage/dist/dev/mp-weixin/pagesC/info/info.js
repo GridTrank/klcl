@@ -204,6 +204,10 @@ var _default =
     save: function save() {var _this = this;
       this.$http('/my-system/user/update', this.userInfo, 'POST').then(function (r) {
         uni.setStorageSync('userInfo', _this.userInfo);
+        uni.showToast({
+          title: '操作成功',
+          icon: 'none' });
+
         uni.switchTab({
           url: '/pages/user/user' });
 

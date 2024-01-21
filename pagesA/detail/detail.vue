@@ -93,11 +93,11 @@
 			</view>
 		</view>
 		<div class="tab-bar row">
-			<view class="icon">
+			<view class="icon" @click="toTab('/pages/home/home')">
 				<image src="@/static/home.png" mode="heightFix" @click="toTab('/pages/home/home')"></image>
 				<view>首页</view>
 			</view>
-			<view class="icon">
+			<view class="icon" @click="toTab('/pages/user/user')">
 				<image src="@/static/user.png" mode="heightFix" @click="toTab('/pages/user/user')"></image>
 				<view>我的</view>
 			</view>
@@ -119,8 +119,8 @@
 				<view class="sku-list">
 					<u-radio-group v-model="productSku" placement="column">
 						<u-radio :customStyle="{marginBottom: '8px'}"
-							v-for="(item, index) in productInfo.commodityComboList" :key="index" :label="item.comboName"
-							:name="item.commodityId">
+							v-for="(item, index) in productInfo.commodityComboList" :key="index"
+							:label="item.price +'元-' +item.comboName" :name="item.commodityId">
 						</u-radio>
 					</u-radio-group>
 				</view>
@@ -186,7 +186,7 @@
 			},
 			toTab(url) {
 				uni.switchTab({
-					url
+					url 
 				})
 			}
 		}
