@@ -25,7 +25,9 @@
 							class="p2">{{productInfo.price || productInfo.rushPurchasePrice}}</text><text
 							class="p1">起</text>
 					</view>
-					<view class="t-right">
+					<view :class="['t-right center column collect', {'active' : productInfo.collectionId }] "
+						@click="collect">
+						<u-icon name="star" size="20" :color="productInfo.collectionId ? '#FB852F':'#606266'"></u-icon>
 						收藏
 					</view>
 				</view>
@@ -114,7 +116,7 @@
 				<view class="sku-title">
 					<view class="btn close" @click="showPop = false">关闭</view>
 					<view class="title">选择购买的产品</view>
-					<view class="btn enter">确定</view>
+					<view class="btn enter" @click="buy">确定</view>
 				</view>
 				<view class="sku-list">
 					<u-radio-group v-model="productSku" placement="column">
@@ -126,10 +128,41 @@
 				</view>
 			</view>
 		</u-popup>
+		<u-popup :show="showBuy">
+			<view class="sku-info-wrap">
+				<view class="sku-info">
+					<image class="pic" v-if="productInfo.commodityDetails"
+						:src="productInfo.commodityDetails[0].imgPreviewUrl" mode="widthFix"></image>
+					<view class="info">
+						<view class="title twoHidden">{{selectProduct.comboName}}</view>
+						<view class="price">{{selectProduct.price}}</view>
+					</view>
+					<view>
+						<u-icon name="close" @click="showBuy = false" color="#ccc" size="20"></u-icon>
+					</view>
+				</view>
+				<u--form :model="selectProduct" :rules="rules" labelWidth="60" ref="uForm">
+					<u-form-item prop="merchandiseNum" label="数量:">
+						<u-number-box slot="right" :min="1" v-model="selectProduct.merchandiseNum"></u-number-box>
+					</u-form-item>
+					<u-form-item prop="purchaserName" label="姓名:">
+						<u--input v-model="selectProduct.purchaserName" />
+					</u-form-item>
+					<u-form-item prop="purchaserTel" label="电话:">
+						<u-input v-model="selectProduct.purchaserTel" />
+					</u-form-item>
+					<u-form-item prop="purchaserIdCard" label="证件号:">
+						<u-input v-model="selectProduct.purchaserIdCard" />
+					</u-form-item>
+					<u-form-item prop="remark" label="留言:">
+						<u-input v-model="selectProduct.remark" />
+					</u-form-item>
+				</u--form>
+				<view class="mt10">应付总额：￥{{selectProduct.price*selectProduct.merchandiseNum}}</view>
+				<view class="btn" @click="submit">提交</view>
+			</view>
+		</u-popup>
 	</view>
-
-
-
 </template>
 
 <script>
@@ -137,7 +170,34 @@
 		data() {
 			return {
 				productSku: '',
+				selectProduct: {
+					merchandiseNum: 1,
+					purchaserTel: '',
+					purchaserIdCard: '',
+					remark: ''
+				},
 				showPop: false,
+				showBuy: false,
+				rules: {
+					'purchaserName': {
+						type: 'string',
+						required: true,
+						message: '请填写姓名',
+						trigger: ['blur', 'change']
+					},
+					'purchaserTel': {
+						type: 'string',
+						required: true,
+						message: '请填写电话',
+						trigger: ['blur', 'change']
+					},
+					'purchaserIdCard': {
+						type: 'string',
+						required: true,
+						message: '请填写电话',
+						trigger: ['blur', 'change']
+					},
+				},
 				list1: [
 					require('@/static/home1.png'),
 					require('@/static/home1.png'),
@@ -156,6 +216,9 @@
 				productInfo: {},
 				status: 0
 			}
+		},
+		onReady() {
+			this.$refs.uForm.setRules(this.rules)
 		},
 		onLoad(options) {
 			this.getData(options.id)
@@ -178,6 +241,7 @@
 			},
 			getData(id) {
 				this.$http(`/my-merchandise/commodity/info/${id}`).then(res => {
+					res.result.collectionId = '';
 					this.productInfo = res.result
 				})
 			},
@@ -186,9 +250,81 @@
 			},
 			toTab(url) {
 				uni.switchTab({
-					url  
+					url
 				})
+			},
+			collect() {
+				if (!this.productInfo.collectionId) {
+					// 收藏
+					this.$http(`/my-system/collection/add?commodityId=${this.productInfo.id}`).then(res => {
+						this.productInfo.collectionId = res.result;
+						console.log(this.productInfo)
+					})
+				} else {
+					this.$http(`/my-system/collection/cancel/${this.productInfo.collectionId}`).then(res => {
+						this.productInfo.collectionId = ''
+					})
+				}
+			},
+			submit() {
+				this.$refs.uForm.validate().then(res => {
+					this.$http(`/my-order/order/create`, {
+						merchandiseId: this.selectProduct.commodityId,
+						comboId: this.selectProduct.id,
+						merchandiseNum: this.selectProduct.merchandiseNum,
+						merchandisePrice: this.selectProduct.merchandiseNum * this.selectProduct.price,
+						purchaserName: this.selectProduct.purchaserName,
+						purchaserTel: this.selectProduct.purchaserTel,
+						purchaserIdCard: this.selectProduct.purchaserIdCard,
+						remark: this.selectProduct.remark,
+					}, 'post').then(res => {
+						const data = res.result;
+						this.$http(`/my-pay/wechat/prePay`, {
+							userId: data.userId,
+							orderNo: data.orderNumber,
+							comboName: data.comboName,
+							orderPrice: data.orderPrice,
+						}, 'post').then(res => {
+							uni.requestPayment({
+								provider: 'wxpay',
+								orderInfo: '',
+								appId: 'wx80b9f6aacbeb5853', //小程序的appid
+								timeStamp: res.result[0].TimeStamp, //时间戳，要字符串类型的
+								nonceStr: res.result[0].NonceStr, //随机字符串，长度为32个字符以下。
+								package: res.result[0]
+									.Package, //prepay_id 参数值，提交格式如：prepay_id=xx
+								signType: res.result[0].SignType, //MD5类型
+								paySign: res.result[0].PaySign, //签名
+								success: function(res) {
+									//支付成功的回调    成功之后你想做什么在这里操作  比如弹窗一个提示:支付成功等
+									uni.showToast({
+										title: '支付成功！',
+										icon: 'success'
+									})
+								},
+								fail: function(err) {
+									//支付失败的回调   失败之后你想做什么在这里操作  比如弹窗一个提示:支付失败等
+									console.log(err);
+
+								}
+							})
+						})
+					})
+				})
+			},
+			buy() {
+				if (this.productSku) {
+					this.showBuy = true;
+					this.showPop = false;
+				}
+				this.selectProduct = {
+					...this.productInfo.commodityComboList.find(item => item.commodityId == this.productSku),
+					merchandiseNum: 1
+				}
+				console.log(this.productSku, this.selectProduct)
+
 			}
+
 		}
 	}
 </script>
@@ -212,6 +348,12 @@
 				background-color: #fff;
 				border-radius: 20upx;
 				padding: 30upx 20upx;
+
+				.collect {
+					&.active {
+						color: $base-color
+					}
+				}
 
 				.t-left {
 					.p1 {
@@ -347,6 +489,52 @@
 						}
 					}
 				}
+			}
+		}
+
+		.sku-info-wrap {
+			padding: 20upx;
+
+			.sku-info {
+				display: flex;
+
+				.pic {
+					width: 228upx;
+					margin-right: 10upx;
+					flex-shrink: 0;
+				}
+
+				.info {
+					flex: 2;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+
+					.title {
+						font-size: 36upx;
+						font-weight: 600;
+
+					}
+
+					.price {
+						color: $base-color;
+					}
+				}
+
+			}
+
+			.btn {
+				width: 100%;
+				height: 80upx;
+				line-height: 80upx;
+				text-align: center;
+				border-radius: 40upx;
+				background-color: $base-color;
+				font-size: 36upx;
+				color: #fff;
+				font-weight: bold;
+				margin: auto;
+				margin-top: 20upx;
 			}
 		}
 

@@ -1,13 +1,11 @@
 <template>
 	<view class="coll-wrap">
-		<navbar  @onRightClick="onRightClick" :mysNavConfig="mysNavConfig">
-			<view class="nav-left" slot="left">
-				<u-icon name="arrow-left" color="#fff" size="16"  ></u-icon>
+		<view class="list">
+			<view class="item" v-for="(item,index) in productList" :key="index">
+				<productInfo :info="item" type="row" from="collect" @cancelCollect="cancelCollect"></productInfo>
 			</view>
-			<view class="nav-right" slot="right">
-				编辑
-			</view>
-		</navbar>
+		</view>
+		<u-loadmore :status="status" />
 	</view>
 </template>
 
@@ -15,29 +13,40 @@
 	export default {
 		data() {
 			return {
-				mysNavConfig:{
-					isHome:false,
-					navPadding:true,	
-					navFixed:true,
-					btnType:'type1',
-					bgColor:'#FB852D',
-					navTitle:{
-						text:'我的收藏',
-						color:'#fff'
-					}
-				},
+				page: 1,
+				status: 'loadmore',
+				productList: []
 			};
 		},
-		methods:{
-			onRightClick(){
-				
+		created() {
+			this.getData()
+		},
+		onReachBottom() {
+			this.getData()
+		},
+		methods: {
+			cancelCollect() {
+				console.log(121212112) ;
+				this.page = 1; 
+				this.getData()
+			},
+			getData() {
+				this.$http(`/my-system/collection/list`, {
+					page: this.page,
+					size: 10
+				}, 'POST').then(res => {
+					this.page++;
+					this.productList = res.rows;
+					if (res.rows.length < 10) {
+						this.status = 'nomore'
+					}
+					this.total = res.total
+				})
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-.coll-wrap{
-	
-}
+	.coll-wrap {}
 </style>

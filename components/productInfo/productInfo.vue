@@ -1,15 +1,19 @@
 <template>
 	<view :class="['product_info',type]" @click="toDetial">
-		<image :src="info.commodityFileInfo[0].imgPreviewUrl" class="c-img" mode="widthFix"></image>
-		<view class="info column jc-sb">
-			<view class="name twoHidden">{{info.title}}</view>
-			<view class="price">
-				<text class="p1"> ￥{{info.rushPurchasePrice || info.price || 0}} </text>
-				<text class="p2" v-if="info.price"> ￥{{info.price }} </text>
+		<image :src="info.imgPreviewUrl || info.commodityFileInfo[0].imgPreviewUrl" class="c-img" mode="widthFix">
+		</image>
+		<view class="info column jc-sb flex2">
+			<view class="name twoHidden">{{info.title || info.commodityName}}</view>
+			<view class="price row jc-sb flex2">
+				<view>
+					<text class="p1"> ￥{{info.rushPurchasePrice || info.price || 0}} </text>
+					<text class="p2" v-if="info.price"> ￥{{info.price }} </text>
+				</view>
+				<view><u-button szie="mini" class="btn" v-if="from == 'collect'" @tap.stop="cancelCollect">取消收藏</u-button></view>
 			</view>
 		</view>
 	</view>
-</template>
+</template> 
 
 <script>
 	export default {
@@ -21,9 +25,13 @@
 					return {}
 				}
 			},
-			type:{
-				type:String,
-				default:''
+			type: {
+				type: String,
+				default: ''
+			},
+			from: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
@@ -32,6 +40,15 @@
 			};
 		},
 		methods: {
+			cancelCollect(){
+				this.$http(`/my-system/collection/cancel/${this.info.id}`).then(res => {
+					uni.showToast({
+						title: '取消收藏成功',
+						icon: 'none'
+					})
+					this.$emit('cancelCollect')
+				})
+			},
 			toDetial() {
 				uni.navigateTo({
 					url: `/pagesA/detail/detail?id=${this.info.id}`
@@ -51,7 +68,7 @@
 		overflow: hidden;
 
 		.c-img {
-			width:100%;
+			width: 100%;
 			display: block;
 		}
 
@@ -62,6 +79,7 @@
 			align-items: flex-start;
 
 			.price {
+				
 				.p1 {
 					color: $base-color;
 					font-size: 36upx;
@@ -75,6 +93,7 @@
 				}
 			}
 		}
+
 		&.row {
 			.c-img {
 				flex-shrink: 0;
@@ -87,7 +106,10 @@
 				background-color: #fff;
 				padding: 20upx;
 				align-items: flex-start;
-			
+				.price{
+					width: 100%;
+					box-sizing: border-box;
+				}
 			}
 		}
 	}

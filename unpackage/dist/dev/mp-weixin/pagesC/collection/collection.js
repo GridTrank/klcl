@@ -97,11 +97,11 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    navbar: function() {
-      return __webpack_require__.e(/*! import() | components/navbar/navbar */ "components/navbar/navbar").then(__webpack_require__.bind(null, /*! @/components/navbar/navbar.vue */ 348))
+    productInfo: function() {
+      return __webpack_require__.e(/*! import() | components/productInfo/productInfo */ "components/productInfo/productInfo").then(__webpack_require__.bind(null, /*! @/components/productInfo/productInfo.vue */ 286))
     },
-    uIcon: function() {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 308))
+    uLoadmore: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-loadmore/u-loadmore */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-loadmore/u-loadmore")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-loadmore/u-loadmore.vue */ 400))
     }
   }
 } catch (e) {
@@ -169,28 +169,39 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
-//
-//
 var _default =
 {
   data: function data() {
     return {
-      mysNavConfig: {
-        isHome: false,
-        navPadding: true,
-        navFixed: true,
-        btnType: 'type1',
-        bgColor: '#FB852D',
-        navTitle: {
-          text: '我的收藏',
-          color: '#fff' } } };
-
-
+      page: 1,
+      status: 'loadmore',
+      productList: [] };
 
   },
+  created: function created() {
+    this.getData();
+  },
+  onReachBottom: function onReachBottom() {
+    this.getData();
+  },
   methods: {
-    onRightClick: function onRightClick() {
-
+    cancelCollect: function cancelCollect() {
+      console.log(121212112);
+      this.page = 1;
+      this.getData();
+    },
+    getData: function getData() {var _this = this;
+      this.$http("/my-system/collection/list", {
+        page: this.page,
+        size: 10 },
+      'POST').then(function (res) {
+        _this.page++;
+        _this.productList = res.rows;
+        if (res.rows.length < 10) {
+          _this.status = 'nomore';
+        }
+        _this.total = res.total;
+      });
     } } };exports.default = _default;
 
 /***/ }),

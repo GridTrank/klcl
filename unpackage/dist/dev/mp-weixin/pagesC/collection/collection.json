@@ -1,9 +1,8 @@
 {
   "navigationBarTitleText": "我的收藏",
-  "navigationStyle": "custom",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "navbar": "/components/navbar/navbar",
-    "u-icon": "/uni_modules/uview-ui/components/u-icon/u-icon"
+    "product-info": "/components/productInfo/productInfo",
+    "u-loadmore": "/uni_modules/uview-ui/components/u-loadmore/u-loadmore"
   }
 }
