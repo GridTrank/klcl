@@ -504,21 +504,23 @@ var _default =
             comboName: data.comboName,
             orderPrice: data.orderPrice },
           'post').then(function (res) {
+            // appId: "wx80b9f6aacbeb5853"
             uni.requestPayment({
               provider: 'wxpay',
-              orderInfo: '',
-              appId: 'wx80b9f6aacbeb5853', //小程序的appid
-              timeStamp: res.result[0].TimeStamp, //时间戳，要字符串类型的
-              nonceStr: res.result[0].NonceStr, //随机字符串，长度为32个字符以下。
-              package: res.result[0].
-              Package, //prepay_id 参数值，提交格式如：prepay_id=xx
-              signType: res.result[0].SignType, //MD5类型
-              paySign: res.result[0].PaySign, //签名
+              appId: res.result.appId, //小程序的appid
+              timeStamp: res.result.timeStamp, //时间戳，要字符串类型的
+              nonceStr: res.result.nonceStr, //随机字符串，长度为32个字符以下。
+              package: res.result.packageVal, //prepay_id 参数值，提交格式如：prepay_id=xx
+              signType: res.result.signType, //MD5类型
+              paySign: res.result.paySign, //签名
               success: function success(res) {
                 //支付成功的回调    成功之后你想做什么在这里操作  比如弹窗一个提示:支付成功等
                 uni.showToast({
                   title: '支付成功！',
-                  icon: 'success' });
+                  icon: 'none' });
+
+                uni.navigateTo({
+                  url: "/pagesB/orderDetail/orderDetail?id=".concat(data.orderNumber) });
 
               },
               fail: function fail(err) {

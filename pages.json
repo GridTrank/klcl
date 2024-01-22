@@ -88,9 +88,9 @@
 		{
 			"root": "pagesB",
 			"pages": [{
-					"path": "orderDetail/orderDetail",
+					"path": "orderList/orderList",
 					"style": {
-						"navigationBarTitleText": "订单详情",
+						"navigationBarTitleText": "我的订单",
 						"enablePullDownRefresh": false
 					}
 				}

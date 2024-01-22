@@ -154,6 +154,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default2 =
 {
   name: "productInfo",
@@ -189,8 +191,13 @@ var _default2 =
       });
     },
     toDetial: function toDetial() {
+      // commodityId
+      var id = this.info.id;
+      if (from == 'collect') {
+        id = this.info.commodityId;
+      }
       uni.navigateTo({
-        url: "/pagesA/detail/detail?id=".concat(this.info.id) });
+        url: "/pagesA/detail/detail?id=".concat(id) });
 
     } } };exports.default = _default2;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

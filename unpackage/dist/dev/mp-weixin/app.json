@@ -21,7 +21,7 @@
     {
       "root": "pagesB",
       "pages": [
-        "orderDetail/orderDetail"
+        "orderList/orderList"
       ]
     },
     {

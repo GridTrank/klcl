@@ -9,11 +9,13 @@
 					<text class="p1"> ￥{{info.rushPurchasePrice || info.price || 0}} </text>
 					<text class="p2" v-if="info.price"> ￥{{info.price }} </text>
 				</view>
-				<view><u-button szie="mini" class="btn" v-if="from == 'collect'" @tap.stop="cancelCollect">取消收藏</u-button></view>
+				<view>
+					<u-button szie="mini" class="btn" v-if="from == 'collect'" @tap.stop="cancelCollect">取消收藏</u-button>
+				</view>
 			</view>
 		</view>
 	</view>
-</template> 
+</template>
 
 <script>
 	export default {
@@ -40,7 +42,7 @@
 			};
 		},
 		methods: {
-			cancelCollect(){
+			cancelCollect() {
 				this.$http(`/my-system/collection/cancel/${this.info.id}`).then(res => {
 					uni.showToast({
 						title: '取消收藏成功',
@@ -50,8 +52,13 @@
 				})
 			},
 			toDetial() {
+				// commodityId
+				let id = this.info.id
+				if (from == 'collect') {
+					id = this.info.commodityId
+				}
 				uni.navigateTo({
-					url: `/pagesA/detail/detail?id=${this.info.id}`
+					url: `/pagesA/detail/detail?id=${id}`
 				})
 			}
 		}
@@ -79,7 +86,7 @@
 			align-items: flex-start;
 
 			.price {
-				
+
 				.p1 {
 					color: $base-color;
 					font-size: 36upx;
@@ -100,13 +107,14 @@
 				width: 228upx;
 				// height: 200rpx;
 			}
-			
+
 			.info {
 				height: 160upx;
 				background-color: #fff;
 				padding: 20upx;
 				align-items: flex-start;
-				.price{
+
+				.price {
 					width: 100%;
 					box-sizing: border-box;
 				}

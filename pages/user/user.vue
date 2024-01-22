@@ -93,6 +93,7 @@
 				userList: [{
 					icon:'order',
 						label: '我的订单',
+						url:'/pagesB/orderList/orderList'
 					},
 					{
 						icon:'star',
