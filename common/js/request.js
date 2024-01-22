@@ -30,12 +30,11 @@ export const request = (url, data, method, cacheName, time) => {
 				uni.hideLoading()
 				if (res.data.success) {
 					resolve(res.data)
-				} else if (Number(res.data.result) === 11012 || Number(res.data.result) ===
-					11013) {
-					uni.showToast({
-						title: '登录过期，请重新登录',
-						icon: 'none'
-					})
+				} else if ([11011,11012,11013].includes(Number(res.data.result))) {
+					// uni.showToast({
+					// 	title: '登录过期，请重新登录',
+					// 	icon: 'none'
+					// })
 					uni.clearStorageSync()
 					uni.navigateTo({
 						url: '/pages/login/login',

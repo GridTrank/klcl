@@ -28,6 +28,7 @@
 
 		},
 		onLoad() {
+			console.log(getCurrentPages())
 			if (!uni.getStorageSync('token')) {
 				uni.login({
 					provider: 'weixin',
