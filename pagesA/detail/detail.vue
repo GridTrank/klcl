@@ -54,7 +54,7 @@
 				</view>
 			</view>
 
-			<view class="releated_wrap">
+			<!-- <view class="releated_wrap">
 				<view class="title">
 					相关产品
 				</view>
@@ -78,7 +78,7 @@
 					</view>
 				</view>
 
-			</view>
+			</view> -->
 		</view>
 		<u-sticky offset-top="10">
 			<view class="nav_tab row">
@@ -249,6 +249,13 @@
 				this.activeIndex = item.value
 			},
 			toTab(url) {
+				if (url == '/pages/user/user') {
+					if (this.$util.isLogin()) {
+						uni.switchTab({
+							url,
+						})
+					}
+				}
 				uni.switchTab({
 					url
 				})

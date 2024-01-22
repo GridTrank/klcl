@@ -468,6 +468,13 @@ var _default =
       this.activeIndex = item.value;
     },
     toTab: function toTab(url) {
+      if (url == '/pages/user/user') {
+        if (this.$util.isLogin()) {
+          uni.switchTab({
+            url: url });
+
+        }
+      }
       uni.switchTab({
         url: url });
 

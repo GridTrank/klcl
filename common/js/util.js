@@ -34,7 +34,17 @@ export const throttle = (fn, delay = 500) => {
  * @param {Number} delay 延时ms   
  */
 export const backPage = () => {
-	uni.navigateBack()
+	let pages = getCurrentPages();
+	console.log(getCurrentPages())
+	let prevPage = pages[pages.length - 2];
+	if (prevPage) {
+		uni.navigateBack()
+	} else {
+		uni.switchTab({
+			url: '/pages/home/home'
+		})
+	}
+
 }
 /**
  * toast
@@ -62,6 +72,7 @@ export const isLogin = (options = {}) => {
 		//     title:'请先登录',
 		//     icon:'none'
 		// })
+		console.log(getCurrentPages())
 		uni.navigateTo({
 			url: '/pages/login/login',
 			fail: (res) => {
