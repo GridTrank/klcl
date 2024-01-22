@@ -243,16 +243,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -261,22 +251,14 @@ var _default =
       avatar: '',
       userInfo: {},
       userList: [{
-        label: '未接单' },
+        icon: 'order',
+        label: '我的订单' },
 
       {
-        label: '已接单' },
+        icon: 'star',
+        label: '我的收藏',
+        url: '/pagesC/collection/collection' }] };
 
-      {
-        label: '已完成' },
-
-      {
-        label: '退款' },
-
-      {
-        label: '待评价' },
-
-      {
-        label: '已评价' }] };
 
 
 
@@ -299,7 +281,11 @@ var _default =
         _this.userInfo = r.result;
       });
     },
+    toNav: function toNav(item) {
+      uni.navigateTo({
+        url: item.url });
 
+    },
     settleIn: function settleIn() {
       uni.switchTab({
         url: '/pages/user/user' });

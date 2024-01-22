@@ -103,6 +103,9 @@ try {
     liuCountdown: function() {
       return __webpack_require__.e(/*! import() | uni_modules/liu-countdown/components/liu-countdown/liu-countdown */ "uni_modules/liu-countdown/components/liu-countdown/liu-countdown").then(__webpack_require__.bind(null, /*! @/uni_modules/liu-countdown/components/liu-countdown/liu-countdown.vue */ 279))
     },
+    uIcon: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 308))
+    },
     uSticky: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-sticky/u-sticky */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-sticky/u-sticky")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-sticky/u-sticky.vue */ 355))
     },
@@ -114,6 +117,21 @@ try {
     },
     uRadio: function() {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-radio/u-radio */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-radio/u-radio")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-radio/u-radio.vue */ 379))
+    },
+    "u-Form": function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--form/u--form */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--form/u--form")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--form/u--form.vue */ 317))
+    },
+    uFormItem: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-form-item/u-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-form-item/u-form-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-form-item/u-form-item.vue */ 323))
+    },
+    uNumberBox: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-number-box/u-number-box */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-number-box/u-number-box")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-number-box/u-number-box.vue */ 548))
+    },
+    "u-Input": function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u--input/u--input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--input/u--input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--input/u--input.vue */ 387))
+    },
+    uInput: function() {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-input/u-input.vue */ 331))
     }
   }
 } catch (e) {
@@ -150,6 +168,10 @@ var render = function() {
 
     _vm.e1 = function($event) {
       _vm.showPop = false
+    }
+
+    _vm.e2 = function($event) {
+      _vm.showBuy = false
     }
   }
 
@@ -195,7 +217,40 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -334,7 +389,34 @@ var _default =
   data: function data() {
     return {
       productSku: '',
+      selectProduct: {
+        merchandiseNum: 1,
+        purchaserTel: '',
+        purchaserIdCard: '',
+        remark: '' },
+
       showPop: false,
+      showBuy: false,
+      rules: {
+        'purchaserName': {
+          type: 'string',
+          required: true,
+          message: '请填写姓名',
+          trigger: ['blur', 'change'] },
+
+        'purchaserTel': {
+          type: 'string',
+          required: true,
+          message: '请填写电话',
+          trigger: ['blur', 'change'] },
+
+        'purchaserIdCard': {
+          type: 'string',
+          required: true,
+          message: '请填写电话',
+          trigger: ['blur', 'change'] } },
+
+
       list1: [
       __webpack_require__(/*! @/static/home1.png */ 148),
       __webpack_require__(/*! @/static/home1.png */ 148),
@@ -353,6 +435,9 @@ var _default =
       productInfo: {},
       status: 0 };
 
+  },
+  onReady: function onReady() {
+    this.$refs.uForm.setRules(this.rules);
   },
   onLoad: function onLoad(options) {
     this.getData(options.id);
@@ -375,6 +460,7 @@ var _default =
     },
     getData: function getData(id) {var _this = this;
       this.$http("/my-merchandise/commodity/info/".concat(id)).then(function (res) {
+        res.result.collectionId = '';
         _this.productInfo = res.result;
       });
     },
@@ -391,6 +477,77 @@ var _default =
       }
       uni.switchTab({
         url: url });
+
+    },
+    collect: function collect() {var _this2 = this;
+      if (!this.productInfo.collectionId) {
+        // 收藏
+        this.$http("/my-system/collection/add?commodityId=".concat(this.productInfo.id)).then(function (res) {
+          _this2.productInfo.collectionId = res.result;
+          console.log(_this2.productInfo);
+        });
+      } else {
+        this.$http("/my-system/collection/cancel/".concat(this.productInfo.collectionId)).then(function (res) {
+          _this2.productInfo.collectionId = '';
+        });
+      }
+    },
+    submit: function submit() {var _this3 = this;
+      this.$refs.uForm.validate().then(function (res) {
+        _this3.$http("/my-order/order/create", {
+          merchandiseId: _this3.selectProduct.commodityId,
+          comboId: _this3.selectProduct.id,
+          merchandiseNum: _this3.selectProduct.merchandiseNum,
+          merchandisePrice: _this3.selectProduct.merchandiseNum * _this3.selectProduct.price,
+          purchaserName: _this3.selectProduct.purchaserName,
+          purchaserTel: _this3.selectProduct.purchaserTel,
+          purchaserIdCard: _this3.selectProduct.purchaserIdCard,
+          remark: _this3.selectProduct.remark },
+        'post').then(function (res) {
+          var data = res.result;
+          _this3.$http("/my-pay/wechat/prePay", {
+            userId: data.userId,
+            orderNo: data.orderNumber,
+            comboName: data.comboName,
+            orderPrice: data.orderPrice },
+          'post').then(function (res) {
+            uni.requestPayment({
+              provider: 'wxpay',
+              orderInfo: '',
+              appId: 'wx80b9f6aacbeb5853', //小程序的appid
+              timeStamp: res.result[0].TimeStamp, //时间戳，要字符串类型的
+              nonceStr: res.result[0].NonceStr, //随机字符串，长度为32个字符以下。
+              package: res.result[0].
+              Package, //prepay_id 参数值，提交格式如：prepay_id=xx
+              signType: res.result[0].SignType, //MD5类型
+              paySign: res.result[0].PaySign, //签名
+              success: function success(res) {
+                //支付成功的回调    成功之后你想做什么在这里操作  比如弹窗一个提示:支付成功等
+                uni.showToast({
+                  title: '支付成功！',
+                  icon: 'success' });
+
+              },
+              fail: function fail(err) {
+                //支付失败的回调   失败之后你想做什么在这里操作  比如弹窗一个提示:支付失败等
+                console.log(err);
+
+              } });
+
+          });
+        });
+      });
+    },
+    buy: function buy() {var _this4 = this;
+      if (this.productSku) {
+        this.showBuy = true;
+        this.showPop = false;
+      }
+      this.selectProduct = _objectSpread(_objectSpread({},
+      this.productInfo.commodityComboList.find(function (item) {return item.commodityId == _this4.productSku;})), {}, {
+        merchandiseNum: 1 });
+
+      console.log(this.productSku, this.selectProduct);
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

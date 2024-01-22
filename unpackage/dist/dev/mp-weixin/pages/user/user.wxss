@@ -91,9 +91,17 @@
 .info-wrap .model-wrap .m-list.data-v-80842834 {
   padding: 30rpx;
 }
+.info-wrap .model-wrap .m-list .m-item.data-v-80842834 {
+  margin-right: 20rpx;
+}
 .info-wrap .model-wrap .m-list .m-item .icon.data-v-80842834 {
-  width: 70rpx;
-  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background-color: #faf3e3;
 }
 .info-wrap .model-wrap .m-list .m-item .label.data-v-80842834 {
   margin-top: 15rpx;

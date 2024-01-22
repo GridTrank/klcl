@@ -62,4 +62,8 @@
   padding: 20rpx;
   align-items: flex-start;
 }
+.product_info.row .info .price.data-v-0185fe80 {
+  width: 100%;
+  box-sizing: border-box;
+}
 

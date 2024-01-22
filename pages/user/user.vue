@@ -16,39 +16,29 @@
 				<u-icon @click="navTo('/pagesC/info/info')" name="arrow-right" color="#fff" size="24"></u-icon>
 			</view>
 
-			<view class="model-wrap assets">
-				<view class="title row jc-sb">
-					<view class="left row">
-						<image src="@/static/images/user-cc.png" class="m-img"></image>
-						<text class="f32-c333 ml20">我的财产</text>
-					</view>
-				</view>
-				<view class="m-card row jc-sb">
-					<view class="c-t1" @click="navTo('/pagesC/bill/bill')">余额： <text class="b">￥1234</text> </view>
-					<view class="c-t1" @click="navTo('/pagesC/recharge/recharge')">充值</view>
-					<view class="c-t1" @click="navTo('/pagesC/withdrawal/withdrawal')">提现</view>
-				</view>
-			</view>
 
 			<view class="model-wrap user mt20">
 				<view class="title row jc-sb">
 					<view class="left row">
 						<image src="@/static/images/user-yh.png" class="m-img"></image>
-						<text class="f32-c333 ml20">我是用户</text>
+						<text class="f32-c333 ml20">我的订单</text>
 					</view>
-					<view class="right row">
+					<!-- <view class="right row">
 						<text class="r-txt">全部订单</text>
 						<u-icon name="arrow-right" color="#C4C4C4" size="14"></u-icon>
-					</view>
+					</view> -->
 				</view>
-				<view class="m-list row jc-sb">
-					<view class="m-item column" v-for="(item,index) in userList" :key="index">
+				<view class="m-list row">
+					<view class="m-item column" v-for="(item,index) in userList" :key="index" @click="toNav(item)">
+						<view class="icon">
+							<u-icon :name="item.icon" size="28"></u-icon>
+						</view>
 						<text class="label">{{item.label}}</text>
 					</view>
 				</view>
 			</view>
 
-			<view class="model-wrap user mt20">
+			<!-- <view class="model-wrap user mt20">
 				<view class="title row jc-sb">
 					<view class="left row">
 						<image src="@/static/images/user-yh.png" class="m-img"></image>
@@ -64,7 +54,7 @@
 						<text class="label">{{item.label}}</text>
 					</view>
 				</view>
-			</view>
+			</view> -->
 
 			<!-- <view class="model-wrap c-list mt20">
 				<view class="row c-item" @click="navTo('/pagesC/collection/collection')">
@@ -101,23 +91,15 @@
 				avatar: '',
 				userInfo: {},
 				userList: [{
-						label: '未接单',
+					icon:'order',
+						label: '我的订单',
 					},
 					{
-						label: '已接单',
+						icon:'star',
+						label: '我的收藏',
+						url:'/pagesC/collection/collection'
 					},
-					{
-						label: '已完成',
-					},
-					{
-						label: '退款',
-					},
-					{
-						label: '待评价',
-					},
-					{
-						label: '已评价',
-					},
+
 				]
 			};
 		},
@@ -139,7 +121,11 @@
 					this.userInfo = r.result
 				})
 			},
-
+			toNav(item){
+				uni.navigateTo({
+					url:item.url
+				})
+			},
 			settleIn() {
 				uni.switchTab({
 					url: '/pages/user/user'
@@ -236,13 +222,20 @@
 				padding: 30upx;
 
 				.m-item {
+					margin-right: 20upx;
+
 					.icon {
-						width: 70upx;
-						height: 70upx;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						width: 120upx;
+						height: 120upx;
+						border-radius: 50%;
+						background-color: rgba(250, 243, 227, 1);
 					}
 
-					.label {
-						margin-top: 15upx;
+					.label { 
+						margin-top: 15upx; 
 						color: #4D4D4D;
 						font-size: 24upx;
 					}
