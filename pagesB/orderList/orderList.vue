@@ -1,7 +1,7 @@
 <template>
 	<view class="orderList-wrap">
 		<u-tabs :list="list" :is-scroll="false" :current="current" @change="change"></u-tabs>
-		<orderList v-for="item in orderList" :key="item.id" :data="item"></orderList>
+		<orderItem v-for="item in orderList" :key="item.id" :info="item"></orderItem>
 		<u-loadmore :status="status" />
 	</view>
 </template>
@@ -21,13 +21,18 @@
 				}, {
 					name: '已退款',
 				}],
+				orderList:[],
 				status: 'loadmore',
 				page: 1,
 				current: 0,
-				total:0,
+				total: 0,
 			};
 		},
+
 		created() {
+			this.getData()
+		},
+		onReachBottom() {
 			this.getData()
 		},
 		methods: {

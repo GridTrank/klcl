@@ -10,7 +10,7 @@
         "postcss": false,
         "minified": true,
         "newFeature": true,
-        "bigPackageSizeSupport": false,
+        "bigPackageSizeSupport": true,
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
