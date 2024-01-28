@@ -204,7 +204,7 @@ var _default =
         "size": 10 //每页显示条数
       }, 'POST').then(function (res) {
         _this.page++;
-        _this.orderList = res.rows;
+        _this.orderList = _this.orderList.concat(res.rows);
         if (res.rows.length < 10) {
           _this.status = 'nomore';
         }
@@ -213,6 +213,7 @@ var _default =
     },
     change: function change(index) {
       this.current = index;
+      this.orderList = [];
     } } };exports.default = _default;
 
 /***/ })

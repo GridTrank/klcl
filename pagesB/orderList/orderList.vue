@@ -43,7 +43,7 @@
 					"size": 10, //每页显示条数
 				}, 'POST').then(res => {
 					this.page++;
-					this.orderList = res.rows;
+					this.orderList = this.orderList.concat(res.rows);
 					if (res.rows.length < 10) {
 						this.status = 'nomore'
 					}
@@ -52,6 +52,7 @@
 			},
 			change(index) {
 				this.current = index;
+				this.orderList = [];
 			}
 		}
 	}
