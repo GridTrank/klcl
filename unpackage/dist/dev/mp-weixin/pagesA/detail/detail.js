@@ -527,12 +527,15 @@ var _default =
                   icon: 'none' });
 
                 uni.navigateTo({
-                  url: "/pagesB/orderDetail/orderDetail?id=".concat(data.orderNumber) });
+                  url: "/pagesC/orderDetail/orderDetail?id=".concat(data.id) });
 
               },
               fail: function fail(err) {
                 //支付失败的回调   失败之后你想做什么在这里操作  比如弹窗一个提示:支付失败等
                 console.log(err);
+                uni.navigateTo({
+                  url: "/pagesC/orderDetail/orderDetail?id=".concat(data.id) });
+
 
               } });
 

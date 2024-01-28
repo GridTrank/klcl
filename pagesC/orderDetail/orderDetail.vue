@@ -33,7 +33,7 @@
 				<view class="info price">￥{{detailInfo.merchandiseTotalPrice}}</view>
 			</view>
 			<view class="time row" v-if="detailInfo.payStatus == 0 && detailInfo.orderStatus == 0">
-				<liu-countdown :auto="true" ref="countdown" mode="4" :endDate="getTime()" @change="countdownChange">
+				<liu-countdown :auto="true" :showDays="false" ref="countdown" mode="4" :endDate="getTime()" @change="countdownChange">
 				</liu-countdown>
 			</view>
 			<view class="time row" v-else>
@@ -74,10 +74,10 @@
 			},
 			getTime() {
 				let endDate = new Date(new Date(this.detailInfo.createTime).getTime() + 600000)
-				console.log(endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDay() + ' ' + endDate
+				console.log(endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate() + ' ' + endDate
 					.getHours() + ':' + endDate.getMinutes() + ':' +
 					endDate.getSeconds());
-				return endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDay() + ' ' + endDate
+				return endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate() + ' ' + endDate
 					.getHours() + ':' + endDate.getMinutes() + ':' +
 					endDate.getSeconds()
 			},

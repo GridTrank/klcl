@@ -243,10 +243,10 @@ var _default =
     },
     getTime: function getTime() {
       var endDate = new Date(new Date(this.detailInfo.createTime).getTime() + 600000);
-      console.log(endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDay() + ' ' + endDate.
+      console.log(endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate() + ' ' + endDate.
       getHours() + ':' + endDate.getMinutes() + ':' +
       endDate.getSeconds());
-      return endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDay() + ' ' + endDate.
+      return endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate() + ' ' + endDate.
       getHours() + ':' + endDate.getMinutes() + ':' +
       endDate.getSeconds();
     },
