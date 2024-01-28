@@ -198,6 +198,7 @@ var _default =
   },
   methods: {
     getData: function getData() {var _this = this;
+      if (this.status = 'nomore')
       this.$http("/my-order/order/userList", {
         "orderStatus": this.current, //订单状态 0-未确认 1-已确认 2-已取消 3-无效 4-退款
         "page": this.page, //当前页码
@@ -211,9 +212,12 @@ var _default =
         _this.total = res.total;
       });
     },
-    change: function change(index) {
-      this.current = index;
+    change: function change(obj) {
+      this.current = obj.index;
       this.orderList = [];
+      this.loadmore = 'loadmore';
+      this.page = 1;
+      this.getData();
     } } };exports.default = _default;
 
 /***/ })

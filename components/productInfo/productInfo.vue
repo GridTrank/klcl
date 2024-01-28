@@ -54,7 +54,7 @@
 			toDetial() {
 				// commodityId
 				let id = this.info.id
-				if (from == 'collect') {
+				if (this.from == 'collect') {
 					id = this.info.commodityId
 				}
 				uni.navigateTo({

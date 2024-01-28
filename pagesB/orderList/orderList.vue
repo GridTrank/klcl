@@ -21,7 +21,7 @@
 				}, {
 					name: '已退款',
 				}],
-				orderList:[],
+				orderList: [],
 				status: 'loadmore',
 				page: 1,
 				current: 0,
@@ -37,22 +37,26 @@
 		},
 		methods: {
 			getData() {
-				this.$http(`/my-order/order/userList`, {
-					"orderStatus": this.current, //订单状态 0-未确认 1-已确认 2-已取消 3-无效 4-退款
-					"page": this.page, //当前页码
-					"size": 10, //每页显示条数
-				}, 'POST').then(res => {
-					this.page++;
-					this.orderList = this.orderList.concat(res.rows);
-					if (res.rows.length < 10) {
-						this.status = 'nomore'
-					}
-					this.total = res.total
-				})
+				if (this.status = 'nomore')
+					this.$http(`/my-order/order/userList`, {
+						"orderStatus": this.current, //订单状态 0-未确认 1-已确认 2-已取消 3-无效 4-退款
+						"page": this.page, //当前页码
+						"size": 10, //每页显示条数
+					}, 'POST').then(res => {
+						this.page++;
+						this.orderList = this.orderList.concat(res.rows);
+						if (res.rows.length < 10) {
+							this.status = 'nomore'
+						}
+						this.total = res.total
+					})
 			},
-			change(index) {
-				this.current = index;
+			change(obj) {
+				this.current = obj.index;
 				this.orderList = [];
+				this.loadmore = 'loadmore';
+				this.page = 1;
+				this.getData()
 			}
 		}
 	}

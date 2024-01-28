@@ -193,7 +193,7 @@ var _default2 =
     toDetial: function toDetial() {
       // commodityId
       var id = this.info.id;
-      if (from == 'collect') {
+      if (this.from == 'collect') {
         id = this.info.commodityId;
       }
       uni.navigateTo({

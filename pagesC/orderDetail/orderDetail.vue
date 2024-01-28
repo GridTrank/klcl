@@ -22,7 +22,7 @@
 			<view class="title">订单信息</view>
 			<view class="row mt10 jc-sb">
 				<view class="name">订单号</view>
-				<view class="info">{{detailInfo.id}}</view>
+				<view class="info">{{detailInfo.orderNumber}}</view>
 			</view>
 			<view class="row mt10 jc-sb">
 				<view class="name">下单日期</view>
