@@ -279,7 +279,7 @@
 						merchandiseId: this.selectProduct.commodityId,
 						comboId: this.selectProduct.id,
 						merchandiseNum: this.selectProduct.merchandiseNum,
-						merchandisePrice: this.selectProduct.merchandiseNum * this.selectProduct.price,
+						merchandisePrice: this.selectProduct.price,
 						purchaserName: this.selectProduct.purchaserName,
 						purchaserTel: this.selectProduct.purchaserTel,
 						purchaserIdCard: this.selectProduct.purchaserIdCard,

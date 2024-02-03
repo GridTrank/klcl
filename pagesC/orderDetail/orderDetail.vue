@@ -33,7 +33,8 @@
 				<view class="info price">￥{{detailInfo.merchandiseTotalPrice}}</view>
 			</view>
 			<view class="time row" v-if="detailInfo.payStatus == 0 && detailInfo.orderStatus == 0">
-				<liu-countdown :auto="true" :showDays="false" ref="countdown" mode="4" :endDate="getTime()" @change="countdownChange">
+				<liu-countdown :auto="true" :showDays="false" ref="countdown" mode="4" :endDate="getTime()"
+					@change="countdownChange">
 				</liu-countdown>
 			</view>
 			<view class="time row" v-else>
@@ -72,14 +73,15 @@
 					this.detailInfo = res.result;
 				})
 			},
+			zero(num) {
+				return num < 10 ? '0' + num : num
+			},
 			getTime() {
 				let endDate = new Date(new Date(this.detailInfo.createTime).getTime() + 600000)
-				console.log(endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate() + ' ' + endDate
-					.getHours() + ':' + endDate.getMinutes() + ':' +
-					endDate.getSeconds());
-				return endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate() + ' ' + endDate
-					.getHours() + ':' + endDate.getMinutes() + ':' +
-					endDate.getSeconds()
+				return endDate.getFullYear() + '-' + this.zero(endDate.getMonth() + 1) + '-' + this.zero(endDate
+				.getDate()) + ' ' + this.zero(endDate
+						.getHours()) + ':' + this.zero(endDate.getMinutes()) + ':' +
+					this.zero(endDate.getSeconds())
 			},
 			toDeatil() {
 				uni.navigateTo({
