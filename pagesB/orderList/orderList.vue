@@ -1,7 +1,7 @@
 <template>
 	<view class="orderList-wrap">
 		<u-tabs :list="list" :is-scroll="false" :current="current" @change="change"></u-tabs>
-		<orderItem v-for="item in orderList" :key="item.id" :info="item"></orderItem>
+		<orderItem v-for="item in orderList" :key="item.id" :info="item" @update="update"></orderItem>
 		<u-loadmore :status="status" />
 	</view>
 </template>
@@ -36,6 +36,10 @@
 			this.getData()
 		},
 		methods: {
+			update(){
+				this.page = 1
+				this.getData()
+			},
 			getData() {
 				if (this.status = 'nomore')
 					this.$http(`/my-order/order/userList`, {

@@ -197,6 +197,10 @@ var _default =
     this.getData();
   },
   methods: {
+    update: function update() {
+      this.page = 1;
+      this.getData();
+    },
     getData: function getData() {var _this = this;
       if (this.status = 'nomore')
       this.$http("/my-order/order/userList", {

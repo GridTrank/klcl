@@ -11,7 +11,7 @@
 		<view class="jc-sb row mt20">
 			<view class="date">下单时间：{{info.createTime}}</view>
 			<view class="btn-wrap">
-				<view class="btn cancel mr10" v-if="info.orderStatus == 0">取消</view>
+				<view class="btn cancel mr10" @click="cancel" v-if="info.orderStatus == 0">取消</view>
 				<view class="btn detail" @click="toDetail">查看详情</view>
 			</view>
 		</view>
@@ -41,6 +41,11 @@
 			}
 		},
 		methods:{
+			cancel(){
+				this.$http(`/my-order/order/cancel?orderId=${this.info.id}`).then(res => {
+					this.$emit('update')
+				})
+			},
 			toDetail(){
 				uni.navigateTo({
 					url:`/pagesC/orderDetail/orderDetail?id=${this.info.id}`

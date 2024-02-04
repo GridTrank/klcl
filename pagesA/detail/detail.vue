@@ -241,9 +241,24 @@
 			},
 			getData(id) {
 				this.$http(`/my-merchandise/commodity/info/${id}`).then(res => {
-					res.result.collectionId = '';
+
 					this.productInfo = res.result
 				})
+				console.log(uni.getStorageSync('token'))
+				if (uni.getStorageSync('token')) {
+					let userInfo = uni.getStorageSync('userInfo')
+					// /my-merchandise/commodity/collect?commodityId={商品 ID}&userId={用户 ID}
+					uni.request({
+						url: `https://www.my-klcl.cn/api/my-merchandise/commodity/collect?commodityId=${id}&userId=${userInfo.id}`,
+						header: {
+							Authorization: uni.getStorageSync('token') || ''
+						},
+						method: 'GET',
+						success: (res) => {
+							console.log(res)
+						},
+					})
+				}
 			},
 			tabChange(item) {
 				this.activeIndex = item.value
@@ -298,7 +313,8 @@
 								appId: res.result.appId, //小程序的appid
 								timeStamp: res.result.timeStamp, //时间戳，要字符串类型的
 								nonceStr: res.result.nonceStr, //随机字符串，长度为32个字符以下。
-								package: res.result.packageVal, //prepay_id 参数值，提交格式如：prepay_id=xx
+								package: res.result
+								.packageVal, //prepay_id 参数值，提交格式如：prepay_id=xx
 								signType: res.result.signType, //MD5类型
 								paySign: res.result.paySign, //签名
 								success: function(res) {
@@ -308,14 +324,14 @@
 										icon: 'none'
 									})
 									uni.navigateTo({
-										url:`/pagesC/orderDetail/orderDetail?id=${data.id}`
+										url: `/pagesC/orderDetail/orderDetail?id=${data.id}`
 									})
 								},
 								fail: function(err) {
 									//支付失败的回调   失败之后你想做什么在这里操作  比如弹窗一个提示:支付失败等
 									console.log(err);
 									uni.navigateTo({
-										url:`/pagesC/orderDetail/orderDetail?id=${data.id}`
+										url: `/pagesC/orderDetail/orderDetail?id=${data.id}`
 									})
 
 								}

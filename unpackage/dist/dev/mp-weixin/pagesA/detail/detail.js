@@ -460,9 +460,24 @@ var _default =
     },
     getData: function getData(id) {var _this = this;
       this.$http("/my-merchandise/commodity/info/".concat(id)).then(function (res) {
-        res.result.collectionId = '';
+
         _this.productInfo = res.result;
       });
+      console.log(uni.getStorageSync('token'));
+      if (uni.getStorageSync('token')) {
+        var userInfo = uni.getStorageSync('userInfo');
+        // /my-merchandise/commodity/collect?commodityId={商品 ID}&userId={用户 ID}
+        uni.request({
+          url: "https://www.my-klcl.cn/api/my-merchandise/commodity/collect?commodityId=".concat(id, "&userId=").concat(userInfo.id),
+          header: {
+            Authorization: uni.getStorageSync('token') || '' },
+
+          method: 'GET',
+          success: function success(res) {
+            console.log(res);
+          } });
+
+      }
     },
     tabChange: function tabChange(item) {
       this.activeIndex = item.value;
@@ -517,7 +532,8 @@ var _default =
               appId: res.result.appId, //小程序的appid
               timeStamp: res.result.timeStamp, //时间戳，要字符串类型的
               nonceStr: res.result.nonceStr, //随机字符串，长度为32个字符以下。
-              package: res.result.packageVal, //prepay_id 参数值，提交格式如：prepay_id=xx
+              package: res.result.
+              packageVal, //prepay_id 参数值，提交格式如：prepay_id=xx
               signType: res.result.signType, //MD5类型
               paySign: res.result.paySign, //签名
               success: function success(res) {

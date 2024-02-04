@@ -157,6 +157,11 @@ var _default2 =
 
 
   methods: {
+    cancel: function cancel() {var _this = this;
+      this.$http("/my-order/order/cancel?orderId=".concat(this.info.id)).then(function (res) {
+        _this.$emit('update');
+      });
+    },
     toDetail: function toDetail() {
       uni.navigateTo({
         url: "/pagesC/orderDetail/orderDetail?id=".concat(this.info.id) });
