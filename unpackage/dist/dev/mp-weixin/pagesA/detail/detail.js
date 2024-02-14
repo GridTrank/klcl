@@ -460,8 +460,8 @@ var _default =
     },
     getData: function getData(id) {var _this = this;
       this.$http("/my-merchandise/commodity/info/".concat(id)).then(function (res) {
-
         _this.productInfo = res.result;
+        _this.$set(_this.productInfo, 'collectionId', '0');
       });
       console.log(uni.getStorageSync('token'));
       if (uni.getStorageSync('token')) {
@@ -474,7 +474,10 @@ var _default =
 
           method: 'GET',
           success: function success(res) {
-            console.log(res);
+            _this.$set(_this.productInfo, 'collectionId', res.data.result);
+          },
+          fail: function fail() {
+            _this.$set(_this.productInfo, 'collectionId', '0');
           } });
 
       }
@@ -495,15 +498,15 @@ var _default =
 
     },
     collect: function collect() {var _this2 = this;
-      if (!this.productInfo.collectionId) {
+      if (this.productInfo.collectionId == '0') {
         // 收藏
         this.$http("/my-system/collection/add?commodityId=".concat(this.productInfo.id)).then(function (res) {
-          _this2.productInfo.collectionId = res.result;
+          _this2.$set(_this2.productInfo, 'collectionId', res.result);
           console.log(_this2.productInfo);
         });
       } else {
         this.$http("/my-system/collection/cancel/".concat(this.productInfo.collectionId)).then(function (res) {
-          _this2.productInfo.collectionId = '';
+          _this2.$set(_this2.productInfo, 'collectionId', '0');
         });
       }
     },

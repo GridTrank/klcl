@@ -25,9 +25,9 @@
 							class="p2">{{productInfo.price || productInfo.rushPurchasePrice}}</text><text
 							class="p1">起</text>
 					</view>
-					<view :class="['t-right center column collect', {'active' : productInfo.collectionId }] "
+					<view :class="['t-right center column collect', {'active' : productInfo.collectionId != '0' }] "
 						@click="collect">
-						<u-icon name="star" size="20" :color="productInfo.collectionId ? '#FB852F':'#606266'"></u-icon>
+						<u-icon name="star" size="20" :color="productInfo.collectionId != '0' ? '#FB852F':'#606266'"></u-icon>
 						收藏
 					</view>
 				</view>
@@ -241,8 +241,8 @@
 			},
 			getData(id) {
 				this.$http(`/my-merchandise/commodity/info/${id}`).then(res => {
-
 					this.productInfo = res.result
+					this.$set(this.productInfo,'collectionId', '0')
 				})
 				console.log(uni.getStorageSync('token'))
 				if (uni.getStorageSync('token')) {
@@ -255,8 +255,11 @@
 						},
 						method: 'GET',
 						success: (res) => {
-							console.log(res)
+							this.$set(this.productInfo,'collectionId', res.data.result)
 						},
+						fail:()=> {
+							this.$set(this.productInfo,'collectionId', '0')
+						}
 					})
 				}
 			},
@@ -276,15 +279,15 @@
 				})
 			},
 			collect() {
-				if (!this.productInfo.collectionId) {
+				if (this.productInfo.collectionId == '0') {
 					// 收藏
 					this.$http(`/my-system/collection/add?commodityId=${this.productInfo.id}`).then(res => {
-						this.productInfo.collectionId = res.result;
+						this.$set(this.productInfo,'collectionId', res.result)
 						console.log(this.productInfo)
 					})
 				} else {
 					this.$http(`/my-system/collection/cancel/${this.productInfo.collectionId}`).then(res => {
-						this.productInfo.collectionId = ''
+						this.$set(this.productInfo,'collectionId', '0')
 					})
 				}
 			},

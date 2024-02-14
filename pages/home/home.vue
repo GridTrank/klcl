@@ -18,7 +18,7 @@
 				<view class="label"> 品质保障 </view>
 				<view class="label"> 售后无忧 </view>
 				<view class="label"> 甄选好惠 </view>
-				<view class="label"> 能省能赚 </view>
+				<view class="label"> 能省能赚 </view> 
 			</view>
 
 		</view>
