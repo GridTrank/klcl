@@ -212,6 +212,7 @@
 						value: 1
 					},
 				],
+				id:'',
 				activeIndex: 0,
 				productInfo: {},
 				status: 0
@@ -222,6 +223,26 @@
 		},
 		onLoad(options) {
 			this.getData(options.id)
+			this.id = options.id
+		},
+		onShow(options) {
+			if (uni.getStorageSync('token')) {
+				let userInfo = uni.getStorageSync('userInfo')
+				console.log(userInfo)
+				uni.request({
+					url: `https://www.my-klcl.cn/api/my-merchandise/commodity/collect?commodityId=${this.id}&userId=${userInfo.id}`,
+					header: {
+						Authorization: uni.getStorageSync('token') || ''
+					},
+					method: 'GET',
+					success: (res) => {
+						this.$set(this.productInfo,'collectionId', res.data.result)
+					},
+					fail:()=> {
+						this.$set(this.productInfo,'collectionId', '0')
+					}
+				})
+			}
 		},
 		methods: {
 			getTime() {
@@ -244,24 +265,24 @@
 					this.productInfo = res.result
 					this.$set(this.productInfo,'collectionId', '0')
 				})
-				console.log(uni.getStorageSync('token'))
-				if (uni.getStorageSync('token')) {
-					let userInfo = uni.getStorageSync('userInfo')
-					// /my-merchandise/commodity/collect?commodityId={商品 ID}&userId={用户 ID}
-					uni.request({
-						url: `https://www.my-klcl.cn/api/my-merchandise/commodity/collect?commodityId=${id}&userId=${userInfo.id}`,
-						header: {
-							Authorization: uni.getStorageSync('token') || ''
-						},
-						method: 'GET',
-						success: (res) => {
-							this.$set(this.productInfo,'collectionId', res.data.result)
-						},
-						fail:()=> {
-							this.$set(this.productInfo,'collectionId', '0')
-						}
-					})
-				}
+				// if (uni.getStorageSync('token')) {
+				// 	let userInfo = uni.getStorageSync('userInfo')
+				// 	// /my-merchandise/commodity/collect?commodityId={商品 ID}&userId={用户 ID}
+				// 	uni.request({
+				// 		url: `https://www.my-klcl.cn/api/my-merchandise/commodity/collect?commodityId=${this.id}&userId=${userInfo.id}`,
+				// 		header: {
+				// 			Authorization: uni.getStorageSync('token') || ''
+				// 		},
+				// 		method: 'GET',
+				// 		success: (res) => {
+				// 			this.$set(this.productInfo,'collectionId', res.data.result)
+				// 		},
+				// 		fail:()=> {
+				// 			this.$set(this.productInfo,'collectionId', '0')
+				// 		}
+				// 	})
+				// }
+				
 			},
 			tabChange(item) {
 				this.activeIndex = item.value

@@ -431,6 +431,7 @@ var _default =
         value: 1 }],
 
 
+      id: '',
       activeIndex: 0,
       productInfo: {},
       status: 0 };
@@ -441,6 +442,26 @@ var _default =
   },
   onLoad: function onLoad(options) {
     this.getData(options.id);
+    this.id = options.id;
+  },
+  onShow: function onShow(options) {var _this = this;
+    if (uni.getStorageSync('token')) {
+      var userInfo = uni.getStorageSync('userInfo');
+      console.log(userInfo);
+      uni.request({
+        url: "https://www.my-klcl.cn/api/my-merchandise/commodity/collect?commodityId=".concat(this.id, "&userId=").concat(userInfo.id),
+        header: {
+          Authorization: uni.getStorageSync('token') || '' },
+
+        method: 'GET',
+        success: function success(res) {
+          _this.$set(_this.productInfo, 'collectionId', res.data.result);
+        },
+        fail: function fail() {
+          _this.$set(_this.productInfo, 'collectionId', '0');
+        } });
+
+    }
   },
   methods: {
     getTime: function getTime() {
@@ -458,29 +479,29 @@ var _default =
         return this.productInfo.cutoffDate;
       }
     },
-    getData: function getData(id) {var _this = this;
+    getData: function getData(id) {var _this2 = this;
       this.$http("/my-merchandise/commodity/info/".concat(id)).then(function (res) {
-        _this.productInfo = res.result;
-        _this.$set(_this.productInfo, 'collectionId', '0');
+        _this2.productInfo = res.result;
+        _this2.$set(_this2.productInfo, 'collectionId', '0');
       });
-      console.log(uni.getStorageSync('token'));
-      if (uni.getStorageSync('token')) {
-        var userInfo = uni.getStorageSync('userInfo');
-        // /my-merchandise/commodity/collect?commodityId={商品 ID}&userId={用户 ID}
-        uni.request({
-          url: "https://www.my-klcl.cn/api/my-merchandise/commodity/collect?commodityId=".concat(id, "&userId=").concat(userInfo.id),
-          header: {
-            Authorization: uni.getStorageSync('token') || '' },
+      // if (uni.getStorageSync('token')) {
+      // 	let userInfo = uni.getStorageSync('userInfo')
+      // 	// /my-merchandise/commodity/collect?commodityId={商品 ID}&userId={用户 ID}
+      // 	uni.request({
+      // 		url: `https://www.my-klcl.cn/api/my-merchandise/commodity/collect?commodityId=${this.id}&userId=${userInfo.id}`,
+      // 		header: {
+      // 			Authorization: uni.getStorageSync('token') || ''
+      // 		},
+      // 		method: 'GET',
+      // 		success: (res) => {
+      // 			this.$set(this.productInfo,'collectionId', res.data.result)
+      // 		},
+      // 		fail:()=> {
+      // 			this.$set(this.productInfo,'collectionId', '0')
+      // 		}
+      // 	})
+      // }
 
-          method: 'GET',
-          success: function success(res) {
-            _this.$set(_this.productInfo, 'collectionId', res.data.result);
-          },
-          fail: function fail() {
-            _this.$set(_this.productInfo, 'collectionId', '0');
-          } });
-
-      }
     },
     tabChange: function tabChange(item) {
       this.activeIndex = item.value;
@@ -497,33 +518,33 @@ var _default =
         url: url });
 
     },
-    collect: function collect() {var _this2 = this;
+    collect: function collect() {var _this3 = this;
       if (this.productInfo.collectionId == '0') {
         // 收藏
         this.$http("/my-system/collection/add?commodityId=".concat(this.productInfo.id)).then(function (res) {
-          _this2.$set(_this2.productInfo, 'collectionId', res.result);
-          console.log(_this2.productInfo);
+          _this3.$set(_this3.productInfo, 'collectionId', res.result);
+          console.log(_this3.productInfo);
         });
       } else {
         this.$http("/my-system/collection/cancel/".concat(this.productInfo.collectionId)).then(function (res) {
-          _this2.$set(_this2.productInfo, 'collectionId', '0');
+          _this3.$set(_this3.productInfo, 'collectionId', '0');
         });
       }
     },
-    submit: function submit() {var _this3 = this;
+    submit: function submit() {var _this4 = this;
       this.$refs.uForm.validate().then(function (res) {
-        _this3.$http("/my-order/order/create", {
-          merchandiseId: _this3.selectProduct.commodityId,
-          comboId: _this3.selectProduct.id,
-          merchandiseNum: _this3.selectProduct.merchandiseNum,
-          merchandisePrice: _this3.selectProduct.price,
-          purchaserName: _this3.selectProduct.purchaserName,
-          purchaserTel: _this3.selectProduct.purchaserTel,
-          purchaserIdCard: _this3.selectProduct.purchaserIdCard,
-          remark: _this3.selectProduct.remark },
+        _this4.$http("/my-order/order/create", {
+          merchandiseId: _this4.selectProduct.commodityId,
+          comboId: _this4.selectProduct.id,
+          merchandiseNum: _this4.selectProduct.merchandiseNum,
+          merchandisePrice: _this4.selectProduct.price,
+          purchaserName: _this4.selectProduct.purchaserName,
+          purchaserTel: _this4.selectProduct.purchaserTel,
+          purchaserIdCard: _this4.selectProduct.purchaserIdCard,
+          remark: _this4.selectProduct.remark },
         'post').then(function (res) {
           var data = res.result;
-          _this3.$http("/my-pay/wechat/prePay", {
+          _this4.$http("/my-pay/wechat/prePay", {
             userId: data.userId,
             orderNo: data.orderNumber,
             comboName: data.comboName,
@@ -562,13 +583,13 @@ var _default =
         });
       });
     },
-    buy: function buy() {var _this4 = this;
+    buy: function buy() {var _this5 = this;
       if (this.productSku) {
         this.showBuy = true;
         this.showPop = false;
       }
       this.selectProduct = _objectSpread(_objectSpread({},
-      this.productInfo.commodityComboList.find(function (item) {return item.commodityId == _this4.productSku;})), {}, {
+      this.productInfo.commodityComboList.find(function (item) {return item.commodityId == _this5.productSku;})), {}, {
         merchandiseNum: 1 });
 
       console.log(this.productSku, this.selectProduct);

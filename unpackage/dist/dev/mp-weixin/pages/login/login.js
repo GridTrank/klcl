@@ -194,13 +194,15 @@ var _default =
         url: "/pagesC/message/message" });
 
     },
-    getuserinfo: function getuserinfo() {
+    getuserinfo: function getuserinfo(token) {var _this = this;
       this.$http('/my-system/user/info').then(function (r) {
         uni.setStorageSync('userInfo', r.result);
+        uni.setStorageSync('token', token);
+        _this.$util.backPage();
       });
     },
 
-    submit: function submit() {var _this = this;
+    submit: function submit() {var _this2 = this;
       if (!this.checked) {
         uni.showToast({
           title: '请同意隐私协议',
@@ -215,14 +217,14 @@ var _default =
             provider: 'weixin',
             success: function success(res) {
 
-              _this.$http('/my-auth/auth/wechatLogin', {
+              _this2.$http('/my-auth/auth/wechatLogin', {
                 wechatCode: res.code }).
               then(function (r) {
                 console.log(222, r);
 
                 uni.setStorageSync('token', r.result);
-                _this.getuserinfo();
-                _this.$util.backPage();
+                _this2.getuserinfo(r.result);
+
               });
             } });
 

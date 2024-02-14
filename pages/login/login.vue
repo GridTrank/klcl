@@ -55,9 +55,11 @@
 					url: "/pagesC/message/message"
 				})
 			},
-			getuserinfo() {
+			getuserinfo(token) {
 				this.$http('/my-system/user/info').then(r => {
 					uni.setStorageSync('userInfo', r.result)
+					uni.setStorageSync('token', token)
+					this.$util.backPage()
 				})
 			},
 
@@ -82,8 +84,8 @@
 									console.log(222, r)
 
 									uni.setStorageSync('token', r.result)
-									this.getuserinfo()
-									this.$util.backPage()
+									this.getuserinfo(r.result)
+									
 								})
 							}
 						})
