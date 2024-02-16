@@ -50,7 +50,7 @@
 					}, 'POST').then(res => {
 						this.page++;
 						this.orderList = this.orderList.concat(res.rows);
-						if (res.rows.length < 10) {
+						if (res.rows.length < 10 ||this.orderList.length >= res.total) {
 							this.status = 'nomore'
 						}
 						this.total = res.total

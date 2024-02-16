@@ -211,7 +211,7 @@ var _default =
       }, 'POST').then(function (res) {
         _this.page++;
         _this.orderList = _this.orderList.concat(res.rows);
-        if (res.rows.length < 10) {
+        if (res.rows.length < 10 || _this.orderList.length >= res.total) {
           _this.status = 'nomore';
         }
         _this.total = res.total;
